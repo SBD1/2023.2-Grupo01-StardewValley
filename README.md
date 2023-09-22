@@ -6,6 +6,6 @@ Repositório do trabalho do grupo 01 da disciplina de Sistema de Banco de Dados 
 | -- | -- |
 |  22/2014984 | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)|
 |  XX/XXXXXXX | XXXXXX |
-| 15/0154348  | Matheus Phillipo Silverio Silva |
+| 15/0154348  | [Matheus Phillipo Silverio Silva](https://github.com/MattSilverio) |
 | 212002907   | [Zenilda Pedrosa Vieira](https://github.com/ZenildaVieira) |
 
