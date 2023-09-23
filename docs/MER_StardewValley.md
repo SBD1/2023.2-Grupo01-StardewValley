@@ -1,10 +1,8 @@
-
 ## Histórico de versões
 
-| Versão | Data       | Descrição                | Autor                                              | Revisão              |
-|:------:|:----------:| ------------------------ | -------------------------------------------------- | -------------------- |
-| '1.0'  | 16/09/2023 | Criação do documento MER | [Zenilda Vieira](https://github.com/ZenildaVieira) |                      |
-
+| Versão |    Data    | Descrição                | Autor                                              | Revisão |
+| :----: | :--------: | ------------------------ | -------------------------------------------------- | ------- |
+| '1.0'  | 16/09/2023 | Criação do documento MER | [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
 
 # MER - Modelo Entidade Relacionamento
 
@@ -15,6 +13,7 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 > Atributos: características específicas de uma entidade.<br>
 
 ## 1. Entidades
+
 - **Mundo**
 - **Região**
 - **Jogador**
@@ -28,8 +27,8 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - **Inventário**
 - **Item**
 
-
 ## 2. Atributos
+
 - **Mundo**: <ins>ID_Mundo</ins>, Nome;
 - **Região**: <ins>ID_Regiao</ins>, Nome, posição_x, posição_y, LocalMundo;
 - **Jogador**: <ins>ID_Jogador</ins>, nível, nome;
@@ -46,9 +45,11 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 ## 3. Relacionamentos
 
 **Mundo – possui – Região**
+
 - Um Mundo possui nenhuma ou várias regiões (0,N) e uma região pertence a um só mundo (1,1).
 
 **Região – contém – Casa**
+
 - Uma Região contém nenhuma ou várias casas (0,N) e uma casa pertence a uma só Região (1,1).
 
 **Região – contém - Caverna**
@@ -76,4 +77,3 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 **Loja – vende – Item**
 
 **Diálogo – pertence a - NPC**
-
