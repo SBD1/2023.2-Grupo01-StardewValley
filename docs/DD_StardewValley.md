@@ -13,7 +13,7 @@
 
 ## Entidade: Mundo
 
-#### Descrição: 
+#### Descrição:
 
 | Variável           | Nome Variável | Tipo    | Descrição                   | Valores permitidos| | Possui valores nulo? | 
 |:------------------:|:-------------:|:-------:|:---------------------------:|:-------------------:|:--------------------:| 
@@ -22,7 +22,7 @@
 
 ## Entidade: Região
 
-#### Descrição: 
+#### Descrição:
 
 | Variável           | Nome Variável | Tipo    | Descrição                   | Valores permitidos| | Possui valores nulo? | 
 | :----------------: | :-----------: | :-----: | :-------------------------: | :-----------------: | :------------------: | 
