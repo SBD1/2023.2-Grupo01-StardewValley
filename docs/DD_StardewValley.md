@@ -8,9 +8,25 @@
 
 É... (definir)
 
-## Entidade: Mundo
-
+## Tabela: Arma
 #### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+
+
+## Tabela: Mundo
+#### Descrição:
+#### Observações
 
 |  Variável   | Nome Variável |  Tipo   |       Descrição        | Valores permitidos | Possui valores nulo? | É chave? |
 | :---------: | :-----------: | :-----: | :--------------------: | :----------------: | :------------------: | -------- |
