@@ -22,8 +22,358 @@ Possui uma chave estrangeira da tabela Item
 | finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
 
 
+## Tabela: Artesanato
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-artesanto | Chave estrangeira referenciando o identificador da tabela Receita | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
 
 
+## Tabela: Cabana-Jogador
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-cabana-jog| Chave estrangeira referenciando o identificador da tabela Local-Fechado | Int |  | FK |
+| jogador| Chave estrangeira referenciando o identificador da tabela Jogador | Int |  | FK |
+| regiao| Chave estrangeira referenciando o identificador da tabela Regiao | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Cabana-NPC
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-cabana-npc| Chave estrangeira referenciando o identificador da tabela Local-Fechado | Int |  | FK |
+| npc| Chave estrangeira referenciando o identificador da tabela NPC | Int |  | FK |
+| regiao| Chave estrangeira referenciando o identificador da tabela Regiao | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Caverna
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-caverna | Chave estrangeira referenciando o identificador da tabela Local-Fechado | Int |  | FK |
+| regiao | Chave estrangeira referenciando o identificador da tabela Regiao | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Consumível
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-consumivel | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Dialogo
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-dialogo | Chave primaria referenciando o identificador da tabela Dialogo | Int |  | PK |
+| npc| Chave estrangeira referenciando o identificador da tabela NPC | Int |  | FK |
+| fala | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Efeito
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-efeito | Chave primaria referenciando o identificador da tabela Efeito | Int |  | PK |
+| item | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| valor | :-----------: | :-----: | :--------------------: | :----------------: |
+| tipo | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Estacao
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Estoque
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Ferramenta
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Habilidade
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Instancia-Monstro
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Inventário
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Item
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Jogador
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Local-Fechado
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Loja
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Missao
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Monstro
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Mundo
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: NPC
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Receita
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Regiao
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Semente
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+## Tabela: Vestimenta
+#### Descrição:
+#### Observações:
+Possui uma chave estrangeira da tabela Item
+
+|  Nome Variável  |  Descrição  |  Tipo de Dado  |  Tamanho  |  Restrições Domínio (PF, FK, Not Null, Check, Default, Identity)  |
+| :---------: | :-----------: | :-----: | :--------------------: | :----------------: |
+| id-arma | Chave estrangeira referenciando o identificador da tabela Item | Int |  | FK |
+| nome | :-----------: | :-----: | :--------------------: | :----------------: |
+| descricao | :-----------: | :-----: | :--------------------: | :----------------: |
+| dano | :-----------: | :-----: | :--------------------: | :----------------: |
+| finalidade | :-----------: | :-----: | :--------------------: | :----------------: |
+
+
+
+
+
+
+
+
+
+
+
+# Modelos da Zenilda
 ## Tabela: Mundo
 #### Descrição:
 #### Observações
