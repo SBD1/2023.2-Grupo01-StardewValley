@@ -1,8 +1,8 @@
 ## Histórico de versões
 
-| Versão | Data       | Descrição                | Autor                                              | Revisão              |
-|:------:|:----------:| ------------------------ | -------------------------------------------------- | -------------------- |
-| `1.0`  | 23/09/2023 | Criação do documento DER | [Zenilda Vieira](https://github.com/ZenildaVieira) |                      |
+| Versão |    Data    | Descrição                | Autor                                              | Revisão |
+| :----: | :--------: | ------------------------ | -------------------------------------------------- | ------- |
+| `1.0`  | 23/09/2023 | Criação do documento DER | [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
 
 # Diagrama Entidade-Relacionamento
 
