@@ -11,7 +11,7 @@ escrever descrição
 
 colocar imagem do MREL
 
-<img src= '../imagens/MREL_stardew_valley_v1.png'> </img>
+<img src= '../imagens/MREL_stardew_valley_v2.png'> </img>
 
 <div style="text-align: center">
 <p>Figura 1: MREL Stardew Valley</p>
