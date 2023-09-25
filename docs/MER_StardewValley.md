@@ -3,6 +3,7 @@
 | Versão |    Data    | Descrição                | Autor                                              | Revisão |
 | :----: | :--------: | ------------------------ | -------------------------------------------------- | ------- |
 | `1.0`  | 16/09/2023 | Criação do documento MER | [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
+| `1.1`  | 24/09/2023 | Adição das entidades | [Matheus Silverio](https://github.com/MattSilverio) |         |
 
 # MER - Modelo Entidade Relacionamento
 
@@ -14,10 +15,31 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 ## 1. Entidades
 
+- **Jogador**
+- **Inventário**
+- **Habilidade**
+- **Missão**
+- **Estação**
+- **NPC**
+- **Monstro**
+- **Instância de monstro**
 - **Mundo**
 - **Região**
-- **Local**
-...
+- **Local-Fechado**
+  - **Cabana-Jogador**
+  - **Caverna**
+  - **Cabana-NPC**
+  - **Loja**
+- **Estoque**
+- **Item**
+  - **Semente**
+  - **Ferramenta**
+  - **Consumível**
+  - **Vestimenta**
+  - **Arma**
+  - **Artesanato**
+- **Efeito**
+- **Receita**   
 
 ## 2. Atributos
 
