@@ -4,6 +4,7 @@
 | :----: | :--------: | ----------------------- | ------------------------------------------------------------------------------------------------------- | ------- |
 | `1.0`  | 16/09/2023 | Criação do documento DD | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                      |         |
 | `1.1`  | 24/09/2023 | Adequação do DD ao DER  | [Marcus Martins](https://github.com/marcusmartinss) <br> [Edilberto](https://github.com/marcusmartinss) |         |
+| `1.2`  | 25/09/2023 | Descrição das entidades | [Marcus Martins](https://github.com/marcusmartinss)                                                     |         |
 
 # DD - Dicionário de Dados
 
@@ -11,9 +12,9 @@
 
 ## Entidade: Arma
 
-#### Descrição:
+#### Descrição: A entidade Arma descreve as armas disponíveis no jogo e outras informações, como: seu número de identificação, nome, dano, finalidade.
 
-#### Observação: 
+#### Observação:
 
 | Nome Variável |  Tipo   |       Descrição        | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :-----: | :--------------------: | :----------------: | :--------------------: | -------- | ----------------- |
@@ -25,7 +26,7 @@
 
 ## Entidade: Artesanato
 
-#### Descrição:
+#### Descrição: A entidade Artesanato descreve um item que é possível ser construído, contendo seu: seu número de identificação, nome e sua descrição.
 
 #### Observação:
 
@@ -37,9 +38,7 @@
 
 ## Entidade: Cabana-Jogador
 
-#### Descrição:
-
-
+#### Descrição: A entidade Cabana-Jogador armazena os dados de onde o jogador mora, contendo: seu número de identificação, sua região, nome, qual jogador está associado e a descrição do local.
 
 #### Observação:
 
@@ -55,7 +54,7 @@
 
 ## Entidade: Cabana-NPC
 
-#### Descrição:
+#### Descrição: A entidade Cabana-NPC armazena os dados de onde o NPC mora, contendo: seu número de identificação, sua região, nome, qual jogador está associado e a descrição do local.
 
 #### Observação:
 
@@ -71,7 +70,7 @@
 
 ## Entidade: Caverna
 
-#### Descrição:
+#### Descrição: A entidade Caverna guarda os dados da região onde a caverna está, seu número de identificação, seu nome e sua descrição.
 
 #### Observação:
 
@@ -86,7 +85,7 @@
 
 ## Entidade: Consumível
 
-#### Descrição:
+#### Descrição: A entidade Consumível armazena o número de identificação do consumível, seu nome e sua descrição.
 
 #### Observação:
 
@@ -98,7 +97,7 @@
 
 ## Entidade: Diálogo
 
-#### Descrição:
+#### Descrição: A entidade Diálogo descreve a relação entre: o número de identificação do diálogo, o npc relacionado ao diálogo e o que é dito.
 
 #### Observação:
 
@@ -112,7 +111,7 @@
 
 ## Entidade: Efeito
 
-#### Descrição:
+#### Descrição: A entidade Efeito armazena o número de identificação do efeito, o item relacionado e sua descrição.
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Item`
 
@@ -124,7 +123,7 @@
 
 ## Entidade: Estação
 
-#### Descrição:
+#### Descrição: A entidade Estação armazena o número de identificação da estação, seu nome e sua descrição.
 
 #### Observação:
 
@@ -136,9 +135,9 @@
 
 ## Entidade: Estoque
 
-#### Descrição:
+#### Descrição: A entidade Estoque guarda o produto disponível, a loja associada e o preço associado.
 
-#### Observação:  Essa tabela possui chaves estrangeiras das entidades `Item` e `Loja`
+#### Observação: Essa tabela possui chaves estrangeiras das entidades `Item` e `Loja`
 
 | Nome Variável |  Tipo   |          Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :-----: | :-------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
@@ -148,7 +147,7 @@
 
 ## Entidade: Ferramenta
 
-#### Descrição:
+#### Descrição: A entidade Ferramenta armazena o número de identificação da ferramenta, seu nome, sua descrição e sua finalidade.
 
 #### Observação:
 
@@ -161,7 +160,7 @@
 
 ## Entidade: Habilidade
 
-#### Descrição:
+#### Descrição: A entidade Habilidade contém: os dados do jogador e o seu nível nas habilidades de coleta, cultivo, mineração, pesca e combate.
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Jogador`
 
@@ -174,10 +173,9 @@
 |   nivel-pesca   | varchar |   Nível da habilidade de pesca   |        1-10        |          não           |          |                   |
 |  nivel-combate  | varchar |  Nível da habilidade de combate  |        1-10        |          não           |          |                   |
 
-
 ## Entidade: Instancia-Monstro
 
-#### Descrição:
+#### Descrição: A entidade Instancia-Monstro diz respeito a: caverna onde as instâncias dos monstros estarão, o monstro que será instanciado e a saúde da sua instância.
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Caverna` e `Monstro`
 
@@ -189,9 +187,9 @@
 
 ## Entidade: Inventário
 
-#### Descrição:
+#### Descrição: A entidade Inventário relaciona o jogador, os seus itens e a quantidade de espaço disponível no inventário.
 
-#### Observação:  Essa tabela possui chave estrangeira da entidade `Item`
+#### Observação: Essa tabela possui chave estrangeira da entidade `Item`
 
 | Nome Variável |  Tipo   |            Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :-----: | :-----------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
@@ -201,20 +199,20 @@
 
 ## Entidade: Item
 
-#### Descrição:
+#### Descrição: A entidade Item armazena as informações de identificação do item e do seu tipo.
 
 #### Observação:
 
 | Nome Variável |  Tipo   |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :-----: | :---------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
-|    id-item    |   int   |  Identificação da vestimenta  |       1-5000       |          não           | PK       |                   |
+|    id-item    |   int   |     Identificação do item     |       1-5000       |          não           | PK       |                   |
 |    id-tipo    | varchar | Identificação do tipo do item |                    |          não           |          |                   |
 
 ## Entidade: Jogador
 
-#### Descrição:
+#### Descrição: A entidade Jogador descreve as informações ligadas ao personável jogável, como: seu número de identificação, o local onde está, a região onde está, a estação atual do seu jogo, o conjunto de missões que está fazendo, seu nome, seu nível de saúde e energia, o dia em que está e a quantidade de ouro que tem.
 
-#### Observação:  Essa tabela possui chaves estrangeiras das entidades `Local`, `Regiao`,`Estacao` e `Missao` 
+#### Observação: Essa tabela possui chaves estrangeiras das entidades `Local`, `Regiao`,`Estacao` e `Missao`
 
 | Nome Variável |  Tipo   |           Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :-----: | :----------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
@@ -231,21 +229,20 @@
 
 ## Entidade: Local-Fechado
 
-#### Descrição:
+#### Descrição: A entidade Local-Fechado possui os números de identificação do local e de qual é seu tipo.
 
 #### Observação:
 
-| Nome Variável | Tipo  |               Descrição                | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-----------: | :---: | :------------------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
-|   id-local    |  int  |     Identificação do local fechado     |       1-5000       |          não           | PK       |                   |
-|    id-tipo    |  int  | Identificação do tipo de local fechado |       1-5000       |          não           |          |                   |
-
+| Nome Variável | Tipo |               Descrição                | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :--: | :------------------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
+|   id-local    | int  |     Identificação do local fechado     |       1-5000       |          não           | PK       |                   |
+|    id-tipo    | int  | Identificação do tipo de local fechado |       1-5000       |          não           |          |                   |
 
 ## Entidade: Loja
 
-#### Descrição:
+#### Descrição: A entidade loja armazena as informações do: número de identificação da loja, seu proprietário, sua região, o nome da loja e sua descrição.
 
-#### Observação:  Essa tabela possui chaves estrangeiras das entidades `Local-Fechado`, `NPC` e `Regiao`
+#### Observação: Essa tabela possui chaves estrangeiras das entidades `Local-Fechado`, `NPC` e `Regiao`
 
 | Nome Variável |  Tipo   |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :-----: | :---------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
@@ -257,7 +254,7 @@
 
 ## Entidade: Missao
 
-#### Descrição:
+#### Descrição: A entidade Missao relaciona o número de identificação da missão, a estação em que está sendo realizada, seu nome e sua descrição.
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Estacao`
 
@@ -270,24 +267,26 @@
 
 ## Entidade: Monstro
 
-#### Descrição:
+#### Descrição: A entidade Monstro descreve a relação entre seu número de identificação, o item que será deixado após ser derrotado, seu nome, sua descrição, o dano que pode causar, sua defesa e sua saúde máxima.
 
-#### Observação:  Essa tabela possui chaves estrangeiras das entidades `Item`
-| Nome Variável |  Tipo   |                 Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-----------: | :-----: | :----------------------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
-|  id-monstro   |   int   |          Identificação do monstro          |       1-5000       |          não           | PK       |                   |
-|     drop      |   int   | Itens deixados pelo monstro após um ataque |       1-5000       |          não           | FK       |                   |
-|     nome      | varchar |              Nome do monstro               |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar |            Descrição do monstro            |      a-z, A-Z      |          sim           |          |                   |
-|     dano      | varchar |         Cano causado pelo monstro          |      a-z, A-Z      |          não           |          |                   |
-|    defesa     | varchar |             Defesa do monstro              |      a-z, A-Z      |          não           |          |                   |
-| saude-maxima  | varchar |          Saúde máxima do monstro           |      a-z, A-Z      |          não           |          |                   |
+#### Observação: Essa tabela possui chaves estrangeiras das entidades `Item`
+
+| Nome Variável |  Tipo   |                   Descrição                    | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :-----: | :--------------------------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
+|  id-monstro   |   int   |            Identificação do monstro            |       1-5000       |          não           | PK       |                   |
+|     drop      |   int   | Itens deixados pelo monstro após ser derrotado |       1-5000       |          não           | FK       |                   |
+|     nome      | varchar |                Nome do monstro                 |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar |              Descrição do monstro              |      a-z, A-Z      |          sim           |          |                   |
+|     dano      | varchar |           Cano causado pelo monstro            |      a-z, A-Z      |          não           |          |                   |
+|    defesa     | varchar |               Defesa do monstro                |      a-z, A-Z      |          não           |          |                   |
+| saude-maxima  | varchar |            Saúde máxima do monstro             |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Mundo
 
-#### Descrição:
+#### Descrição: A entidade Mundo armazena dados do identificador numérico do mundo e seu nome.
 
-#### Observação:  
+#### Observação:
+
 | Nome Variável |  Tipo   |       Descrição        | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :-----: | :--------------------: | :----------------: | :--------------------: | -------- | ----------------- |
 |   id-mundo    |   int   | Identificação do mundo |       1-5000       |          não           | PK       |                   |
@@ -295,7 +294,7 @@
 
 ## Entidade: NPC
 
-#### Descrição:
+#### Descrição: A entidade NPC guarda as informações relacionada aos personagens não-jogáveis, tais como: seu número de identificação, a região em que está, o local em que está, seu nome e sua profissão.
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Regiao` e `Local`
 
@@ -305,25 +304,25 @@
 |    regiao     |   int   | Identificação da regiao |       1-5000       |          não           | FK       |                   |
 |     local     |   int   | Identificação do local  |       1-5000       |          não           | FK       |                   |
 |     nome      | varchar |       Nome do npc       |      a-z, A-Z      |          não           |          |                   |
-|   profissao   | varchar |    Profissão do npc     |      a-z, A-Z      |          não           |          |                   |
+|   profissao   | varchar |    Profissão do npc     |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Receita
 
-#### Descrição:
+#### Descrição: A entidade Receita armazena os dados do item, os itens que podem ser criados por meio do artesanato e a quantidade de itens que são necessários na receita.
 
-#### Observação:  Essa tabela possui chaves estrangeiras das entidades `Artesanato` e `Item`
+#### Observação: Essa tabela possui chaves estrangeiras das entidades `Artesanato` e `Item`
 
-| Nome Variável | Tipo  |           Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-----------: | :---: | :----------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
-|  artesanato   |  int  |    Identificação da receita    |       1-5000       |          não           | FK       |                   |
-|     item      |  int  |     Identificação do item      |       1-5000       |          não           | FK       |                   |
-|     qtdd      |  int  | Quantidade de itens da receita |       1-5000       |          não           |          |                   |
+| Nome Variável | Tipo |           Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :--: | :----------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
+|  artesanato   | int  |  Identificação do artesanato   |       1-5000       |          não           | FK       |                   |
+|     item      | int  |     Identificação do item      |       1-5000       |          não           | FK       |                   |
+|     qtdd      | int  | Quantidade de itens da receita |       1-5000       |          não           |          |                   |
 
 ## Entidade: Região
 
-#### Descrição:
+#### Descrição: Descreve as regiões disponíveis disponíveis no jogo, seu nome e o mundo onde elas pertencem.
 
-#### Observação:  Essa tabela possui chave estrangeira da entidade `Mundo`
+#### Observação: Essa tabela possui chave estrangeira da entidade `Mundo`
 
 | Nome Variável |  Tipo   |        Descrição        | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :-----: | :---------------------: | :----------------: | :--------------------: | -------- | ----------------- |
@@ -333,7 +332,7 @@
 
 ## Entidade: Semente
 
-#### Descrição:
+#### Descrição: Descreve as sementes disponíveis no jogo e outras informações, como: nome, estação, valor de venda e dias para crescer.
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Item` e `Estacao`
 
@@ -348,7 +347,7 @@
 
 ## Entidade: Vestimenta
 
-#### Descrição:
+#### Descrição: A entidade Vestimenta armazena o número de identificação do vestimenta, seu nome e sua descrição.
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Vestimenta`
 
