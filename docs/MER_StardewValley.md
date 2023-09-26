@@ -1,10 +1,11 @@
 ## Histórico de versões
 
-| Versão |    Data    | Descrição                                         | Autor                                                        | Revisão |
-| :----: | :--------: | ------------------------------------------------- | ------------------------------------------------------------ | ------- |
-| `1.0`  | 16/09/2023 | Criação do documento MER                          | [Zenilda Vieira](https://github.com/ZenildaVieira)           |         |
-| `1.1`  | 24/09/2023 | Adição das entidades                              | [Matheus Silverio](https://github.com/MattSilverio)          |         |
-| `1.2`  | 24/09/2023 | Adição das entidades, atributos e relacionamentos | [Edilberto Cantuaria](https://github.com/edilbertocantuaria) |         |
+| Versão  |    Data    | Descrição                                         | Autor                                                                                                            | Revisão |
+| :-----: | :--------: | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------- |
+|  `1.0`  | 16/09/2023 | Criação do documento MER                          | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                               |         |
+|  `1.1`  | 24/09/2023 | Adição das entidades                              | [Matheus Silverio](https://github.com/MattSilverio)                                                              |         |
+|  `1.2`  | 24/09/2023 | Adição das entidades, atributos e relacionamentos | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)                                                     |         |
+| `1.2.1` | 26/09/2023 | Revisão em pares                                  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
 
 # MER - Modelo Entidade Relacionamento
 
@@ -44,30 +45,31 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 ## 2. Atributos
 
+- **Dialogo**: <ins>id-dialogo</ins>, npc, fala;
 - **Efeito**: <ins>id-efeito</ins>, item, valor, tipo;
 - **Estacao**: <ins>id-estacao</ins>, nome, descricao;
 - **Estoque-Loja**: produto, loja, preco;
-- **Habilidade**: <ins>jogador</ins>, nivel-coleta, nivel-cultivo, nivel-mineracao, nivel-pesca, nivel-combate;
-- **Instância de Monstro**: caverna, monstro, saude;
-- **Inventário**: <ins>jogador</ins>, item, qtdd;
+- **Habilidade**: jogador, nivel-coleta, nivel-cultivo, nivel-mineracao, nivel-pesca, nivel-combate;
+- **Instância-Monstro**: caverna, monstro, saude;
+- **Inventário**: jogador, item, qtdd;
 - **Item**: <ins>id-item</ins>, id-tipo;
-  - **Semente**: <ins>id-semente</ins>, estacao, nome, descricao, valor-venda, dias-para-crescer;
-  - **Ferramenta**: <ins>id-ferramenta</ins>, nome, descricao;
-  - **Consumível**: <ins>id-consumivel</ins>, estacao, nome, descricao, valor-venda, dias-para-crescer;
-  - **Vestimenta**: <ins>id-vestimenta</ins>, nome, descricao; 
-  - **Arma**: <ins>id-arma</ins>, nome, descricao, dano, finalidade;
-  - **Artesanato**: <ins>id-artesanato</ins>, nome, descricao;
+  - **Semente**: id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer;
+  - **Ferramenta**: id-ferramenta, nome, descricao;
+  - **Consumível**: id-consumivel, estacao, nome, descricao, valor-venda, dias-para-crescer;
+  - **Vestimenta**: id-vestimenta, nome, descricao; 
+  - **Arma**: id-arma, nome, descricao, dano, finalidade;
+  - **Artesanato**: id-artesanato, nome, descricao;
 - **Jogador**: <ins>id-jogador</ins>, local, regiao, estacao-atual, missao-atual, nome, saude, energia, dia, qtdd-ouro;
-- **Local-Fechado**: <ins>id-local</ins>, id-tipo;
-  - **Cabana-Jogador**: <ins>id-cabana-jog</ins>, jogador, regiao, nome, descricao;
-  - **Caverna**: <ins>id-caverna</ins>, regiao, nome, descricao;
-  - **Cabana-NPC**: <ins>id-cabana-npc</ins>, npc, regiao, nome, descricao;
-  - **Loja**: <ins>id-loja</ins>, proprietario, regiao, nome, descricao;
+- **Local-Fechado**: <ins>id-local-fechado</ins>, id-tipo;
+  - **Cabana-Jogador**: id-cabana-jog, jogador, regiao, nome, descricao;
+  - **Caverna**: id-caverna, regiao, nome, descricao;
+  - **Cabana-NPC**: id-cabana-npc, npc, regiao, nome, descricao;
+  - **Loja**: id-loja, proprietario, regiao, nome, descricao;
 - **Missao**: <ins>id-missao</ins>, estacao, nome, descricao;
 - **Monstro**: <ins>id-monstro</ins>, drop, nome, descricao, dano, defesa, saude-maxima;
 - **Mundo**: <ins>id-mundo</ins>, nome;
 - **NPC**: <ins>id-npc</ins>, regiao, local, nome, profissao;
-- **Receita**: <ins>id-artesanato</ins>, item, qtdd;
+- **Receita**: id-artesanato, item, qtdd;
 - **Região**: <ins>id-regiao</ins>, mundo, nome;
 
 
@@ -80,13 +82,13 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 **Jogador *realiza* Missão**
 
-- O jogador realiza nenhuma ou várias estação (0,N)
+- O jogador realiza nenhuma ou várias missões (0,N)
 - A missão é realizada por apenas um ou vários jogadores (1,N)
 
 **Jogador *possui* Inventário**
 
-- O jogador realiza nenhuma ou várias estação (0,N)
-- A missão é realizada por apenas um ou vários jogadores (1,N)
+- O jogador possui de nenhum a vários inventários (0,N)
+- O inventário é de apenas um único jogador (1,1)
 
 **Jogador *possui* uma Habilidade**
 
@@ -96,7 +98,7 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 **Jogador *possui* uma Cabana-Jogador**
 
 - O jogador possui apenas uma única cabana-jogador (1,1)
-- Cada cabana-jogador é única para cada jogador (1,1) 
+- Cada cabana-jogador pertence apenas a um único jogador (1,1) 
 
 **Jogador *está* em Local-Fechado**
 
@@ -105,23 +107,33 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 **Jogador *está* em uma Região**
 
-- O jogador está apenas em uma única região (1,1)
+- O jogador sempre está apenas em uma única região (1,1)
 - A região contém nenhum ou vários jogadores (0, N)
 
-**Missão *acontece* em uma Estação**
+**Jogador *mata* Instância-Monstro**
 
-- A missão acontece em uma ou várias estações (1,N)
-- A estação aparece em uma a quatro missões (0, 4)
+- O jogador pode matar nenhum ou várias instâncias-monstros (0,N)
+- A instância-monstro é morta apenas um único jogador (1, 1)
+
+**Jogador *compra na* Loja**
+
+- O jogador pode comprar em nenhuma ou várias lojas (0,N)
+- A loja pode vender para nenhum ou vários jogadores (0, N)
+
+**Missão *está disponível* em uma Estação**
+
+- A missão está disponível em uma ou até quatro estações do ano (1,4)
+- A estação contém de uma a várias missões (1, N)
 
 **Estação *deixa crescer* Semente**
 
 - Durante a estação pode crescer nenhuma ou várias sementes (0,N)
 - A semente pode crescer em uma ou em até 4 estações (1, 4)
 
-**Inventário *deixa crescer* Semente**
+**Inventário *possui* Item**
 
-- O jogador incia o jogo (inventário) com nenhum a vários itens (0,N)
-- O item aparece em nenhum ou vários inventários (0, N)
+- O inventário do jogador pode possuir nenhum a vários itens (0,N)
+- O item aparece em nenhum a vários inventários (0, N)
 
 **Mundo *possui* Região**
 
@@ -135,7 +147,7 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 **Local-fechado *contém* NPC**
 
-- Um local-fechado pode contém apenas um único NPC (0,N)
+- Um local-fechado pode conter nenhum a vários NPC (0,N)
 - Cada NPC pode estar ou não em um local-fechado (0, 1)
 
 **Local-fechado *possui exclusivamente* tipos**
@@ -150,28 +162,13 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 **Monstro *possui* Instância-de-Monstro**
 
-- Um monstro possui uma única instância de monstro (1,1)
-- Uma instância de monstro pode aparecer nenhuma ou várias vezes (0, N)
+- Um monstro possui nenhuma ou várias instâncias (0,N)
+- Uma instância de monstro é de apenas um único monstro (1, 1)
   
-**Monstro *dropa* Item**
+**Instância de Monstro *dropa* Item**
 
-- Um monstro, ao sofrer um ataque, pode "liberar" nenhum ou vários itens (0,N)
-- O item pode cair de apenas um único monstro (1, 1)
-
-**Cabana-NPC *pertence* NPC**
-
-- Uma cabana-NPC pertecem apenas a um único NPC (1, 1)
-- Um NPC possui apenas uma única cabana-NPC (1, 1)
-
-**NPC *fala* Diálogo**
-
-- Um NPC fala apenas a um único diálogo (1, 1)
-- Um Dialogo pode ser de nenhum a vários NPC (0, N)
-
-**Monstro *dropa* Item**
-
-- Um monstro, ao sofrer um ataque, pode "liberar" nenhum ou vários itens (0,N)
-- O item pode cair de apenas um único monstro (1, 1)
+- Uma instância de monstro, ao sofrer um ataque, pode "liberar" apenas um único tipo de item (1,1)
+- O item pode cair de nenhum a varios (0, N)
 
 **Cabana-NPC *pertence* NPC**
 
@@ -180,36 +177,8 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 **NPC *fala* Diálogo**
 
-- Um NPC fala apenas a um único diálogo (1, 1)
-- Um Dialogo pode ser de nenhum a vários NPC (0, N)
-- **Monstro *dropa* Item**
-
-- Um monstro, ao sofrer um ataque, pode "liberar" nenhum ou vários itens (0,N)
-- O item pode cair de apenas um único monstro (1, 1)
-
-**Cabana-NPC *pertence* NPC**
-
-- Uma cabana-NPC pertecem apenas a um único NPC (1, 1)
-- Um NPC possui apenas uma única cabana-NPC (1, 1)
-
-**NPC *fala* Diálogo**
-
-- Um NPC fala apenas a um único diálogo (1, 1)
-- Um Dialogo pode ser de nenhum a vários NPC (0, N)
-- **Monstro *dropa* Item**
-
-- Um monstro, ao sofrer um ataque, pode "liberar" nenhum ou vários itens (0,N)
-- O item pode cair de apenas um único monstro (1, 1)
-
-**Cabana-NPC *pertence* NPC**
-
-- Uma cabana-NPC pertecem apenas a um único NPC (1, 1)
-- Um NPC possui apenas uma única cabana-NPC (1, 1)
-
-**NPC *fala* Diálogo**
-
-- Um NPC fala apenas a um único diálogo (1, 1)
-- Um Dialogo pode ser de nenhum a vários NPC (0, N)
+- Um NPC possui nenhuma a várias falas em um diálogo  (0, N)
+- Um Dialogo pertence a um único NPC (1, 1)
 
 **NPC *é proprietário* da Loja**
 
@@ -218,8 +187,8 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 **Loja *contem* Estoque-loja**
 
-- Uma loja contém apenas um único estoque-loja (1, 1)
-- Um estoque-loja é apenas de uma única loja (1, 1)
+- Uma loja contém de nenhum a vários estoque-loja (0, N)
+- Um estoque-loja é de apenas uma única loja (1, 1)
 
 **Estoque-loja *possui* Item**
 
@@ -232,20 +201,20 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 **Consumível *possui* Efeito**
 
-- Consumível possui nenhum a vários efeitos (0, N)
-- Um efeito faz parte de apenas um único item consumível (1, 1)
+- Consumível possui apenas um único efeito (1, 1)
+- Um efeito faz parte de vários consumíveis (1, N)
 
 **Vestimenta *possui* Efeito**
-- Vestimenta possui nenhum a vários efeitos (0, N)
-- Um efeito faz parte de apenas uma única ferramenta (1, 1)
+- Vestimenta possui apenas um único efeito (1, 1)
+- Um efeito faz parte de várias vestimentas (1, N)
 
 **Artesanato *contém* Receita**
-- Um artesanato faz parte de apenas uma única receita (1, 1)
+- Um artesanato contém de uma a várias receitas (1, N)
 - Uma receita faz parte de apenas um único artesanato (1, 1)
 
-**Receita *está* item**
-- Uma receita faz parte de apenas um único item (1, 1)
-- Um item pode fazer parte de nenhuma ou várias receitas (0, N)
+**Item *está* na receita**
+- Um item pode fazer parte de nenhuma a várias receitas (0, N)
+- Uma receita contém apenas um único item (1, 1)
 
 
 

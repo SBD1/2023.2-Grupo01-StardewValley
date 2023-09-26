@@ -6,6 +6,7 @@
 | `1.1`  | 24/09/2023 | Adequação do DD ao DER  | [Marcus Martins](https://github.com/marcusmartinss) <br> [Edilberto](https://github.com/marcusmartinss) |         |
 | `1.2`  | 25/09/2023 | Descrição das entidades | [Marcus Martins](https://github.com/marcusmartinss)                                                     |         |
 | `1.3`  | 25/09/2023 | 1ª Revisão Geral        | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                      |         |
+| `1.3.1` | 26/09/2023 | Revisão em pares                                  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
 
 # DD - Dicionário de Dados
 
@@ -34,7 +35,7 @@
 | Nome Variável |     Tipo     |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
 | id-artesanato |     int      | Identificador do item artesanato |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |    Nome do item de artesanato     |      a-z, A-Z      |          não           |          |                   |
+|     nome      | varchar[50]  |    Nome do item de artesanato    |      a-z, A-Z      |          não           |          |                   |
 |   descricao   | varchar[150] | Descrição do item de artesanato  |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Cabana-Jogador
@@ -120,7 +121,8 @@
 | :-----------: | :----------: | :--------------------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
 |   id-efeito   |     int      |    Código de identificação do efeito     |       1-5000       |          não           | PK       |                   |
 |     item      |     int      | Identificador do item que sofre o efeito |       1-5000       |          não           | FK       |                   |
-|   descricao   | varchar[100] |           Descrição do efeito            |      a-z, A-Z      |          sim           |          |                   |
+|     valor     |     int      |       Valor do produto no estoque        |    0-2147483647    |          não           |          |                   |
+|     tipo      | varchar[100] |              tipo do efeito              |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Estação
 
@@ -234,10 +236,10 @@
 
 #### Observação
 
-| Nome Variável |    Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-----------: | :---------: | :--------------------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
-|   id-local    |     int     | Código de identificação do local fechado |       1-5000       |          não           | PK       |                   |
-|    id-tipo    | varchar[50] |  Identificação do tipo de local fechado  |      a-z, A-Z      |          não           |          |                   |
+|  Nome Variável   |    Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :--------------: | :---------: | :--------------------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
+| id-local-fechado |     int     | Código de identificação do local fechado |       1-5000       |          não           | PK       |                   |
+|     id-tipo      | varchar[50] |  Identificação do tipo de local fechado  |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Loja
 
@@ -339,9 +341,9 @@
 
 |   Nome Variável   |     Tipo     |                Descrição                | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :---------------: | :----------: | :-------------------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
-|    id-semente     |     int      |        Identificador do item semente    |       1-5000       |          não           | FK       |                   |
+|    id-semente     |     int      |      Identificador do item semente      |       1-5000       |          não           | FK       |                   |
 |      estacao      |     int      |        Identificador da estação         |       1-5000       |          não           | FK       |                   |
-|       nome        |  varchar[]   |             Nome do item semente        |      a-z, A-Z      |          não           |          |                   |
+|       nome        |  varchar[]   |          Nome do item semente           |      a-z, A-Z      |          não           |          |                   |
 |     descricao     | varchar[150] |          Descrição da semente           |      a-z, A-Z      |          sim           |          |                   |
 |    valor-venda    |     int      |            Preço da semente             |       1-5000       |          não           |          |                   |
 | dias-para-crescer |     int      | Dias que a semente precisa para crescer |        1-28        |          não           |          |                   |
@@ -352,8 +354,8 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Vestimenta`
 
-| Nome Variável |     Tipo     |         Description              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |           Description            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
 | id-vestimenta |     int      | Identificador do item vestimenta |       1-5000       |          não           | FK       |                   |
-|     nome      | varchar[50]  |     Nome da vestimenta           |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |   Descrição da vestimenta        |      a-z, A-Z      |          sim           |          |                   |
+|     nome      | varchar[50]  |        Nome da vestimenta        |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |     Descrição da vestimenta      |      a-z, A-Z      |          sim           |          |                   |
