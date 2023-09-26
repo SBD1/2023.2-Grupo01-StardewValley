@@ -3,7 +3,9 @@
 | Versão |    Data    | Descrição                 | Autor                                              | Revisão |
 | :----: | :--------: | ------------------------- | -------------------------------------------------- | ------- |
 | `1.0`  | 23/09/2023 | Criação do documento MREL | [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
-| `1.1`  | 24/09/2023 | Descrição do documento | [Matheus Silverio](https://github.com/MattSilverio) |         |
+| `1.1`  | 23/09/2023 | Primeira versão do MREL | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br> [Marcus Martins](https://github.com/marcusmartinss),  <br> [Matheus Silverio](https://github.com/MattSilverio)  <br> [Zenilda Vieira](https://github.com/ZenildaVieira)  |         |
+| `1.2`  | 24/09/2023 | Descrição do documento | [Matheus Silverio](https://github.com/MattSilverio) |         |
+| `1.3`  | 26/09/2023 | Revisão em pares         | [Edilberto Cantuaria](https://github.com/edilbertocantuaria) e  [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
 
 # Modelo Relacional
 
@@ -14,7 +16,7 @@ O Modelo Relacional(MREL) apresenta um diagrama lógico de como as entidades e s
 
 <br/>
 
-<img src= '../imagens/MREL_stardew_valley_v2.1.png' />
+<img src= '../imagens/MREL_stardew_valley_v2.2.png' />
 
 <div style="text-align: center">
 <p>Figura 1: MREL Stardew Valley</p>

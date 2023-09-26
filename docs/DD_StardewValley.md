@@ -6,7 +6,7 @@
 | `1.1`  | 24/09/2023 | Adequação do DD ao DER  | [Marcus Martins](https://github.com/marcusmartinss) <br> [Edilberto](https://github.com/marcusmartinss) |         |
 | `1.2`  | 25/09/2023 | Descrição das entidades | [Marcus Martins](https://github.com/marcusmartinss)                                                     |         |
 | `1.3`  | 25/09/2023 | 1ª Revisão Geral        | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                      |         |
-| `1.3.1` | 26/09/2023 | Revisão em pares                                  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
+| `1.4`  | 26/09/2023 | Revisão em pares       | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br> [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
 
 # DD - Dicionário de Dados
 
