@@ -26,11 +26,11 @@ Repositório do trabalho do grupo 01 da disciplina de Sistema de Banco de Dados 
 * O jogador pode entrar nas cavernas para obter itens através de sua habilidade de mineração. Essas cavernas podem conter monstros que o jogador precisa combater para sobreviver.
 * Nesse combate, os monstros podem provocar algum dano a saúde do jogador ou vice-versa, dependendo do nível de combate que o jogador alcançou e o nível de defesa do monstro e, também, do dano que a arma do jogador ou que o monstro podem causar.
 * Os monstros que forem mortos (ou seja, quando a saude daquela instância chegar a zero) dropam itens específicos para o jogador.
-* Todos NPCs (personagens não jogáveis) também possuem uma cabana e podem ser ou não proprietários de uma ou mais lojas. Cada um possui uma profissão e podem dialogar com o jogador, dando dicas sobre como jogar. Os donos de lojas podem vender itens para o jogador.
+* Todos NPCs (personagens não jogáveis) também possuem uma cabana e podem ser ou não proprietários de uma ou mais lojas. Cada um possui uma profissão e podem dialogar com o jogador, dando dicas sobre como jogar ou explicando e entregando uma missão ao jogador. Os que são donos de lojas podem vender itens para o jogador.
 * O jogo possui diversos tipos de itens, a saber: ferramentas, sementes, armas, consumíveis, vestimentas e produtos de artesanato (crafting).
 * As ferramentas tem finalidade própria, como por exemplo, um machado para cortar um árvore ou uma espada para combater um monstro.
 * Assim como as vestimentnas, os itens consumíveis podem causar efeitos positivos ou negativos nos níveis de energia, saúde e nível de combate do jogador (defesa).
-* As armas também possuem finalidade específica, além de um valor de dano.
+* As armas também possuem finalidade específica, além de um valor de dano específico para cada arma.
 * O jogador, por fim, pode criar itens manufaturados, chamados de artesanato, através de receitas disponíveis e usá-los na sua fazenda.
 
 
@@ -38,6 +38,6 @@ Repositório do trabalho do grupo 01 da disciplina de Sistema de Banco de Dados 
 
 ## Histórico de versões
 
-| Versão |    Data    | Descrição                 | Autor                                              | Revisão |
-| :----: | :--------: | ------------------------- | -------------------------------------------------- | ------- |
+| Versão |    Data    | Descrição                                      | Autor                                              | Revisão |
+| :----: | :--------: | ---------------------------------------------- | -------------------------------------------------- | ------- |
 | `1.0`  | 24/09/2023 | Inclusão das considerações feitas na modelagem | [Zenilda Vieira](https://github.com/ZenildaVieira) |         |

@@ -1,11 +1,11 @@
 ## Histórico de versões
 
-| Versão  |    Data    | Descrição                                         | Autor                                                                                                            | Revisão |
-| :-----: | :--------: | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------- |
-|  `1.0`  | 16/09/2023 | Criação do documento MER                          | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                               |         |
-|  `1.1`  | 24/09/2023 | Adição das entidades                              | [Matheus Silverio](https://github.com/MattSilverio)                                                              |         |
-|  `1.2`  | 24/09/2023 | Adição das entidades, atributos e relacionamentos | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)                                                     |         |
-| `1.3` | 26/09/2023 | Revisão em pares                                  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br>[Zenilda Vieira](https://github.com/ZenildaVieira) |         |
+| Versão  |    Data    | Descrição                                         | Autor                                                                                                                |
+| :-----: | :--------: | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+|  `1.0`  | 16/09/2023 | Criação do documento MER                          | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                                   |
+|  `1.1`  | 24/09/2023 | Adição das entidades                              | [Matheus Silverio](https://github.com/MattSilverio)                                                                  |
+|  `1.2`  | 24/09/2023 | Adição das entidades, atributos e relacionamentos | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)                                                         |
+| `1.3`   | 26/09/2023 | Revisão em pares                                  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br>[Zenilda Vieira](https://github.com/ZenildaVieira) |
 
 # MER - Modelo Entidade Relacionamento
 
