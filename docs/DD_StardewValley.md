@@ -136,18 +136,6 @@
 |     nome      | varchar[50]  |          Nome da estação           |      a-z, A-Z      |          não           |          |                   |
 |   descricao   | varchar[150] |        Descrição da estação        |      a-z, A-Z      |          sim           |          |                   |
 
-## Entidade: Estoque-Loja
-
-#### Descrição: A entidade Estoque guarda o produto disponível, a loja associada e o preço associado
-
-#### Observação: Essa tabela possui chaves estrangeiras das entidades `Item` e `Loja`
-
-| Nome Variável | Tipo  |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-----------: | :---: | :---------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
-|    produto    |  int  | Identificador do item-produto |       1-5000       |          não           | FK       |                   |
-|     loja      |  int  |     Identificador da loja     |       1-5000       |          não           | FK       |                   |
-|     preço     |  int  |  Preço do produto no estoque  |    0-2147483647    |          não           |          |                   |
-
 ## Entidade: Ferramenta
 
 #### Descrição: A entidade Ferramenta armazena o número de identificação da ferramenta, seu nome, sua descrição e sua finalidade
@@ -188,9 +176,21 @@
 |    monstro    |  int  |                 Identificador do Monstro                  |       1-5000       |          não           | FK       |                   |
 |     saude     |  int  |               Saúde da instância de monstro               |       1-100        |          não           |          |                   |
 
-## Entidade: Inventário
+## Entidade: Item-Estoque-Loja
 
-#### Descrição: A entidade Inventário relaciona o jogador, os seus itens e a quantidade de espaço disponível no inventário
+#### Descrição: A entidade Item-Estoque-Loja guarda o produto disponível, a loja associada e o preço associado
+
+#### Observação: Essa tabela possui chaves estrangeiras das entidades `Item` e `Loja`
+
+| Nome Variável | Tipo  |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :---: | :---------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
+|    produto    |  int  | Identificador do item-produto |       1-5000       |          não           | FK       |                   |
+|     loja      |  int  |     Identificador da loja     |       1-5000       |          não           | FK       |                   |
+|     preço     |  int  |  Preço do produto no estoque  |    0-2147483647    |          não           |          |                   |
+
+## Entidade: Item-Inventário
+
+#### Descrição: A entidade Item-Inventário relaciona o jogador, os seus itens e a quantidade de itens disponíveis no inventário
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Item`
 
@@ -199,6 +199,18 @@
 |    jogador    |  int  | Identificador do Jogador |       1-5000       |          não           | FK       |                   |
 |     item      |  int  |  Identificador do Item   |       1-5000       |          não           | FK       |                   |
 |     qtdd      |  int  |    quantidade do item    |       1-5000       |          não           |          |                   |
+
+## Entidade: Item-Receita
+
+#### Descrição: A entidade Item-Receita armazena os dados do item, os itens que podem ser criados por meio do artesanato e a quantidade de itens que são necessários na receita
+
+#### Observação: Essa tabela possui chaves estrangeiras das entidades `Artesanato` e `Item`
+
+| Nome Variável | Tipo  |           Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :---: | :----------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
+|  artesanato   |  int  |  Identificador do artesanato   |       1-5000       |          não           | FK       |                   |
+|     item      |  int  |     Identificador do item      |       1-5000       |          não           | FK       |                   |
+|     qtdd      |  int  | Quantidade de itens da receita |       1-5000       |          não           |          |                   |
 
 ## Entidade: Item
 
@@ -308,18 +320,6 @@
 |     local     |     int      | Identificador do local onde o NPC está  |       1-5000       |          não           | FK       |                   |
 |     nome      | varchar[50]  |               Nome do npc               |      a-z, A-Z      |          não           |          |                   |
 |   profissao   | varchar[100] |            Profissão do npc             |      a-z, A-Z      |          sim           |          |                   |
-
-## Entidade: Receita
-
-#### Descrição: A entidade Receita armazena os dados do item, os itens que podem ser criados por meio do artesanato e a quantidade de itens que são necessários na receita
-
-#### Observação: Essa tabela possui chaves estrangeiras das entidades `Artesanato` e `Item`
-
-| Nome Variável | Tipo  |           Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-----------: | :---: | :----------------------------: | :----------------: | :--------------------: | -------- | ----------------- |
-|  artesanato   |  int  |  Identificador do artesanato   |       1-5000       |          não           | FK       |                   |
-|     item      |  int  |     Identificador do item      |       1-5000       |          não           | FK       |                   |
-|     qtdd      |  int  | Quantidade de itens da receita |       1-5000       |          não           |          |                   |
 
 ## Entidade: Região
 

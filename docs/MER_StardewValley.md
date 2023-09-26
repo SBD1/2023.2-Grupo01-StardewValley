@@ -5,7 +5,7 @@
 |  `1.0`  | 16/09/2023 | Criação do documento MER                          | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                               |         |
 |  `1.1`  | 24/09/2023 | Adição das entidades                              | [Matheus Silverio](https://github.com/MattSilverio)                                                              |         |
 |  `1.2`  | 24/09/2023 | Adição das entidades, atributos e relacionamentos | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)                                                     |         |
-| `1.2.1` | 26/09/2023 | Revisão em pares                                  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br>[Zenilda Vieira](https://github.com/ZenildaVieira) |         |
+| `1.3` | 26/09/2023 | Revisão em pares                                  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br>[Zenilda Vieira](https://github.com/ZenildaVieira) |         |
 
 # MER - Modelo Entidade Relacionamento
 
@@ -19,10 +19,11 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 - **Efeito**
 - **Estacao**
-- **Estoque-Loja**
 - **Habilidade**
 - **Instância de Monstro**
-- **Inventário**
+- **Item-Estoque-Loja**
+- **Item-Inventário**
+- **Item-Receita**
 - **Item**
   - **Semente**
   - **Ferramenta**
@@ -40,7 +41,6 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - **Monstro**
 - **Mundo**
 - **NPC**
-- **Receita**
 - **Região**   
 
 ## 2. Atributos
@@ -48,10 +48,11 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - **Dialogo**: <ins>id-dialogo</ins>, npc, fala;
 - **Efeito**: <ins>id-efeito</ins>, item, valor, tipo;
 - **Estacao**: <ins>id-estacao</ins>, nome, descricao;
-- **Estoque-Loja**: produto, loja, preco;
 - **Habilidade**: jogador, nivel-coleta, nivel-cultivo, nivel-mineracao, nivel-pesca, nivel-combate;
 - **Instância-Monstro**: caverna, monstro, saude;
-- **Inventário**: jogador, item, qtdd;
+- **Item-Estoque-Loja**: produto, loja, preco;
+- **Item-Inventário**: jogador, item, qtdd;
+- **Item-Receita**: id-artesanato, item, qtdd;
 - **Item**: <ins>id-item</ins>, id-tipo;
   - **Semente**: id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer;
   - **Ferramenta**: id-ferramenta, nome, descricao;
@@ -69,7 +70,6 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - **Monstro**: <ins>id-monstro</ins>, drop, nome, descricao, dano, defesa, saude-maxima;
 - **Mundo**: <ins>id-mundo</ins>, nome;
 - **NPC**: <ins>id-npc</ins>, regiao, local, nome, profissao;
-- **Receita**: id-artesanato, item, qtdd;
 - **Região**: <ins>id-regiao</ins>, mundo, nome;
 
 
@@ -80,15 +80,15 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - O jogador está em apenas uma única estação (1,1)
 - A estação pode conter nenhum ou vários jogadores(0,N)
 
-**Jogador *realiza* Missão**
+**Jogador *realiza* Missao**
 
 - O jogador realiza nenhuma ou várias missões (0,N)
 - A missão é realizada por apenas um ou vários jogadores (1,N)
 
-**Jogador *possui* Inventário**
+**Jogador *possui* Item-Inventário**
 
-- O jogador possui de nenhum a vários inventários (0,N)
-- O inventário é de apenas um único jogador (1,1)
+- O jogador possui de nenhum a vários item-inventários (0,N)
+- O item-inventário é de apenas um único jogador (1,1)
 
 **Jogador *possui* uma Habilidade**
 
@@ -130,10 +130,10 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - Durante a estação pode crescer nenhuma ou várias sementes (0,N)
 - A semente pode crescer em uma ou em até 4 estações (1, 4)
 
-**Inventário *possui* Item**
+**Item-Inventário *possui* Item**
 
-- O inventário do jogador pode possuir nenhum a vários itens (0,N)
-- O item aparece em nenhum a vários inventários (0, N)
+- O item-inventário do jogador pode possuir nenhum a vários itens (0,N)
+- O item aparece em nenhum a vários item-inventários (0, N)
 
 **Mundo *possui* Região**
 
@@ -185,15 +185,15 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - Um NPC pode ser proprietário de nenhuma ou várias lojas (0,N)
 - Uma loja possui apenas um único priprietário NPC (1, 1)
 
-**Loja *contem* Estoque-loja**
+**Loja *contem* Item-Estoque-loja**
 
-- Uma loja contém de nenhum a vários estoque-loja (0, N)
-- Um estoque-loja é de apenas uma única loja (1, 1)
+- Uma loja contém de nenhum a vários item-estoque-loja (0, N)
+- Um item-estoque-loja é de apenas uma única loja (1, 1)
 
-**Estoque-loja *possui* Item**
+**Item-Estoque-loja *possui* Item**
 
-- Estoque-loja possui nenhum a vários itens (0, N)
-- Um item pode aparecer em nenhum ou em vários estoque-loja (0, N)
+- Um item-estoque-loja possui nenhum a vários itens (0, N)
+- Um item pode aparecer em nenhum ou em vários item-estoque-loja (0, N)
 
 **Item *possui exclusivamente* tipos**
 
@@ -208,13 +208,13 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - Vestimenta possui apenas um único efeito (1, 1)
 - Um efeito faz parte de várias vestimentas (1, N)
 
-**Artesanato *contém* Receita**
-- Um artesanato contém de uma a várias receitas (1, N)
-- Uma receita faz parte de apenas um único artesanato (1, 1)
+**Artesanato *contém* Item-Receita**
+- Um artesanato contém de um a vários item-receitas (1, N)
+- Um item-receita faz parte de apenas um único artesanato (1, 1)
 
-**Item *está* na receita**
-- Um item pode fazer parte de nenhuma a várias receitas (0, N)
-- Uma receita contém apenas um único item (1, 1)
+**Item *está* no Item-receita**
+- Um item pode fazer parte de nenhuma a vários item-receitas (0, N)
+- Um item-receita contém apenas um único item (1, 1)
 
 
 
