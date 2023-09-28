@@ -2,7 +2,7 @@
 
 <div align="center"> <img src="imagens/capa_stardew-valley.jpg" height="230" width="auto"/> </div>
 
-<center>Repositório para desenvolvimento do jogo Stardew Valley da disciplina de SBD1 - 2023.2</center>
+<div align="center">Repositório para desenvolvimento do jogo Stardew Valley da disciplina de SBD1 - 2023.2</div>
 
 ## Alunos
 
@@ -32,7 +32,7 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 **No vídeo abaixo é possível identificar de forma visual:**
 
 <div align="center">
-<a href="https://www.youtube.com/watch?v=FjJx6u_5RdU"><img src="https://i.ytimg.com/vi/FjJx6u_5RdU/maxresdefault.jpg" width="30%"></a>
+<a href="https://www.youtube.com/watch?v=FjJx6u_5RdU"><img src="https://i.ytimg.com/vi/FjJx6u_5RdU/maxresdefault.jpg" width="50%"></a>
 </div>
 
 ## Apresentações
