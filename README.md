@@ -1,43 +1,57 @@
 # 2023.2-Grupo01-StardewValley
 
-Repositório do trabalho do grupo 01 da disciplina de Sistema de Banco de Dados 1 - FGA UnB
+<div align="center"> <img src="imagens/capa_stardew-valley.jpg" height="230" width="auto"/> </div>
+
+<center>Repositório para desenvolvimento do jogo Stardew Valley da disciplina de SBD1 - 2023.2</center>
 
 ## Alunos
 
-| Matrícula  | Aluno                                                              |
-| ---------- | ------------------------------------------------------------------ |
-| 22/2014984 | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)       |
-| 21/1043683 | [Marcus Vinícius Paiva Martins](https://github.com/marcusmartinss) |
-| 15/0154348 | [Matheus Phillipo Silverio Silva](https://github.com/MattSilverio) |
-| 21/2002907 | [Zenilda Pedrosa Vieira](https://github.com/ZenildaVieira)         |
+| Nome                                                               | Matrícula |
+| :----------------------------------------------------------------- | :-------: |
+| [Edilberto Cantuaria](https://github.com/edilbertocantuaria)       | 222014984 |
+| [Marcus Vinícius Paiva Martins](https://github.com/marcusmartinss) | 211043683 |
+| [Matheus Phillipo Silverio Silva](https://github.com/MattSilverio) | 150154348 |
+| [Zenilda Pedrosa Vieira](https://github.com/ZenildaVieira)         | 212002907 |
 
+## Jogo
 
-## Considerações feitas na modelagem de entidades e relacionamentos e na criação do modelo relacional
+Após herdar a fazenda do seu avô no Vale do Orvalho, você decide deixar a vida na cidade para aprender a viver da terra. Equipado com ferramentas de segunda mão e algumas moedas, você irá começar sua nova vida. Será que você consegue transformar a fazenda em um próspero lar, conseguindo moedas e fazendo novos amigos?
 
-* Há mundos diferentes que podem ser escolhidos no início do jogo, após o jogador se identificar com seu nome. Cada um contém uma fazenda diferente para o jogador administrar.
-* Cada mundo é formado por regiões ao ar livre que podem conter ou não locais fechados (casas de NPCs, casas de jogadores, lojas e cavernas).
-* O jogo é dividido em 4 estações, primavera, verão, outono e inverno, com duração de 28 dias cada. Cada estação controla quais sementes podem florescer ou não e apresentam missões diferentes.
-* O jogo começa no dia 1 da primavera. A saúde e a energia do jogador iniciam em 100%. 
-* A energia do jogador vai diminuindo ao longo do dia, conforme ele vai executando a missão. Para recuperar sua energia, o jogador pode utilizar a cabana que ele possui para dormir (recuperação de 100%) ou ele pode usar um item consumível que tenha efeito positivo (% depende do item). 
-* Já a saúde só diminui se ele combater monstros ou usar itens consumíveis que causam efeito negativo. Há também itens consumíveis que podem aumentar o nível da saúde.
-* O jogador possui habilidades de coleta, cultivo, mineração, pesca e combate. Os itens obtidos com essas habilidades podem ser vendidos e convertidos em ouro. 
-* O jogador possui um inventário no qual ficam armazenados todos os itens que ele possui com suas respectivas quantidades.
-* O jogador pode estar em uma região ao ar livre ou pode estar em um dos locais fechados que ele contém. 
-* O jogador pode entrar nas cavernas para obter itens através de sua habilidade de mineração. Essas cavernas podem conter monstros que o jogador precisa combater para sobreviver.
-* Nesse combate, os monstros podem provocar algum dano a saúde do jogador ou vice-versa, dependendo do nível de combate que o jogador alcançou e o nível de defesa do monstro e, também, do dano que a arma do jogador ou que o monstro podem causar.
-* Os monstros que forem mortos (ou seja, quando a saude daquela instância chegar a zero) dropam itens específicos para o jogador.
-* Todos NPCs (personagens não jogáveis) também possuem uma cabana e podem ser ou não proprietários de uma ou mais lojas. Cada um possui uma profissão e podem dialogar com o jogador, dando dicas sobre como jogar ou explicando e entregando uma missão ao jogador. Os que são donos de lojas podem vender itens para o jogador.
-* O jogo possui diversos tipos de itens, a saber: ferramentas, sementes, armas, consumíveis, vestimentas e produtos de artesanato (crafting).
-* As ferramentas tem finalidade própria, como por exemplo, um machado para cortar um árvore ou uma espada para combater um monstro.
-* Assim como as vestimentnas, os itens consumíveis podem causar efeitos positivos ou negativos nos níveis de energia, saúde e nível de combate do jogador (defesa).
-* As armas também possuem finalidade específica, além de um valor de dano específico para cada arma.
-* O jogador, por fim, pode criar itens manufaturados, chamados de artesanato, através de receitas disponíveis e usá-los na sua fazenda.
+### Como o jogo funciona?
 
+Stardew Valley é um jogo que se desenrola em mundos variados, cada um contendo uma fazenda única que o jogador deve administrar. Nestes mundos, encontramos diversas áreas ao ar livre, algumas com construções fechadas, como casas de NPCs, casas de jogadores, lojas e cavernas.
 
+Existe um ciclo de quatro estações: primavera, verão, outono e inverno, cada uma com 28 dias. Cada estação influencia quais sementes podem crescer e apresenta missões distintas. A jornada começa no dia 1 da primavera, com o jogador começando com saúde e energia em 100%. A energia do jogador diminui ao longo do dia, à medida que ele executa tarefas. Ele pode recuperá-la dormindo em sua cabana (100%) ou usando itens consumíveis com efeitos variados. A saúde só diminui ao combater monstros ou usar itens prejudiciais, mas pode ser restaurada com itens de cura.
 
+As habilidades de coleta, cultivo, mineração, pesca e combate pertencem ao jogador, os itens obtidos com essas atividades podem ser vendidos por ouro e armazenados em um inventário.
 
-## Histórico de versões
+É permitida a exploração áreas ao ar livre ou locais fechados, incluindo cavernas para minerar itens. Essas cavernas podem conter monstros que o jogador deve enfrentar, com danos baseados em suas habilidades de combate e na defesa do monstro. Os Monstros derrotados deixam itens específicos. NPCs também têm suas cabanas, profissões e podem possuir lojas. Eles interagem com o jogador, oferecendo dicas e vendendo itens.
 
-| Versão |    Data    | Descrição                                      | Autor                                              | Revisão |
-| :----: | :--------: | ---------------------------------------------- | -------------------------------------------------- | ------- |
-| `1.0`  | 24/09/2023 | Inclusão das considerações feitas na modelagem | [Zenilda Vieira](https://github.com/ZenildaVieira) |         |
+O jogador pode criar itens manufaturados através de artesanato, utilizando receitas disponíveis para melhorar sua fazenda e experiência no jogo. Há diversos tipos de itens no jogo, como ferramentas para tarefas específicas, sementes para plantio, armas com valores de dano, consumíveis que afetam saúde, energia e combate, vestimentas, e produtos de artesanato criados com receitas disponíveis.
+
+**No vídeo abaixo é possível identificar de forma visual:**
+
+<div align="center">
+<a href="https://www.youtube.com/watch?v=FjJx6u_5RdU"><img src="https://i.ytimg.com/vi/FjJx6u_5RdU/maxresdefault.jpg" width="30%"></a>
+</div>
+
+## Apresentações
+
+| Módulo | Link da gravação          | Data       |
+| ------ | ------------------------- | ---------- |
+| 1      | [Apresentação Módulo 1]() | xx/xx/xxxx |
+
+## Entregas
+
+- Módulo 1
+  - [Diagrama Entidade-Relacionamento](./docs/DER_StardewValley.md)
+  - [Dicionário de Dados](./docs/DD_StardewValley.md)
+  - [Modelo Entidade-Relacionamento](./docs/MER_StardewValley.md)
+  - [Modelo Relacional](./docs/MREL_StardewValley.md)
+
+### Histórico de versões
+
+| Versão |    Data    | Descrição                                      | Autor                                               | Revisão                                             |
+| :----: | :--------: | ---------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `1.0`  | 24/09/2023 | Inclusão das considerações feitas na modelagem | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Marcus Martins](https://github.com/marcusmartinss) |
+| `1.1`  | 28/09/2023 | Estruturação do README do projeto              | [Marcus Martins](https://github.com/marcusmartinss) |                                                     |
