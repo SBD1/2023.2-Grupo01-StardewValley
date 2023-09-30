@@ -2,7 +2,7 @@
 
 <div align="center"> <img src="imagens/capa_stardew-valley.jpg" height="230" width="auto"/> </div>
 
-<div align="center">Repositório para desenvolvimento do jogo Stardew Valley da disciplina de SBD1 - 2023.2</div>
+<div align="center">Repositório para desenvolvimento de um MUD inspirado em Stardew Valley da disciplina de SBD1 - 2023.2</div>
 
 ## Alunos
 
@@ -39,7 +39,7 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 
 | Módulo | Link da gravação          | Data       |
 | ------ | ------------------------- | ---------- |
-| 1      | [Apresentação Módulo 1]() | xx/xx/xxxx |
+| 1      | [Apresentação Módulo 1](docs/apresentacao/apresentacao_m01.mp4) | 30/09/2023 |
 
 ## Entregas
 
