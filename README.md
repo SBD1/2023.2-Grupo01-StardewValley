@@ -39,7 +39,7 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 
 | Módulo | Link da gravação          | Data       |
 | ------ | ------------------------- | ---------- |
-| 1      | [Apresentação Módulo 1](docs/apresentacao/apresentacao_m01.md) | 30/09/2023 |
+| 1      | [Apresentação Módulo 1](docs/apresentacao/apresentacao_m01.mp4) | 30/09/2023 |
 
 ## Entregas
 
