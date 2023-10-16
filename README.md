@@ -39,15 +39,15 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 
 | Módulo | Link da gravação          | Data       |
 | ------ | ------------------------- | ---------- |
-| 1      | [Apresentação Módulo 1](docs/apresentacao/apresentacao_m01.mp4) | 30/09/2023 |
+| 1      | [Apresentação Módulo 1](docs/apresentacoes/apresentacao_m01.mp4) | 30/09/2023 |
 
 ## Entregas
 
 - Módulo 1
-  - [Diagrama Entidade-Relacionamento](./docs/DER_StardewValley.md)
-  - [Dicionário de Dados](./docs/DD_StardewValley.md)
-  - [Modelo Entidade-Relacionamento](./docs/MER_StardewValley.md)
-  - [Modelo Relacional](./docs/MREL_StardewValley.md)
+  - [Diagrama Entidade-Relacionamento](./docs/Entrega-01/DER_StardewValley.md)
+  - [Dicionário de Dados](./docs/Entrega-01/DD_StardewValley.md)
+  - [Modelo Entidade-Relacionamento](./docs/Entrega-01/MER_StardewValley.md)
+  - [Modelo Relacional](./docs/Entrega-01/REL_StardewValley.md)
 
 ### Histórico de versões
 
