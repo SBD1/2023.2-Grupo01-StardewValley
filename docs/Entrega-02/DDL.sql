@@ -40,9 +40,9 @@ CREATE TABLE Cabana-Jogador (
     regiao int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
-    FOREIGN KEY (id-cabana-jog) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (jogador) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (regiao) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (id-cabana-jog) REFERENCES Local-Fechado (id-local-fechado)
+    FOREIGN KEY (jogador) REFERENCES Jogador (id-jogador)
+    FOREIGN KEY (regiao) REFERENCES Regiao (id-regiao)
 );
 commit;
 
@@ -54,9 +54,9 @@ CREATE TABLE Cabana-NPC (
     regiao int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150)
-    FOREIGN KEY (id-cabana-npc) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (npc) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (regiao) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (id-cabana-npc) REFERENCES Local-Fechado (id-local-fechado)
+    FOREIGN KEY (npc) REFERENCES NPC (id-npc)
+    FOREIGN KEY (regiao) REFERENCES Regiao (id-regiao)
 );
 commit;
 
@@ -67,8 +67,8 @@ CREATE TABLE Caverna (
     regiao int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
-    FOREIGN KEY (id-caverna) REFERENCES MAPA (idMapa)
- FOREIGN KEY (regiao) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (id-caverna) REFERENCES Local-Fechado  (id-local-fechado)
+ FOREIGN KEY (regiao) REFERENCES Regiao (id-regiao)
 );
 commit;
 
@@ -88,7 +88,7 @@ CREATE TABLE Diálogo (
     id-dialogo int NOT NULL PRIMARY KEY,
     npc int NOT NULL,
     fala varchar(150) NOT NULL,
-    FOREIGN KEY (npc) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (npc) REFERENCES NPC (id-npc)
 );
 commit;
 
@@ -99,7 +99,7 @@ CREATE TABLE Efeito (
     item int NOT NULL,
     valor int NOT NULL,
     tipo varchar(100),
-    FOREIGN KEY (item) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (item) REFERENCES Item (id-item)
 );
 commit;
 
@@ -132,7 +132,7 @@ CREATE TABLE Habilidade (
     nivel-mineracao int NOT NULL,
     nivel-pesca int NOT NULL,
     nivel-combate int NOT NULL,
-    FOREIGN KEY (jogador) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (jogador) REFERENCES Jogador (id-jogador)
 );
 commit;
 
@@ -142,8 +142,8 @@ CREATE TABLE Instancia-Monstro (
     caverna int NOT NULL,
     monstro int NOT NULL,
     saude int NOT NULL,
-    FOREIGN KEY (caverna) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (monstro) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (caverna) REFERENCES Local-Fechado (id-local-fechado)
+    FOREIGN KEY (monstro) REFERENCES Monstro (id-monstro)
 );
 commit;
 
@@ -154,7 +154,7 @@ CREATE TABLE Item-Estoque-Loja (
     loja int NOT NULL,
     preço int NOT NULL,
     FOREIGN KEY (produto) REFERENCES Item (id-item)
-    FOREIGN KEY (loja) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (loja) REFERENCES Loja (id-loja)
 );
 commit;
 
@@ -164,7 +164,7 @@ CREATE TABLE Item-Inventário (
     jogador int NOT NULL,
     item int NOT NULL,
     qtdd int NOT NULL,
-    FOREIGN KEY (jogador) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (jogador) REFERENCES Jogador (id-jogador)
     FOREIGN KEY (item) REFERENCES Item (id-item)
 );
 commit;
@@ -175,7 +175,7 @@ CREATE TABLE Item-Receita (
     artesanato int NOT NULL,
     item int NOT NULL,
     qtdd int NOT NULL,
-    FOREIGN KEY (artesanato) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (artesanato) REFERENCES Artesanato (id-artesanato)
     FOREIGN KEY (item) REFERENCES Item (id-item)
 );
 commit;
@@ -201,10 +201,10 @@ CREATE TABLE Jogador (
     energia int NOT NULL,
     dia int NOT NULL,
     qtdd-ouro int,
-    FOREIGN KEY (local) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (regiao) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (estacao-atual) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (missao-atual) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (local) REFERENCES Local-Fechado (id-local-fechado)
+    FOREIGN KEY (regiao) REFERENCES Regiao (id-regiao)
+    FOREIGN KEY (estacao-atual) REFERENCES Estacao (id-estacao)
+    FOREIGN KEY (missao-atual) REFERENCES Missao (id-missao)
 );
 commit;
 
@@ -224,9 +224,9 @@ CREATE TABLE Loja (
     regiao int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
-    FOREIGN KEY (id-loja) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (proprietario) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (regiao) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (id-loja) REFERENCES Local-Fechado (id-local-fechado)
+    FOREIGN KEY (proprietario) REFERENCES NPC (id-npc)
+    FOREIGN KEY (regiao) REFERENCES Regiao (id-regiao)
 );
 commit;
 
@@ -237,7 +237,7 @@ CREATE TABLE Missao (
     estacao int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
-    FOREIGN KEY (estacao) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (estacao) REFERENCES Estacao (id-estacao)
 );
 commit;
 
@@ -251,7 +251,7 @@ CREATE TABLE Monstro (
     dano int NOT NULL,
     defesa int NOT NULL,
     saude-maxima int NOT NULL,
-    FOREIGN KEY (drop) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (drop) REFERENCES Item (id-item)
 );
 commit;
  
@@ -271,8 +271,8 @@ CREATE TABLE NPC (
     local int NOT NULL,
     nome varchar(50) NOT NULL,
     profissao varchar(100),
-    FOREIGN KEY (regiao) REFERENCES MAPA (idMapa)
-    FOREIGN KEY (local) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (regiao) REFERENCES Regiao (id-regiao)
+    FOREIGN KEY (local) REFERENCES Local-Fechado (id-local-fechado)
 );
 commit;
 
@@ -282,7 +282,7 @@ CREATE TABLE Região (
     id-regiao int NOT NULL PRIMARY KEY,
     mundo int NOT NULL,
     nome varchar(50) NOT NULL,
-    FOREIGN KEY (mundo) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (mundo) REFERENCES Mundo (id-mundo)
 );
 commit;
 
@@ -296,7 +296,7 @@ CREATE TABLE Semente (
     valor-venda int NOT NULL,
     dias-para-crescer int NOT NULL,
     FOREIGN KEY (id-semente) REFERENCES Item (id-item)
-    FOREIGN KEY (estacao) REFERENCES MAPA (idMapa)
+    FOREIGN KEY (estacao) REFERENCES Estacao (id-estacao)
 );
 commit;
 
