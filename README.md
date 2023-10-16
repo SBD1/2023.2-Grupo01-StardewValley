@@ -1,57 +1,57 @@
-#2023.2-Grupo01-StardewValley
+# 2023.2-Grupo01-StardewValley
 
-<divalign="center"><imgsrc="imagens/capa_stardew-valley.jpg"height="230"width="auto"/></div>
+<div align="center"> <img src="imagens/capa_stardew-valley.jpg" height="230" width="auto"/> </div>
 
-<divalign="center">RepositórioparadesenvolvimentodeumMUDinspiradoemStardewValleydadisciplinadeSBD1-2023.2</div>
+<div align="center">Repositório para desenvolvimento de um MUD inspirado em Stardew Valley da disciplina de SBD1 - 2023.2</div>
 
-##Alunos
+## Alunos
 
-|Nome|Matrícula|
-|:-----------------------------------------------------------------|:-------:|
-|[EdilbertoCantuaria](https://github.com/edilbertocantuaria)|222014984|
-|[MarcusViníciusPaivaMartins](https://github.com/marcusmartinss)|211043683|
-|[MatheusPhillipoSilverioSilva](https://github.com/MattSilverio)|150154348|
-|[ZenildaPedrosaVieira](https://github.com/ZenildaVieira)|212002907|
+| Nome                                                               | Matrícula |
+| :----------------------------------------------------------------- | :-------: |
+| [Edilberto Cantuaria](https://github.com/edilbertocantuaria)       | 222014984 |
+| [Marcus Vinícius Paiva Martins](https://github.com/marcusmartinss) | 211043683 |
+| [Matheus Phillipo Silverio Silva](https://github.com/MattSilverio) | 150154348 |
+| [Zenilda Pedrosa Vieira](https://github.com/ZenildaVieira)         | 212002907 |
 
-##Jogo
+## Jogo
 
-ApósherdarafazendadoseuavônoValedoOrvalho,vocêdecidedeixaravidanacidadeparaaprenderaviverdaterra.Equipadocomferramentasdesegundamãoealgumasmoedas,vocêirácomeçarsuanovavida.Seráquevocêconseguetransformarafazendaemumprósperolar,conseguindomoedasefazendonovosamigos?
+Após herdar a fazenda do seu avô no Vale do Orvalho, você decide deixar a vida na cidade para aprender a viver da terra. Equipado com ferramentas de segunda mão e algumas moedas, você irá começar sua nova vida. Será que você consegue transformar a fazenda em um próspero lar, conseguindo moedas e fazendo novos amigos?
 
-###Comoojogofunciona?
+### Como o jogo funciona?
 
-StardewValleyéumjogoquesedesenrolaemmundosvariados,cadaumcontendoumafazendaúnicaqueojogadordeveadministrar.Nestesmundos,encontramosdiversasáreasaoarlivre,algumascomconstruçõesfechadas,comocasasdeNPCs,casasdejogadores,lojasecavernas.
+Stardew Valley é um jogo que se desenrola em mundos variados, cada um contendo uma fazenda única que o jogador deve administrar. Nestes mundos, encontramos diversas áreas ao ar livre, algumas com construções fechadas, como casas de NPCs, casas de jogadores, lojas e cavernas.
 
-Existeumciclodequatroestações:primavera,verão,outonoeinverno,cadaumacom28dias.Cadaestaçãoinfluenciaquaissementespodemcrescereapresentamissõesdistintas.Ajornadacomeçanodia1daprimavera,comojogadorcomeçandocomsaúdeeenergiaem100%.Aenergiadojogadordiminuiaolongododia,àmedidaqueeleexecutatarefas.Elepoderecuperá-ladormindoemsuacabana(100%)ouusandoitensconsumíveiscomefeitosvariados.Asaúdesódiminuiaocombatermonstrosouusaritensprejudiciais,maspodeserrestauradacomitensdecura.
+Existe um ciclo de quatro estações: primavera, verão, outono e inverno, cada uma com 28 dias. Cada estação influencia quais sementes podem crescer e apresenta missões distintas. A jornada começa no dia 1 da primavera, com o jogador começando com saúde e energia em 100%. A energia do jogador diminui ao longo do dia, à medida que ele executa tarefas. Ele pode recuperá-la dormindo em sua cabana (100%) ou usando itens consumíveis com efeitos variados. A saúde só diminui ao combater monstros ou usar itens prejudiciais, mas pode ser restaurada com itens de cura.
 
-Ashabilidadesdecoleta,cultivo,mineração,pescaecombatepertencemaojogador,ositensobtidoscomessasatividadespodemservendidosporouroearmazenadosemuminventário.
+As habilidades de coleta, cultivo, mineração, pesca e combate pertencem ao jogador, os itens obtidos com essas atividades podem ser vendidos por ouro e armazenados em um inventário.
 
-Épermitidaaexploraçãoáreasaoarlivreoulocaisfechados,incluindocavernasparamineraritens.Essascavernaspodemcontermonstrosqueojogadordeveenfrentar,comdanosbaseadosemsuashabilidadesdecombateenadefesadomonstro.OsMonstrosderrotadosdeixamitensespecíficos.NPCstambémtêmsuascabanas,profissõesepodempossuirlojas.Elesinteragemcomojogador,oferecendodicasevendendoitens.
+É permitida a exploração áreas ao ar livre ou locais fechados, incluindo cavernas para minerar itens. Essas cavernas podem conter monstros que o jogador deve enfrentar, com danos baseados em suas habilidades de combate e na defesa do monstro. Os Monstros derrotados deixam itens específicos. NPCs também têm suas cabanas, profissões e podem possuir lojas. Eles interagem com o jogador, oferecendo dicas e vendendo itens.
 
-Ojogadorpodecriaritensmanufaturadosatravésdeartesanato,utilizandoreceitasdisponíveisparamelhorarsuafazendaeexperiêncianojogo.Hádiversostiposdeitensnojogo,comoferramentasparatarefasespecíficas,sementesparaplantio,armascomvaloresdedano,consumíveisqueafetamsaúde,energiaecombate,vestimentas,eprodutosdeartesanatocriadoscomreceitasdisponíveis.
+O jogador pode criar itens manufaturados através de artesanato, utilizando receitas disponíveis para melhorar sua fazenda e experiência no jogo. Há diversos tipos de itens no jogo, como ferramentas para tarefas específicas, sementes para plantio, armas com valores de dano, consumíveis que afetam saúde, energia e combate, vestimentas, e produtos de artesanato criados com receitas disponíveis.
 
-**Novídeoabaixoépossívelidentificardeformavisual:**
+**No vídeo abaixo é possível identificar de forma visual:**
 
-<divalign="center">
-<ahref="https://www.youtube.com/watch?v=FjJx6u_5RdU"><imgsrc="https://i.ytimg.com/vi/FjJx6u_5RdU/maxresdefault.jpg"width="50%"></a>
+<div align="center">
+<a href="https://www.youtube.com/watch?v=FjJx6u_5RdU"><img src="https://i.ytimg.com/vi/FjJx6u_5RdU/maxresdefault.jpg" width="50%"></a>
 </div>
 
-##Apresentações
+## Apresentações
 
-|Módulo|Linkdagravação|Data|
-|------|-------------------------|----------|
-|1|[ApresentaçãoMódulo1](docs/apresentacao/apresentacao_m01.mp4)|30/09/2023|
+| Módulo | Link da gravação          | Data       |
+| ------ | ------------------------- | ---------- |
+| 1      | [Apresentação Módulo 1](docs/apresentacao/apresentacao_m01.mp4) | 30/09/2023 |
 
-##Entregas
+## Entregas
 
--Módulo1
--[DiagramaEntidade-Relacionamento](./docs/DER_StardewValley.md)
--[DicionáriodeDados](./docs/DD_StardewValley.md)
--[ModeloEntidade-Relacionamento](./docs/MER_StardewValley.md)
--[ModeloRelacional](./docs/MREL_StardewValley.md)
+- Módulo 1
+  - [Diagrama Entidade-Relacionamento](./docs/DER_StardewValley.md)
+  - [Dicionário de Dados](./docs/DD_StardewValley.md)
+  - [Modelo Entidade-Relacionamento](./docs/MER_StardewValley.md)
+  - [Modelo Relacional](./docs/MREL_StardewValley.md)
 
-###Históricodeversões
+### Histórico de versões
 
-|Versão|Data|Descrição|Autor|Revisão|
-|:----:|:--------:|----------------------------------------------|---------------------------------------------------|---------------------------------------------------|
-|`1.0`|24/09/2023|Inclusãodasconsideraçõesfeitasnamodelagem|[ZenildaVieira](https://github.com/ZenildaVieira)|[MarcusMartins](https://github.com/marcusmartinss)|
-|`1.1`|28/09/2023|EstruturaçãodoREADMEdoprojeto|[MarcusMartins](https://github.com/marcusmartinss)||
+| Versão |    Data    | Descrição                                      | Autor                                               | Revisão                                             |
+| :----: | :--------: | ---------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `1.0`  | 24/09/2023 | Inclusão das considerações feitas na modelagem | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Marcus Martins](https://github.com/marcusmartinss) |
+| `1.1`  | 28/09/2023 | Estruturação do README do projeto              | [Marcus Martins](https://github.com/marcusmartinss) |                                                     |
