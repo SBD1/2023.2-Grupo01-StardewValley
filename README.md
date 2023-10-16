@@ -44,10 +44,10 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 ## Entregas
 
 - Módulo 1
-  - [Diagrama Entidade-Relacionamento](./docs/Entrega-01/DER_StardewValley.md)
-  - [Dicionário de Dados](./docs/Entrega-01/DD_StardewValley.md)
-  - [Modelo Entidade-Relacionamento](./docs/Entrega-01/MER_StardewValley.md)
-  - [Modelo Relacional](./docs/Entrega-01/REL_StardewValley.md)
+  - [Diagrama Entidade-Relacionamento](./docs/Entrega-01/DER_StardewValley_v1.0.md)
+  - [Dicionário de Dados](./docs/Entrega-01/DD_StardewValley_v1.0.md)
+  - [Modelo Entidade-Relacionamento](./docs/Entrega-01/MER_StardewValley_v1.0.md)
+  - [Modelo Relacional](./docs/Entrega-01/REL_StardewValley_v1.0.md)
 
 ### Histórico de versões
 
