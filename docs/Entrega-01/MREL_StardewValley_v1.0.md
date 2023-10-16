@@ -15,7 +15,7 @@ O Modelo Relacional(MREL) apresenta um diagrama lógico de como as entidades e s
 
 <br/>
 
-<img src= '../imagens/MREL_stardew_valley_v2.2.png' />
+<img src= '/docs/imagens/MREL_stardew_valley_v2.2.png' />
 
 <div style="text-align: center">
   <p>Figura 1: MREL Stardew Valley</p>
