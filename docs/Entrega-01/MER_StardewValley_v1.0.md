@@ -1,11 +1,11 @@
 ## Histórico de versões
 
-| Versão |    Data    | Descrição                                         | Autor                                                                                                                |
+| Versão |  Data  | Descrição                     | Autor                                                        |
 | :----: | :--------: | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `1.0`  | 16/09/2023 | Criação do documento MER                          | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                                   |
-| `1.1`  | 24/09/2023 | Adição das entidades                              | [Matheus Silverio](https://github.com/MattSilverio)                                                                  |
-| `1.2`  | 24/09/2023 | Adição das entidades, atributos e relacionamentos | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)                                                         |
-| `1.3`  | 26/09/2023 | Revisão em pares                                  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br>[Zenilda Vieira](https://github.com/ZenildaVieira) |
+| `1.0` | 16/09/2023 | Criação do documento MER             | [Zenilda Vieira](https://github.com/ZenildaVieira)                                  |
+| `1.1` | 24/09/2023 | Adição das entidades               | [Matheus Silverio](https://github.com/MattSilverio)                                 |
+| `1.2` | 24/09/2023 | Adição das entidades, atributos e relacionamentos | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)                             |
+| `1.3` | 26/09/2023 | Revisão em pares                 | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br>[Zenilda Vieira](https://github.com/ZenildaVieira) |
 
 # MER - Modelo Entidade Relacionamento
 
@@ -25,18 +25,18 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - **Item-Inventário**
 - **Item-Receita**
 - **Item**
-  - **Semente**
-  - **Ferramenta**
-  - **Consumível**
-  - **Vestimenta**
-  - **Arma**
-  - **Artesanato**
+ - **Semente**
+ - **Ferramenta**
+ - **Consumível**
+ - **Vestimenta**
+ - **Arma**
+ - **Artesanato**
 - **Jogador**
 - **Local-Fechado**
-  - **Cabana-Jogador**
-  - **Caverna**
-  - **Cabana-NPC**
-  - **Loja**
+ - **Cabana-Jogador**
+ - **Caverna**
+ - **Cabana-NPC**
+ - **Loja**
 - **Missão**
 - **Monstro**
 - **Mundo**
@@ -54,18 +54,18 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - **Item-Inventário**: jogador, item, qtdd;
 - **Item-Receita**: id-artesanato, item, qtdd;
 - **Item**: <ins>id-item</ins>, id-tipo;
-  - **Semente**: id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer;
-  - **Ferramenta**: id-ferramenta, nome, descricao;
-  - **Consumível**: id-consumivel, estacao, nome, descricao, valor-venda, dias-para-crescer;
-  - **Vestimenta**: id-vestimenta, nome, descricao;
-  - **Arma**: id-arma, nome, descricao, dano, finalidade;
-  - **Artesanato**: id-artesanato, nome, descricao;
+ - **Semente**: id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer;
+ - **Ferramenta**: id-ferramenta, nome, descricao;
+ - **Consumível**: id-consumivel, estacao, nome, descricao, valor-venda, dias-para-crescer;
+ - **Vestimenta**: id-vestimenta, nome, descricao;
+ - **Arma**: id-arma, nome, descricao, dano, finalidade;
+ - **Artesanato**: id-artesanato, nome, descricao;
 - **Jogador**: <ins>id-jogador</ins>, local, regiao, estacao-atual, missao-atual, nome, saude, energia, dia, qtdd-ouro;
 - **Local-Fechado**: <ins>id-local-fechado</ins>, id-tipo;
-  - **Cabana-Jogador**: id-cabana-jog, jogador, regiao, nome, descricao;
-  - **Caverna**: id-caverna, regiao, nome, descricao;
-  - **Cabana-NPC**: id-cabana-npc, npc, regiao, nome, descricao;
-  - **Loja**: id-loja, proprietario, regiao, nome, descricao;
+ - **Cabana-Jogador**: id-cabana-jog, jogador, regiao, nome, descricao;
+ - **Caverna**: id-caverna, regiao, nome, descricao;
+ - **Cabana-NPC**: id-cabana-npc, npc, regiao, nome, descricao;
+ - **Loja**: id-loja, proprietario, regiao, nome, descricao;
 - **Missao**: <ins>id-missao</ins>, estacao, nome, descricao;
 - **Monstro**: <ins>id-monstro</ins>, drop, nome, descricao, dano, defesa, saude-maxima;
 - **Mundo**: <ins>id-mundo</ins>, nome;
