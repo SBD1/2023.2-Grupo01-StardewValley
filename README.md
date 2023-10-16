@@ -47,7 +47,7 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
   - [Diagrama Entidade-Relacionamento](./docs/Entrega-01/DER_StardewValley_v1.0.md)
   - [Dicionário de Dados](./docs/Entrega-01/DD_StardewValley_v1.0.md)
   - [Modelo Entidade-Relacionamento](./docs/Entrega-01/MER_StardewValley_v1.0.md)
-  - [Modelo Relacional](./docs/Entrega-01/REL_StardewValley_v1.0.md)
+  - [Modelo Relacional](./docs/Entrega-01/MREL_StardewValley_v1.0.md)
 
 ### Histórico de versões
 
