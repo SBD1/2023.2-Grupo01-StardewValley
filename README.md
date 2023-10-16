@@ -1,6 +1,6 @@
 # 2023.2-Grupo01-StardewValley
 
-<div align="center"> <img src="imagens/capa_stardew-valley.jpg" height="230" width="auto"/> </div>
+<div align="center"> <img src="docs/imagens/capa_stardew-valley.jpg" height="230" width="auto"/> </div>
 
 <div align="center">Repositório para desenvolvimento de um MUD inspirado em Stardew Valley da disciplina de SBD1 - 2023.2</div>
 
