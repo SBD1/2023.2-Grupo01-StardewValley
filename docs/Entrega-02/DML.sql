@@ -19,48 +19,55 @@ INSERT INTO Arma (id-arma, nome, descricao, dano, finalidade) VALUES (4, 'estili
 
 -- Tabela Artesanato 
 
-INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (1, nome, descricao);
-INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (2, nome, descricao);
-INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (3, nome, descricao);
-INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (4, nome, descricao);
-INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (5, nome, descricao);
+INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (1, 'nome', 'descricao');
+INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (2, 'nome', 'descricao');
+INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (3, 'nome', 'descricao');
+INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (4, 'nome', 'descricao');
+INSERT INTO Artesanato (id-artesanato, nome, descricao) VALUES (5, 'nome', 'descricao');
 
 -- Tabela Cabana-Jogador 
 
-INSERT INTO Cabana-Jogador (id-cabana-jog, jogador, regiao, nome, descricao) VALUES (1, 'Edilberto', regiao, nome, descricao);
-INSERT INTO Cabana-Jogador (id-cabana-jog, jogador, regiao, nome, descricao) VALUES (2, 'Marcus', regiao, nome, descricao);
-INSERT INTO Cabana-Jogador (id-cabana-jog, jogador, regiao, nome, descricao) VALUES (3, 'Matheus', regiao, nome, descricao);
-INSERT INTO Cabana-Jogador (id-cabana-jog, jogador, regiao, nome, descricao) VALUES (4, 'Zenilda', regiao, nome, descricao);
+INSERT INTO Cabana-Jogador (id-cabana-jog, jogador, regiao, nome, descricao) VALUES (1, 'Edilberto', 1, 'nome', 'descricao');
+INSERT INTO Cabana-Jogador (id-cabana-jog, jogador, regiao, nome, descricao) VALUES (2, 'Marcus', 2, 'nome', 'descricao');
+INSERT INTO Cabana-Jogador (id-cabana-jog, jogador, regiao, nome, descricao) VALUES (3, 'Matheus', 3, 'nome', 'descricao');
+INSERT INTO Cabana-Jogador (id-cabana-jog, jogador, regiao, nome, descricao) VALUES (4, 'Zenilda', 4, 'nome', 'descricao');
 
 -- Tabela Cabana-NPC 
 
-INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (1, npc, regiao, nome, descricao);
-INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (2, npc, regiao, nome, descricao);
-INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (3, npc, regiao, nome, descricao);
-INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (4, npc, regiao, nome, descricao);
-INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (5, npc, regiao, nome, descricao);
+INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (1, 1, 1, 'nome', 'descricao');
+INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (2, 2, 2, 'nome', 'descricao');
+INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (3, 3, 3, 'nome', 'descricao');
+INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (4, 4, 4, 'nome', 'descricao');
+INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (5, 5, 1, 'nome', 'descricao');
+INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (6, 6, 2, 'nome', 'descricao');
+INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (7, 7, 3, 'nome', 'descricao');
+INSERT INTO Cabana-NPC (id-cabana-npc, npc, regiao, nome, descricao) VALUES (8, 8, 4, 'nome', 'descricao');
 
 -- Tabela Caverna 
 
-INSERT INTO Caverna (id-caverna, regiao, nome, descricao) VALUES (1, regiao, nome, descricao);
-INSERT INTO Caverna (id-caverna, regiao, nome, descricao) VALUES (2, regiao, nome, descricao);
-INSERT INTO Caverna (id-caverna, regiao, nome, descricao) VALUES (3, regiao, nome, descricao);
+INSERT INTO Caverna (id-caverna, regiao, nome, descricao) VALUES (1, 1, 'nome', 'descricao');
+INSERT INTO Caverna (id-caverna, regiao, nome, descricao) VALUES (2, 2, 'nome', 'descricao');
+INSERT INTO Caverna (id-caverna, regiao, nome, descricao) VALUES (3, 3, 'nome', 'descricao');
+INSERT INTO Caverna (id-caverna, regiao, nome, descricao) VALUES (4, 4, 'nome', 'descricao');
 
 -- Tabela Consumível 
 
-INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (1, nome, descricao);
-INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (2, nome, descricao);
-INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (3, nome, descricao);
-INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (4, nome, descricao);
-INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (5, nome, descricao);
+INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (1, 'nome', 'descricao');
+INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (2, 'nome', 'descricao');
+INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (3, 'nome', 'descricao');
+INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (4, 'nome', 'descricao');
+INSERT INTO Consumível (id-consumivel, nome, descricao) VALUES (5, 'nome', 'descricao');
 
 -- Tabela Diálogo 
 
-INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (1, npc, fala);
-INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (2, npc, fala);
-INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (3, npc, fala);
-INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (4, npc, fala);
-INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (5, npc, fala);
+INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (1, 1, 'fala');
+INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (2, 2, 'fala');
+INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (3, 3, 'fala');
+INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (4, 4, 'fala');
+INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (5, 5, 'fala');
+INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (6, 6, 'fala');
+INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (7, 6, 'fala');
+INSERT INTO Diálogo (id-dialogo, npc, fala) VALUES (8, 6, 'fala');
 
 -- Tabela Efeito 
 
@@ -72,18 +79,18 @@ INSERT INTO Efeito (id-efeito, item, valor, tipo) VALUES (5, item, valor, tipo);
 
 -- Tabela Estação 
 
-INSERT INTO Estação (id-estacao, nome, descricao) VALUES (1, 'Primavera', descricao);
-INSERT INTO Estação (id-estacao, nome, descricao) VALUES (2, 'Verão', descricao);
-INSERT INTO Estação (id-estacao, nome, descricao) VALUES (3, 'Outono', descricao);
-INSERT INTO Estação (id-estacao, nome, descricao) VALUES (4, 'Inverno', descricao);
+INSERT INTO Estação (id-estacao, nome, descricao) VALUES (1, 'Primavera', 'descricao');
+INSERT INTO Estação (id-estacao, nome, descricao) VALUES (2, 'Verão', 'descricao');
+INSERT INTO Estação (id-estacao, nome, descricao) VALUES (3, 'Outono', 'descricao');
+INSERT INTO Estação (id-estacao, nome, descricao) VALUES (4, 'Inverno', 'descricao');
 
 -- Tabela Ferramenta 
 
-INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (1, nome, descricao, finalidade);
-INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (2, nome, descricao, finalidade);
-INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (3, nome, descricao, finalidade);
-INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (4, nome, descricao, finalidade);
-INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (5, nome, descricao, finalidade);
+INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (1, 'nome', 'descricao', 'finalidade');
+INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (2, 'nome', 'descricao', 'finalidade');
+INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (3, 'nome', 'descricao', 'finalidade');
+INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (4, 'nome', 'descricao', 'finalidade');
+INSERT INTO Ferramenta (id-ferramenta, nome, descricao, finalidade) VALUES (5, 'nome', 'descricao', 'finalidade');
 
 -- Tabela Habilidade 
 
@@ -94,11 +101,12 @@ INSERT INTO Habilidade (jogador, nivel-coleta, nivel-cultivo, nivel-mineracao, n
 
 -- Tabela Instancia-Monstro 
 
-INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (caverna, monstro, saude);
-INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (caverna, monstro, saude);
-INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (caverna, monstro, saude);
-INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (caverna, monstro, saude);
-INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (caverna, monstro, saude);
+INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (1, monstro, 100);
+INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (2, monstro, 100);
+INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (1, monstro, 100);
+INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (2, monstro, 100);
+INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (1, monstro, 100);
+INSERT INTO Instancia-Monstro (caverna, monstro, saude) VALUES (2, monstro, 100);
 
 -- Tabela Item-Estoque-Loja 
 
@@ -110,18 +118,18 @@ INSERT INTO Item-Estoque-Loja (produto, loja, preço) VALUES (produto, loja, pre
 
 -- Tabela Item-Inventário 
 
-INSERT INTO Item-Inventário (jogador, item, qtdd) VALUES (1, item, qtdd);
-INSERT INTO Item-Inventário (jogador, item, qtdd) VALUES (2, item, qtdd);
-INSERT INTO Item-Inventário (jogador, item, qtdd) VALUES (3, item, qtdd);
-INSERT INTO Item-Inventário (jogador, item, qtdd) VALUES (4, item, qtdd);
+INSERT INTO Item-Inventário (jogador, item, qtdd) VALUES (1, item, 10);
+INSERT INTO Item-Inventário (jogador, item, qtdd) VALUES (2, item, 10);
+INSERT INTO Item-Inventário (jogador, item, qtdd) VALUES (3, item, 10);
+INSERT INTO Item-Inventário (jogador, item, qtdd) VALUES (4, item, 10);
 
 -- Tabela Item-Receita 
 
-INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, qtdd);
-INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, qtdd);
-INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, qtdd);
-INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, qtdd);
-INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, qtdd);
+INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, 10);
+INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, 10);
+INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, 10);
+INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, 10);
+INSERT INTO Item-Receita (artesanato, item, qtdd) VALUES (artesanato, item, 10);
 
 -- Tabela Item 
 
@@ -148,54 +156,58 @@ INSERT INTO Local-Fechado (id-local-fechado, id-tipo) VALUES (4, 'cabana-Jog');
 
 -- Tabela Loja 
 
-INSERT INTO Loja (id-loja, proprietario, regiao, nome, descricao) VALUES (1, proprietario, regiao, nome, descricao);
+INSERT INTO Loja (id-loja, proprietario, regiao, nome, descricao) VALUES (1, 1, 1, 'nome', 'descricao');
+INSERT INTO Loja (id-loja, proprietario, regiao, nome, descricao) VALUES (2, 2, 2, 'nome', 'descricao');
 
 -- Tabela Missao 
 
-INSERT INTO Missao (id-missao, estacao, nome, descricao) VALUES (1, estacao, nome, descricao);
-INSERT INTO Missao (id-missao, estacao, nome, descricao) VALUES (2, estacao, nome, descricao);
-INSERT INTO Missao (id-missao, estacao, nome, descricao) VALUES (3, estacao, nome, descricao);
+INSERT INTO Missao (id-missao, estacao, nome, descricao) VALUES (1, 1, 'nome', 'descricao');
+INSERT INTO Missao (id-missao, estacao, nome, descricao) VALUES (2, 2, 'nome', 'descricao');
+INSERT INTO Missao (id-missao, estacao, nome, descricao) VALUES (3, 3, 'nome', 'descricao');
+INSERT INTO Missao (id-missao, estacao, nome, descricao) VALUES (4, 4, 'nome', 'descricao');
 
 -- Tabela Monstro 
 
-INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (1, drop, nome, descricao, dano, defesa, saude-maxima);
-INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (2, drop, nome, descricao, dano, defesa, saude-maxima);
-INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (3, drop, nome, descricao, dano, defesa, saude-maxima);
-INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (4, drop, nome, descricao, dano, defesa, saude-maxima);
-INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (5, drop, nome, descricao, dano, defesa, saude-maxima);
+INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (1, drop, 'nome', 'descricao', dano, defesa, saude-maxima);
+INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (2, drop, 'nome', 'descricao', dano, defesa, saude-maxima);
+INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (3, drop, 'nome', 'descricao', dano, defesa, saude-maxima);
+INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (4, drop, 'nome', 'descricao', dano, defesa, saude-maxima);
+INSERT INTO Monstro (id-monstro, drop, nome, descricao, dano, defesa, saude-maxima) VALUES (5, drop, 'nome', 'descricao', dano, defesa, saude-maxima);
 
 -- Tabela Mundo 
 
-INSERT INTO Mundo (id-mundo, nome) VALUES (1, nome);
-INSERT INTO Mundo (id-mundo, nome) VALUES (2, nome);
+INSERT INTO Mundo (id-mundo, nome) VALUES (1, 'nome');
+INSERT INTO Mundo (id-mundo, nome) VALUES (2, 'nome');
 
 -- Tabela NPC 
 
-INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (1, regiao, local, nome, profissao);
-INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (2, regiao, local, nome, profissao);
-INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (3, regiao, local, nome, profissao);
-INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (4, regiao, local, nome, profissao);
-INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (5, regiao, local, nome, profissao);
+INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (1, 1, local, 'nome', 'profissao');
+INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (2, 1, local, 'nome', 'profissao');
+INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (3, 1, local, 'nome', 'profissao');
+INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (4, 2, local, 'nome', 'profissao');
+INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (5, 2, local, 'nome', 'profissao');
+INSERT INTO NPC (id-npc, regiao, local, nome, profissao) VALUES (5, 2, local, 'nome', 'profissao');
 
 -- Tabela Região 
 
-INSERT INTO Região (id-regiao, mundo, nome) VALUES (1, 1, nome);
-INSERT INTO Região (id-regiao, mundo, nome) VALUES (2, 1, nome);
-INSERT INTO Região (id-regiao, mundo, nome) VALUES (3, 2, nome);
-INSERT INTO Região (id-regiao, mundo, nome) VALUES (4, 2, nome);
+INSERT INTO Região (id-regiao, mundo, nome) VALUES (1, 1, 'nome');
+INSERT INTO Região (id-regiao, mundo, nome) VALUES (2, 1, 'nome');
+INSERT INTO Região (id-regiao, mundo, nome) VALUES (3, 2, 'nome');
+INSERT INTO Região (id-regiao, mundo, nome) VALUES (4, 2, 'nome');
 
 -- Tabela Semente 
 
-INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (1, estacao, nome, descricao, valor-venda, dias-para-crescer);
-INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (2, estacao, nome, descricao, valor-venda, dias-para-crescer);
-INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (3, estacao, nome, descricao, valor-venda, dias-para-crescer);
-INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (4, estacao, nome, descricao, valor-venda, dias-para-crescer);
-INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (5, estacao, nome, descricao, valor-venda, dias-para-crescer);
+INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (1, 1, 'nome', 'descricao', valor-venda, dias-para-crescer);
+INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (2, 1, 'nome', 'descricao', valor-venda, dias-para-crescer);
+INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (3, 2, 'nome', 'descricao', valor-venda, dias-para-crescer);
+INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (4, 2, 'nome', 'descricao', valor-venda, dias-para-crescer);
+INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (5, 3, 'nome', 'descricao', valor-venda, dias-para-crescer);
+INSERT INTO Semente (id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer) VALUES (6, 3, 'nome', 'descricao', valor-venda, dias-para-crescer);
 
 -- Tabela Vestimenta 
 
-INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (1, nome, descricao);
-INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (2, nome, descricao);
-INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (3, nome, descricao);
-INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (4, nome, descricao);
-INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (5, nome, descricao);
+INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (1, 'nome', 'descricao');
+INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (2, 'nome', 'descricao');
+INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (3, 'nome', 'descricao');
+INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (4, 'nome', 'descricao');
+INSERT INTO Vestimenta (id-vestimenta, nome, descricao) VALUES (5, 'nome', 'descricao');
