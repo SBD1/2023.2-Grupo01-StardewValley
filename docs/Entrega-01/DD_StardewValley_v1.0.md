@@ -44,13 +44,13 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Local-Fechado`, `Jogador` e `Regiao`
 
-|  Nome Variável   |     Tipo     |                    Descrição                    | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :--------------: | :----------: | :---------------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-local-fechado |     int      |         Identificador do local fechado          |       1-5000       |          não           |    FK    |                   |
-|     jogador      |     int      | Identificador do Jogador proprietário da cabana |       1-5000       |          não           |    FK    |                   |
-|      regiao      |     int      |   Identificador da Região onde está a cabana    |       1-5000       |          não           |    FK    |                   |
-|       nome       | varchar[50]  |                 Nome da cabana                  |      a-z, A-Z      |          não           |          |                   |
-|    descricao     | varchar[150] |               Descrição da cabana               |      a-z, A-Z      |          sim           |          |                   |
+| Nome Variável |     Tipo     |                    Descrição                    | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :----------: | :---------------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+| id-cabana-jog |     int      |       Identificador da cabana do jogador        |       1-5000       |          não           |    FK    |                   |
+|    jogador    |     int      | Identificador do Jogador proprietário da cabana |       1-5000       |          não           |    FK    |                   |
+|    regiao     |     int      |   Identificador da Região onde está a cabana    |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |                 Nome da cabana                  |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |               Descrição da cabana               |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Cabana-NPC
 
@@ -58,13 +58,13 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Local-Fechado`, `NPC` e `Regiao`
 
-|  Nome Variável   |     Tipo     |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :--------------: | :----------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-local-fechado |     int      |       Identificador do local fechado        |       1-5000       |          não           |    FK    |                   |
-|       npc        |     int      | Identificador do NPC proprietário da cabana |       1-5000       |          não           |    FK    |                   |
-|      regiao      |     int      | Identificador da Região onde estã a cabana  |       1-5000       |          não           |    FK    |                   |
-|       nome       | varchar[50]  |            Nome da cabana do NPC            |      a-z, A-Z      |          não           |          |                   |
-|    descricao     | varchar[150] |         Descrição da cabana do NPC          |      a-z, A-Z      |          sim           |          |                   |
+| Nome Variável |     Tipo     |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :----------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+| id-cabana-npc |     int      |       Identificador da cabana do NPC        |       1-5000       |          não           |    FK    |                   |
+|      npc      |     int      | Identificador do NPC proprietário da cabana |       1-5000       |          não           |    FK    |                   |
+|    regiao     |     int      | Identificador da Região onde estã a cabana  |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |            Nome da cabana do NPC            |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |         Descrição da cabana do NPC          |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Caverna
 
@@ -72,12 +72,12 @@
 
 #### Observação:Essa tabela possui chaves estrangeiras das entidades `Caverna` e `Região`.
 
-|  Nome Variável   |     Tipo     |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :--------------: | :----------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-local-fechado |     int      |       Identificador do local fechado        |       1-5000       |          não           |    FK    |                   |
-|      regiao      |     int      | Identificador da Região onde está a caverna |       1-5000       |          não           |    FK    |                   |
-|       nome       | varchar[50]  |               Nome da caverna               |      a-z, A-Z      |          não           |          |                   |
-|    descricao     | varchar[150] |            Descrição da caverna             |      a-z, A-Z      |          sim           |          |                   |
+| Nome Variável |     Tipo     |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :----------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+|  id-caverna   |     int      |          Identificador da caverna           |       1-5000       |          não           |    FK    |                   |
+|    regiao     |     int      | Identificador da Região onde está a caverna |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |               Nome da caverna               |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |            Descrição da caverna             |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Consumível
 
@@ -176,8 +176,8 @@
 
 | Nome Variável | Tipo |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :--: | :---------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    produto    | int  | Identificador do item-produto |       1-5000       |          não           |  FK, PK  |                   |
-|     loja      | int  |     Identificador da loja     |       1-5000       |          não           |  FK, PK  |                   |
+|    produto    | int  | Identificador do item-produto |       1-5000       |          não           |    FK    |                   |
+|     loja      | int  |     Identificador da loja     |       1-5000       |          não           |    FK    |                   |
 |     preço     | int  |  Preço do produto no estoque  |       1-5000       |          não           |          |                   |
 
 ## Entidade: Item-Inventário
@@ -188,8 +188,8 @@
 
 | Nome Variável | Tipo |        Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :--: | :----------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    jogador    | int  | Identificador do Jogador |       1-5000       |          não           |  FK, PK  |                   |
-|     item      | int  |  Identificador do Item   |       1-5000       |          não           |  FK, PK  |                   |
+|    jogador    | int  | Identificador do Jogador |       1-5000       |          não           |    FK    |                   |
+|     item      | int  |  Identificador do Item   |       1-5000       |          não           |    FK    |                   |
 |     qtdd      | int  |    quantidade do item    |       1-5000       |          não           |          |                   |
 
 ## Entidade: Item-Receita
@@ -200,20 +200,20 @@
 
 | Nome Variável | Tipo |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :--: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  artesanato   | int  |   Identificador do artesanato    |       1-5000       |          não           |  FK, PK  |                   |
-|     item      | int  |      Identificador do item       |       1-5000       |          não           |  FK, PK  |                   |
+|  artesanato   | int  |   Identificador do artesanato    |       1-5000       |          não           |    FK    |                   |
+|     item      | int  |      Identificador do item       |       1-5000       |          não           |    FK    |                   |
 |     qtdd      | int  | Quantidade desse item na receita |       1-5000       |          não           |          |                   |
 
 ## Entidade: Item
 
 #### Descrição: A entidade Item armazena as informações de identificação do item e do seu tipo.
 
-#### Observação: Esta entidade relaciona cada um dos itens com seu tipo.
+#### Observação: Os itens podem ser de 6 tipos: arma, ferramenta, consumível, vestimenta, artesanato e semente.
 
-| Nome Variável | Tipo |            Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-----------: | :--: | :-----------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    id-item    | int  | Código de Identificação do item |       1-5000       |          não           |    PK    |                   |
-| id-tipo-item  | int  |  Identificação do tipo do item  |        1-6         |          não           |    FK    |                   |
+| Nome Variável |    Tipo     |            Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :---------: | :-----------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+|    id-item    |     int     | Código de Identificação do item |       1-5000       |          não           |    PK    |                   |
+|    id-tipo    | varchar[50] |  Identificação do tipo do item  |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Jogador
 
@@ -240,10 +240,10 @@
 
 #### Observação: Os locais fechados podem ser de 4 tipos: cabana do jogador, cabana de um NPC, caverna e loja.
 
-|     Nome Variável     | Tipo |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-------------------: | :--: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   id-local-fechado    | int  | Código de identificação do local fechado |       1-5000       |          não           |    PK    |                   |
-| id-tipo-local-fechado | int  |  Identificação do tipo de local fechado  |        1-4         |          não           |    FK    |                   |
+|  Nome Variável   |    Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :--------------: | :---------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+| id-local-fechado |     int     | Código de identificação do local fechado |       1-5000       |          não           |    PK    |                   |
+|     id-tipo      | varchar[50] |  Identificação do tipo de local fechado  |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Loja
 
@@ -251,13 +251,13 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Local-Fechado`, `NPC` e `Regiao`.
 
-|  Nome Variável   |     Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :--------------: | :----------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-local-fechado |     int      |      Identificador do local fechado      |       1-5000       |          não           |    FK    |                   |
-|   proprietario   |     int      |      Identificador do proprietário       |       1-5000       |          não           |    FK    |                   |
-|      regiao      |     int      | Identificador da região onde está a loja |       1-5000       |          não           |    FK    |                   |
-|       nome       | varchar[50]  |               Nome da loja               |      a-z, A-Z      |          não           |          |                   |
-|    descricao     | varchar[150] |            Descrição da loja             |      a-z, A-Z      |          sim           |          |                   |
+| Nome Variável |     Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :----------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+|    id-loja    |     int      |          Identificador da loja           |       1-5000       |          não           |    FK    |                   |
+| proprietario  |     int      |      Identificador do proprietário       |       1-5000       |          não           |    FK    |                   |
+|    regiao     |     int      | Identificador da região onde está a loja |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |               Nome da loja               |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |            Descrição da loja             |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Missao
 
@@ -281,7 +281,7 @@
 | Nome Variável |     Tipo     |                           Descrição                           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
 |  id-monstro   |     int      |              Código de identificação do monstro               |       1-5000       |          não           |    PK    |                   |
-|    id-item    |     int      | Identificador do item deixado pelo monstro após ser derrotado |       1-5000       |          não           |    FK    |                   |
+|     drop      |     int      | Identificador do item deixado pelo monstro após ser derrotado |       1-5000       |          não           |    FK    |                   |
 |     nome      | varchar[50]  |                        Nome do monstro                        |      a-z, A-Z      |          não           |          |                   |
 |   descricao   | varchar[150] |                     Descrição do monstro                      |      a-z, A-Z      |          sim           |          |                   |
 |     dano      |     int      |                   Dano causado pelo monstro                   |        1-10        |          não           |          |                   |
@@ -339,28 +339,6 @@
 |     descricao     | varchar[150] |          Descrição da semente           |      a-z, A-Z      |          sim           |          |                   |
 |    valor-venda    |     int      |            Preço da semente             |       1-5000       |          não           |          |                   |
 | dias-para-crescer |     int      | Dias que a semente precisa para crescer |        1-28        |          não           |          |                   |
-
-## Entidade: Tipo-Item
-
-#### Descrição: Descreve os tipos de itens disponíveis no jogo e o nome desse tipo.
-
-#### Observação: Os itens podem ser de 6 tipos: arma, ferramenta, consumível, vestimenta, artesanato e semente.
-
-| Nome Variável  |    Tipo     |              Descrição              |                            Valores permitidos                             | Permite valores nulos? | É chave? | Outras Restrições |
-| :------------: | :---------: | :---------------------------------: | :-----------------------------------------------------------------------: | :--------------------: | :------: | ----------------- |
-|  id-tipo-item  |     int     |    Identificador do tipo de Item    |                                    1-6                                    |          não           |    PK    |                   |
-| nome-tipo-item | varchar[20] | Nome que o tipo de item vai receber | "arma", "ferramenta", "consumivel", "vestimenta", "artesanato", "semente" |          não           |          |                   |
-
-## Entidade: Tipo-Local-Fechado
-
-#### Descrição: Descreve os tipos de locais fechados disponíveis no jogo e o nome desse tipo.
-
-#### Observação: Os itens podem ser de 4 tipos: cabana do jogador, cabana de NPC, caverna ou loja.
-
-|      Nome Variável      |    Tipo     |                  Descrição                   |              Valores permitidos               | Permite valores nulos? | É chave? | Outras Restrições |
-| :---------------------: | :---------: | :------------------------------------------: | :-------------------------------------------: | :--------------------: | :------: | ----------------- |
-|  id-tipo-local-fechado  |     int     |    Identificador do tipo de Local Fechado    |                      1-4                      |          não           |    PK    |                   |
-| nome-tipo-local-fechado | varchar[20] | Nome que o tipo do local fechado vai receber | "cabana-jog", "cabana-npc", "caverna", "loja" |          não           |          |                   |
 
 ## Entidade: Vestimenta
 
