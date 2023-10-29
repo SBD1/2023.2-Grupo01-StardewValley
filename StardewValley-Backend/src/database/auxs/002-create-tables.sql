@@ -22,7 +22,7 @@ CREATE TABLE Mundo (
 );
 
 CREATE TABLE Arma (
-    id_arma SERIAL PRIMARY KEY,
+    id_arma int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
     dano int NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE Artesanato (
 );
 
 CREATE TABLE Consumivel (
-    id_consumivel SERIAL PRIMARY KEY,
+    id_consumivel int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
     FOREIGN KEY (id_consumivel) REFERENCES Item (id_item)
@@ -53,7 +53,7 @@ CREATE TABLE Efeito (
 );
 
 CREATE TABLE Ferramenta (
-    id_ferramenta SERIAL PRIMARY KEY,
+    id_ferramenta int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
     finalidade varchar(100) NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE Ferramenta (
 );
 
 CREATE TABLE Vestimenta (
-    id_vestimenta SERIAL PRIMARY KEY,
+    id_vestimenta int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
     FOREIGN KEY (id_vestimenta) REFERENCES Item (id_item)
@@ -79,7 +79,7 @@ CREATE TABLE Monstro (
 );
 
 CREATE TABLE Semente (
-    id_semente SERIAL PRIMARY KEY,
+    id_semente int NOT NULL,
     estacao int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
@@ -116,7 +116,7 @@ CREATE TABLE NPC (
 );
 
 CREATE TABLE Caverna (
-    id_caverna SERIAL PRIMARY KEY,
+    id_caverna int NOT NULL,
     regiao int NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(150),
@@ -126,7 +126,7 @@ CREATE TABLE Caverna (
 
 
 CREATE TABLE Cabana_NPC (
-    id_cabana_npc SERIAL PRIMARY KEY,
+    id_cabana_npc int NOT NULL,
     npc int NOT NULL,
     regiao int NOT NULL,
     nome varchar(50) NOT NULL,
@@ -215,7 +215,7 @@ CREATE TABLE Dialogo (
 );
 
 CREATE TABLE Cabana_Jogador (
-    id_cabana_jog SERIAL PRIMARY KEY,
+    id_cabana_jog int NOT NULL,
     jogador int NOT NULL,
     regiao int NOT NULL,
     nome varchar(50) NOT NULL,
