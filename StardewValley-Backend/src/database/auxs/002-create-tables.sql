@@ -1,5 +1,6 @@
 \c stardew_valley;
 
+
 CREATE TABLE Estacao (
     id_estacao SERIAL PRIMARY KEY,
     nome char(50) NOT NULL,
@@ -22,11 +23,11 @@ CREATE TABLE Mundo (
 );
 
 CREATE TABLE Arma (
-    id_arma int NOT NULL,
+    id_arma SERIAL PRIMARY KEY,
     nome char(50) NOT NULL,
     descricao char(800),
     dano int NOT NULL,
-    finalidade varchar(100) NOT NULL,
+    finalidade char(100) NOT NULL,
     FOREIGN KEY (id_arma) REFERENCES Item (id_item)
 );
 
@@ -38,7 +39,7 @@ CREATE TABLE Artesanato (
 );
 
 CREATE TABLE Consumivel (
-    id_consumivel int NOT NULL,
+    id_consumivel SERIAL PRIMARY KEY,
     nome char(50) NOT NULL,
     descricao char(800),
     FOREIGN KEY (id_consumivel) REFERENCES Item (id_item)
@@ -48,20 +49,20 @@ CREATE TABLE Efeito (
     id_efeito int NOT NULL PRIMARY KEY,
     item int NOT NULL,
     valor int NOT NULL,
-    tipo varchar(100),
+    tipo char(100),
     FOREIGN KEY (item) REFERENCES Item (id_item)
 );
 
 CREATE TABLE Ferramenta (
-    id_ferramenta int NOT NULL,
+    id_ferramenta SERIAL PRIMARY KEY,
     nome char(50) NOT NULL,
     descricao char(800),
-    finalidade varchar(100) NOT NULL,
+    finalidade char(100) NOT NULL,
     FOREIGN KEY (id_ferramenta) REFERENCES Item (id_item)
 );
 
 CREATE TABLE Vestimenta (
-    id_vestimenta int NOT NULL,
+    id_vestimenta SERIAL PRIMARY KEY,
     nome char(50) NOT NULL,
     descricao char(800),
     FOREIGN KEY (id_vestimenta) REFERENCES Item (id_item)
@@ -79,7 +80,7 @@ CREATE TABLE Monstro (
 );
 
 CREATE TABLE Semente (
-    id_semente int NOT NULL,
+    id_semente SERIAL PRIMARY KEY,
     estacao int NOT NULL,
     nome char(50) NOT NULL,
     descricao char(800),
@@ -110,13 +111,13 @@ CREATE TABLE NPC (
     regiao int NOT NULL,
     local_NPC int NOT NULL,
     nome char(50) NOT NULL,
-    profissao varchar(100),
+    profissao char(100),
     FOREIGN KEY (regiao) REFERENCES Regiao (id_regiao),
     FOREIGN KEY (local_NPC) REFERENCES Local_Fechado (id_local_fechado)
 );
 
 CREATE TABLE Caverna (
-    id_caverna int NOT NULL,
+    id_caverna SERIAL PRIMARY KEY,
     regiao int NOT NULL,
     nome char(50) NOT NULL,
     descricao char(800),
@@ -126,7 +127,7 @@ CREATE TABLE Caverna (
 
 
 CREATE TABLE Cabana_NPC (
-    id_cabana_npc int NOT NULL,
+    id_cabana_npc SERIAL PRIMARY KEY,
     npc int NOT NULL,
     regiao int NOT NULL,
     nome char(50) NOT NULL,
@@ -215,7 +216,7 @@ CREATE TABLE Dialogo (
 );
 
 CREATE TABLE Cabana_Jogador (
-    id_cabana_jog int NOT NULL,
+    id_cabana_jog SERIAL PRIMARY KEY,
     jogador int NOT NULL,
     regiao int NOT NULL,
     nome char(50) NOT NULL,
