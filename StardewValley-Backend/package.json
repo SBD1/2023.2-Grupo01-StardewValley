@@ -8,8 +8,9 @@
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
     "createdb": "psql -U postgres -h localhost -a -f src/database/auxs/001-create-db.sql",
-    "createtables":"npm run createdb &&  -a -f src/database/auxs/002-create-tables.sql",
+    "createtb":"psql -U postgres -h localhost -f src/database/auxs/002-create-tables.sql",
     "pulldb": "psql -U postgres -h localhost -a -f src/database/auxs/003-create-infos.sql",
+    "droptb":"psql -U postgres -h localhost -a -f src/database/auxs/333-destroy-tables.sql",
     "dropdb": "psql -U postgres -h localhost -a -f src/database/auxs/666-destroydb.sql"
 
   },

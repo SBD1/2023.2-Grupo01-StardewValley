@@ -1,12 +1,5 @@
--- Verifique se o banco de dados já existe
-DO $$ 
-BEGIN 
-  IF NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'stardew_valley') THEN 
-    -- Crie o banco de dados se ele não existir
-    CREATE DATABASE stardew_valley;
-  END IF;
-END $$;
+-- Create the database if it does not exist
+CREATE DATABASE stardew_valley;
 
-
--- Conecte-se ao banco de dados
+-- Connect to the database
 \c stardew_valley;
