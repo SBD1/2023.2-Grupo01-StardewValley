@@ -6,12 +6,18 @@ FROM Jogador ;
 -- Consultar todas as culturas da fazenda do jogador
 SELECT * FROM Plantacoes WHERE id_fazenda = (SELECT id_fazenda FROM Fazendas WHERE id_jogador = ?);
 
-
 -- Dados sobre o inventario do jogador
 SELECT I.nome, II.qtdd
 FROM Item_Inventario II
 JOIN Item I ON II.item = I.id_item
 --WHERE II.jogador = ?;
+
+-- Consultar Habilidades
+
+SELECT nivel_coleta, nivel_cultivo, nivel_mineracao, nivel_pesca, nivel_combate 
+FROM Habilidade 
+WHERE jogador = ?; -- Substituir ? pelo ID do jogador.
+
 
 -- Consultar a quantidade total de um tipo específico de item no inventário de um jogador:
 SELECT I.id_tipo, COUNT(*) as QuantidadeTotal
