@@ -148,7 +148,7 @@ SELECT * FROM Instancia_Monstro (
 -- atualizar regiao int NOT NULL,
 -- atualizar estacao_atual int NOT NULL,
 -- atualizar missao_atual int,
--- atualizar nome varchar(50) NOT NULL,
+-- atualizar nome char(50) NOT NULL,
 -- atualizar saude int NOT NULL,
 -- atualizar energia int NOT NULL,
 -- atualizar dia int NOT NULL,

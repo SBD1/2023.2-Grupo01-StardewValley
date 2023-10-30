@@ -45,32 +45,32 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 
 ## 2. Atributos
 
-- **Dialogo**: <ins>id-dialogo</ins>, npc, fala;
-- **Efeito**: <ins>id-efeito</ins>, item, valor, tipo;
-- **Estacao**: <ins>id-estacao</ins>, nome, descricao;
+- **Dialogo**: <ins>id_dialogo</ins>, npc, fala;
+- **Efeito**: <ins>id_efeito</ins>, item, valor, tipo;
+- **Estacao**: <ins>id_estacao</ins>, nome, descricao;
 - **Habilidade**: jogador, nivel-coleta, nivel-cultivo, nivel-mineracao, nivel-pesca, nivel-combate;
 - **Instância-Monstro**: caverna, monstro, saude;
 - **Item-Estoque-Loja**: produto, loja, preco;
 - **Item-Inventário**: jogador, item, qtdd;
-- **Item-Receita**: id-artesanato, item, qtdd;
-- **Item**: <ins>id-item</ins>, id-tipo;
- - **Semente**: id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer;
- - **Ferramenta**: id-ferramenta, nome, descricao;
- - **Consumível**: id-consumivel, estacao, nome, descricao, valor-venda, dias-para-crescer;
- - **Vestimenta**: id-vestimenta, nome, descricao;
- - **Arma**: id-arma, nome, descricao, dano, finalidade;
- - **Artesanato**: id-artesanato, nome, descricao;
-- **Jogador**: <ins>id-jogador</ins>, local, regiao, estacao-atual, missao-atual, nome, saude, energia, dia, qtdd-ouro;
-- **Local-Fechado**: <ins>id-local-fechado</ins>, id-tipo;
- - **Cabana-Jogador**: id-cabana-jog, jogador, regiao, nome, descricao;
- - **Caverna**: id-caverna, regiao, nome, descricao;
- - **Cabana-NPC**: id-cabana-npc, npc, regiao, nome, descricao;
- - **Loja**: id-loja, proprietario, regiao, nome, descricao;
-- **Missao**: <ins>id-missao</ins>, estacao, nome, descricao;
-- **Monstro**: <ins>id-monstro</ins>, drop, nome, descricao, dano, defesa, saude-maxima;
-- **Mundo**: <ins>id-mundo</ins>, nome;
-- **NPC**: <ins>id-npc</ins>, regiao, local, nome, profissao;
-- **Região**: <ins>id-regiao</ins>, mundo, nome;
+- **Item-Receita**: id_artesanato, item, qtdd;
+- **Item**: <ins>id_item</ins>, id_tipo;
+ - **Semente**: id_semente, estacao, nome, descricao, valor-venda, dias-para-crescer;
+ - **Ferramenta**: id_ferramenta, nome, descricao;
+ - **Consumível**: id_consumivel, estacao, nome, descricao, valor-venda, dias-para-crescer;
+ - **Vestimenta**: id_vestimenta, nome, descricao;
+ - **Arma**: id_arma, nome, descricao, dano, finalidade;
+ - **Artesanato**: id_artesanato, nome, descricao;
+- **Jogador**: <ins>id_jogador</ins>, local, regiao, estacao-atual, missao-atual, nome, saude, energia, dia, qtdd-ouro;
+- **Local-Fechado**: <ins>id_local-fechado</ins>, id_tipo;
+ - **Cabana-Jogador**: id_cabana-jog, jogador, regiao, nome, descricao;
+ - **Caverna**: id_caverna, regiao, nome, descricao;
+ - **Cabana-NPC**: id_cabana-npc, npc, regiao, nome, descricao;
+ - **Loja**: id_loja, proprietario, regiao, nome, descricao;
+- **Missao**: <ins>id_missao</ins>, estacao, nome, descricao;
+- **Monstro**: <ins>id_monstro</ins>, item_drop, nome, descricao, dano, defesa, saude-maxima;
+- **Mundo**: <ins>id_mundo</ins>, nome;
+- **NPC**: <ins>id_npc</ins>, regiao, local, nome, profissao;
+- **Região**: <ins>id_regiao</ins>, mundo, nome;
 
 ## 3. Relacionamentos
 
