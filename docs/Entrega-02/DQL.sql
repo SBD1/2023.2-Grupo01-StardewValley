@@ -48,3 +48,34 @@ SELECT id_monstro, item_drop, dano, defesa, saude_maxima FROM Monstro WHERE nome
 -- consultar o id e as informações de uma semente específica
 SELECT id_semente, estacao, descricao, valor_venda, dias_para_crescer FROM Semente WHERE nome = 'Semente de Couve-flor';
 
+-- consultar o id e as informações de uma missao específica
+SELECT id_missao, estacao, descricao FROM Missao WHERE nome = 'Plantando as Sementes';
+
+-- consultar o id e o mundo de uma regiao específica
+SELECT id_regiao, mundo FROM Regiao WHERE nome = 'Vila Pelicanos';
+
+-- consultar o id e as informações de um NPC específico
+SELECT id_npc, regiao, local_NPC, profissao FROM NPC WHERE nome = 'Willy';
+
+-- consultar o id e as informações de uma caverna específica
+SELECT id_caverna, regiao, descricao FROM Caverna WHERE nome = 'Caverna das Minhocas';
+
+-- consultar o id e as informações de uma cabana_NPC específica
+SELECT id_cabana_npc, regiao, descricao FROM Cabana_NPC WHERE npc = 'Cabana de Robin';
+
+-- consultar o id e as informações de uma loja específica
+SELECT id_loja, proprietario, regiao, descricao FROM Loja WHERE nome = 'Loja de Linus';
+
+-- Dados geral sobre o jogador
+SELECT regiao, estacao_atual, missao_atual, nome, saude, energia, qtdd_ouro
+FROM Jogador ;
+
+-- consultar o id e as informações de um jogador específico
+SELECT id_jogador, local_jogador, regiao, estacao_atual, missao_atual, saude, energia, dia, qtdd_ouro FROM Jogador WHERE nome = 'Marcus';
+
+-- consultar a receita de um artesanato específico
+SELECT item, qtdd FROM Item_Receita, Artesanato WHERE Item_Receita.artesanato = Artesanato.id_artesanato and Artesanato.nome = 'Tear';
+
+-- Consultar Habilidades
+SELECT nivel_coleta, nivel_cultivo, nivel_mineracao, nivel_pesca, nivel_combate FROM Habilidade, Jogador WHERE Habilidade.jogador = Jogador.id_jogador and jogador = 'Edilberto';
+
