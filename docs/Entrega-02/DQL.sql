@@ -1,38 +1,50 @@
+-- --------------------------------------------------------------------------------------
+-- Data Criacao ...........: 16/10/2023                                                --
+-- Autor(es) ..............: Zenilda Vieira                                            --
+-- Versao ..............: 1.0                                                          --
+-- Banco de Dados .........: PostgreSQL                                                --
+-- Descricao .........: Consulta das tabelas do banco de dados.                        --
+-- --------------------------------------------------------------------------------------
+-- | Atualizacao : 29/10/2023 | Autor(es): Matheus Silverio e Zenilda Vieira        |  --
+--                            | Descricao: Inclusão das consultas do banco de dados |  --
+-- --------------------------------------------------------------------------------------
 
--- Dados geral sobre o jogador
-SELECT regiao, estacao_atual, missao_atual, nome, saude, energia, qtdd_ouro
-FROM Jogador ;
+-- consultar o id e a descricao de uma estacao específica
+SELECT id_estacao, descricao FROM Estacao WHERE nome = 'Primavera';
 
--- Consultar todas as culturas da fazenda do jogador
-SELECT * FROM Plantacoes WHERE id_fazenda = (SELECT id_fazenda FROM Fazendas WHERE id_jogador = ?);
+-- consultar o id de um tipo de item específico
+SELECT id_item FROM Item WHERE id_tipo = 'Semente';
 
--- Dados sobre o inventario do jogador
-SELECT I.nome, II.qtdd
-FROM Item_Inventario II
-JOIN Item I ON II.item = I.id_item
---WHERE II.jogador = ?;
+-- consultar o id de um local fechado específico
+SELECT id_local_fechado FROM Local_Fechado WHERE id_tipo  = 'Loja';
 
--- Consultar Habilidades
+-- consultar o id de um mundo específico
+SELECT id_mundo FROM Mundo WHERE nome = 'Fazenda';
 
-SELECT nivel_coleta, nivel_cultivo, nivel_mineracao, nivel_pesca, nivel_combate 
-FROM Habilidade 
-WHERE jogador = ?; -- Substituir ? pelo ID do jogador.
+-- consultar o id e a descricao de uma arma específica
+SELECT id_arma, descricao FROM Arma WHERE nome = 'espada';
 
+-- consultar a descricao, o dano e a finalidade de uma arma específica
+SELECT descricao, dano, finalidade FROM Arma WHERE id_arma = 1;
 
--- Consultar a quantidade total de um tipo específico de item no inventário de um jogador:
-SELECT I.id_tipo, COUNT(*) as QuantidadeTotal
-FROM Item_Inventario II
-JOIN Item I ON II.item = I.id_item
---WHERE II.jogador = ? AND I.id_tipo = 'Arma'; -- ou qualquer outro tipo
+-- consultar o id de um artesanato específico
+SELECT id_artesanato, descricao FROM Artesanato WHERE nome = 'Espantalho';
 
--- Consulta Estoque de loja
-SELECT I.nome AS NomeDoItem, I.id_tipo AS TipoDoItem, I.id_item AS IDItem, I.descricao AS DescricaoDoItem, I.preco, I.qtdd AS QuantidadeEmEstoque
-FROM Item_Estoque_Loja IEL
-JOIN Item I ON IEL.produto = I.id_item
-WHERE IEL.loja = ?; -- Substituir ? pelo ID da loja desejada
+-- consultar o id e a descricao de um consumivel específico
+SELECT id_consumivel, descricao FROM Consumivel WHERE nome = 'Omelete';
 
--- Consulta de instancia de monstro
-SELECT M.id_monstro, M.nome AS NomeDoMonstro, M.descricao AS DescricaoDoMonstro, M.dano AS DanoDoMonstro, M.defesa AS DefesaDoMonstro, M.saude_maxima AS SaudeMaximaDoMonstro, IM.saude AS SaudeAtualDoMonstro
-FROM Monstro M
-JOIN Instancia_Monstro IM ON M.id_monstro = IM.monstro
-WHERE IM.id_local_fechado = ?; -- Substituir ? pelo ID da instância do monstro com o qual o jogador está lutando, necessário replicar a consulta para cada monstro
+-- consultar o id e a descricao e o valor de um efeito específico
+SELECT id_efeito, descricao, valor FROM Efeito WHERE tipo = 'tipo1';
+
+-- consultar o id, a descricao e a finalidade de uma ferramenta específica
+SELECT id_ferramenta, descricao, finalidade FROM Ferramenta WHERE nome = 'enxada';
+
+-- consultar o id e a descricao de um vestimenta específico
+SELECT id_vestimenta, descricao FROM Vestimenta WHERE nome = 'Vestido de Baile de Inverno';
+
+-- consultar o id e as informações de um monstro específico
+SELECT id_monstro, item_drop, dano, defesa, saude_maxima FROM Monstro WHERE nome = '';
+
+-- consultar o id e as informações de uma semente específica
+SELECT id_semente, estacao, descricao, valor_venda, dias_para_crescer FROM Semente WHERE nome = 'Semente de Couve-flor';
+
