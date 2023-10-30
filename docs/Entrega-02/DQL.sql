@@ -67,8 +67,7 @@ SELECT id_cabana_npc, regiao, descricao FROM Cabana_NPC WHERE npc = 'Cabana de R
 SELECT id_loja, proprietario, regiao, descricao FROM Loja WHERE nome = 'Loja de Linus';
 
 -- Dados geral sobre o jogador
-SELECT regiao, estacao_atual, missao_atual, nome, saude, energia, qtdd_ouro
-FROM Jogador ;
+SELECT regiao, estacao_atual, missao_atual, nome, saude, energia, qtdd_ouro FROM Jogador WHERE nome = ' Matheus';
 
 -- consultar o id e as informações de um jogador específico
 SELECT id_jogador, local_jogador, regiao, estacao_atual, missao_atual, saude, energia, dia, qtdd_ouro FROM Jogador WHERE nome = 'Marcus';
@@ -77,5 +76,83 @@ SELECT id_jogador, local_jogador, regiao, estacao_atual, missao_atual, saude, en
 SELECT item, qtdd FROM Item_Receita, Artesanato WHERE Item_Receita.artesanato = Artesanato.id_artesanato and Artesanato.nome = 'Tear';
 
 -- Consultar Habilidades
-SELECT nivel_coleta, nivel_cultivo, nivel_mineracao, nivel_pesca, nivel_combate FROM Habilidade, Jogador WHERE Habilidade.jogador = Jogador.id_jogador and jogador = 'Edilberto';
+SELECT nivel_coleta, nivel_cultivo, nivel_mineracao, nivel_pesca, nivel_combate FROM Habilidade, Jogador WHERE Habilidade.jogador = Jogador.id_jogador and Habilidade.jogador = 'Edilberto';
+
+-- consultar o id e a fala de um dialogo específico
+SELECT id_dialogo, fala FROM Dialogo, NPC WHERE NPC.id_npc = Dialogo.npc and NPC.nome = 'Marlon';
+
+-- consultar o id e as informações de uma cabana_jogador específica
+SELECT id_cabana_jog, regiao, nome, descricao FROM Cabana_Jogador, Jogador WHERE Cabana_Jogador.jogador = Jogador.id_jogador and Jogador.nome = 'Zenilda' 
+
+
+-- Dados sobre o inventario do jogador
+SELECT I.nome, II.qtdd
+FROM Item_Inventario II
+JOIN Item I ON II.item = I.id_item
+--WHERE II.jogador = ?;
+
+-- Consultar a quantidade total de um tipo específico de item no inventário de um jogador:
+SELECT I.id_tipo, COUNT(*) as QuantidadeTotal
+FROM Item_Inventario II
+JOIN Item I ON II.item = I.id_item
+--WHERE II.jogador = ? AND I.id_tipo = 'Arma'; -- ou qualquer outro tipo
+
+-- consultar o id de um item_inventario específico
+SELECT * FROM Item_Inventario (
+    jogador int NOT NULL,
+    item int NOT NULL,
+    qtdd int NOT NULL,
+    FOREIGN KEY (jogador) REFERENCES Jogador (id_jogador),
+    FOREIGN KEY (item) REFERENCES Item (id_item)
+);
+
+-- Consulta Estoque de loja
+SELECT I.nome AS NomeDoItem, I.id_tipo AS TipoDoItem, I.id_item AS IDItem, I.descricao AS DescricaoDoItem, I.preco, I.qtdd AS QuantidadeEmEstoque
+FROM Item_Estoque_Loja IEL
+JOIN Item I ON IEL.produto = I.id_item
+WHERE IEL.loja = ?; -- Substituir ? pelo ID da loja desejada
+
+-- consultar o id de um item_estoque_loja específico
+SELECT * FROM Item_Estoque_Loja (
+    produto int NOT NULL,
+    loja int NOT NULL,
+    preco int NOT NULL,
+    FOREIGN KEY (produto) REFERENCES Item (id_item),
+    FOREIGN KEY (loja) REFERENCES Loja (id_loja)
+);
+
+
+-- Consulta de instancia de monstro
+SELECT M.id_monstro, M.nome AS NomeDoMonstro, M.descricao AS DescricaoDoMonstro, M.dano AS DanoDoMonstro, M.defesa AS DefesaDoMonstro, M.saude_maxima AS SaudeMaximaDoMonstro, IM.saude AS SaudeAtualDoMonstro
+FROM Monstro M
+JOIN Instancia_Monstro IM ON M.id_monstro = IM.monstro
+WHERE IM.id_local_fechado = ?; -- Substituir ? pelo ID da instância do monstro com o qual o jogador está lutando, necessário replicar a consulta para cada monstro
+
+-- consultar o id de um instancia_monstro específico
+SELECT * FROM Instancia_Monstro (
+    caverna int NOT NULL,
+    monstro int NOT NULL,
+    saude int NOT NULL,
+    FOREIGN KEY (caverna) REFERENCES Local_Fechado (id_local_fechado),
+    FOREIGN KEY (monstro) REFERENCES Monstro (id_monstro)
+);
+
+
+
+
+
+-- Consultas da tabela Jogador
+
+-- Atualizar os atributos do jogador
+-- atualizar local_jogador
+-- atualizar regiao int NOT NULL,
+-- atualizar estacao_atual int NOT NULL,
+-- atualizar missao_atual int,
+-- atualizar nome varchar(50) NOT NULL,
+-- atualizar saude int NOT NULL,
+-- atualizar energia int NOT NULL,
+-- atualizar dia int NOT NULL,
+-- atualizar qtdd_ouro int,
+
+-- UPDATE Jogador SET local_jogador = 
 
