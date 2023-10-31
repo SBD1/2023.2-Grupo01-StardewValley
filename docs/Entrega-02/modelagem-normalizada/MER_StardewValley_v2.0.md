@@ -73,6 +73,7 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - **NPC**: <ins>id-npc</ins>, id-regiao, id-local-fechado, nome, profissao;
 - **Região**: <ins>id-regiao</ins>, id-mundo, nome;
 
+
 ## 3. Relacionamentos
 
 **Jogador _está_ em Estação**
