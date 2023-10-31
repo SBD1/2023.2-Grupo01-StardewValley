@@ -1,12 +1,12 @@
 ## Histórico de versões
 
-| Versão |  Data  | Descrição        | Autor                                                         |
+| Versão |    Data    | Descrição               | Autor                                                                                                                 |
 | :----: | :--------: | ----------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `1.0` | 16/09/2023 | Criação do documento DD | [Zenilda Vieira](https://github.com/ZenildaVieira)                                  |
-| `1.1` | 24/09/2023 | Adequação do DD ao DER | [Marcus Martins](https://github.com/marcusmartinss) <br> [Edilberto Cantuaria](https://github.com/marcusmartinss)   |
-| `1.2` | 25/09/2023 | Descrição das entidades | [Marcus Martins](https://github.com/marcusmartinss)                                  |
-| `1.3` | 25/09/2023 | 1ª Revisão Geral    | [Zenilda Vieira](https://github.com/ZenildaVieira)                                  |
-| `1.4` | 26/09/2023 | Revisão em pares    | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br> [Zenilda Vieira](https://github.com/ZenildaVieira) |
+| `1.0`  | 16/09/2023 | Criação do documento DD | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                                    |
+| `1.1`  | 24/09/2023 | Adequação do DD ao DER  | [Marcus Martins](https://github.com/marcusmartinss) <br> [Edilberto Cantuaria](https://github.com/marcusmartinss)     |
+| `1.2`  | 25/09/2023 | Descrição das entidades | [Marcus Martins](https://github.com/marcusmartinss)                                                                   |
+| `1.3`  | 25/09/2023 | 1ª Revisão Geral        | [Zenilda Vieira](https://github.com/ZenildaVieira)                                                                    |
+| `1.4`  | 26/09/2023 | Revisão em pares        | [Edilberto Cantuaria](https://github.com/edilbertocantuaria), <br> [Zenilda Vieira](https://github.com/ZenildaVieira) |
 
 # DD - Dicionário de Dados
 
@@ -18,13 +18,13 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Item`.
 
-| Nome Variável |   Tipo   |     Descrição     | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |         Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-arma  |   int   | Identificador do item arma |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |    Nome da arma    |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |   Descrição da arma   |   a-z, A-Z   |     sim      |     |          |
-|   dano   |   int   |    Dano da arma    |    1-10    |     não      |     |          |
-| finalidade  | varchar[100] |   Finalidade da arma   |   a-z, A-Z   |     não      |     |          |
+|    id-arma    |     int      | Identificador do item arma |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |        Nome da arma        |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |     Descrição da arma      |      a-z, A-Z      |          sim           |          |                   |
+|     dano      |     int      |        Dano da arma        |        1-10        |          não           |          |                   |
+|  finalidade   | varchar[100] |     Finalidade da arma     |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Artesanato
 
@@ -32,11 +32,11 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Item`.
 
-| Nome Variável |   Tipo   |      Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-artesanato |   int   | Identificador do item artesanato |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |  Nome do item de artesanato  |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] | Descrição do item de artesanato |   a-z, A-Z   |     sim      |     |          |
+| id-artesanato |     int      | Identificador do item artesanato |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |    Nome do item de artesanato    |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] | Descrição do item de artesanato  |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Cabana-Jogador
 
@@ -44,13 +44,13 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Local-Fechado`, `Jogador` e `Regiao`
 
-| Nome Variável |   Tipo   |          Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |                    Descrição                    | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :---------------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-cabana-jog |   int   |    Identificador da cabana do jogador    |    1-5000    |     não      |  FK  |          |
-|  jogador  |   int   | Identificador do Jogador proprietário da cabana |    1-5000    |     não      |  FK  |          |
-|  regiao   |   int   |  Identificador da Região onde está a cabana  |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |         Nome da cabana         |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |        Descrição da cabana        |   a-z, A-Z   |     sim      |     |          |
+| id-cabana-jog |     int      |       Identificador da cabana do jogador        |       1-5000       |          não           |    FK    |                   |
+|    jogador    |     int      | Identificador do Jogador proprietário da cabana |       1-5000       |          não           |    FK    |                   |
+|    regiao     |     int      |   Identificador da Região onde está a cabana    |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |                 Nome da cabana                  |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |               Descrição da cabana               |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Cabana-NPC
 
@@ -58,13 +58,13 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Local-Fechado`, `NPC` e `Regiao`
 
-| Nome Variável |   Tipo   |         Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-cabana-npc |   int   |    Identificador da cabana do NPC    |    1-5000    |     não      |  FK  |          |
-|   npc   |   int   | Identificador do NPC proprietário da cabana |    1-5000    |     não      |  FK  |          |
-|  regiao   |   int   | Identificador da Região onde estã a cabana |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |      Nome da cabana do NPC      |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |     Descrição da cabana do NPC     |   a-z, A-Z   |     sim      |     |          |
+| id-cabana-npc |     int      |       Identificador da cabana do NPC        |       1-5000       |          não           |    FK    |                   |
+|      npc      |     int      | Identificador do NPC proprietário da cabana |       1-5000       |          não           |    FK    |                   |
+|    regiao     |     int      | Identificador da Região onde estã a cabana  |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |            Nome da cabana do NPC            |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |         Descrição da cabana do NPC          |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Caverna
 
@@ -72,12 +72,12 @@
 
 #### Observação:Essa tabela possui chaves estrangeiras das entidades `Caverna` e `Região`.
 
-| Nome Variável |   Tipo   |         Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-caverna  |   int   |     Identificador da caverna      |    1-5000    |     não      |  FK  |          |
-|  regiao   |   int   | Identificador da Região onde está a caverna |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |        Nome da caverna        |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |      Descrição da caverna       |   a-z, A-Z   |     sim      |     |          |
+|  id-caverna   |     int      |          Identificador da caverna           |       1-5000       |          não           |    FK    |                   |
+|    regiao     |     int      | Identificador da Região onde está a caverna |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |               Nome da caverna               |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |            Descrição da caverna             |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Consumível
 
@@ -85,11 +85,11 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Item`.
 
-| Nome Variável |   Tipo   |      Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-consumivel |   int   | Identificador do item consumível |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |   Nome do item consumível   |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |  Descrição do item consumível  |   a-z, A-Z   |     sim      |     |          |
+| id-consumivel |     int      | Identificador do item consumível |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |     Nome do item consumível      |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |   Descrição do item consumível   |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Diálogo
 
@@ -97,11 +97,11 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `NPC`
 
-| Nome Variável |   Tipo   |       Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |              Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :---------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-dialogo  |   int   | Código de identificação do diálogo |    1-5000    |     não      |  PK  |          |
-|   npc   |   int   | codigo do NPC que usa essse dialogo |    1-5000    |     não      |  FK  |          |
-|   fala   | varchar[150] |     Conteúdo do diálogo     |   a-z, A-Z   |     não      |     |          |
+|  id-dialogo   |     int      | Código de identificação do diálogo  |       1-5000       |          não           |    PK    |                   |
+|      npc      |     int      | codigo do NPC que usa essse dialogo |       1-5000       |          não           |    FK    |                   |
+|     fala      | varchar[150] |         Conteúdo do diálogo         |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Efeito
 
@@ -109,12 +109,12 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Item`.
 
-| Nome Variável |   Tipo   |        Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-efeito  |   int   |  Código de identificação do efeito   |    1-5000    |     não      |  PK  |          |
-|   item   |   int   | Identificador do item que sofre o efeito |    1-5000    |     não      |  FK  |          |
-|   valor   |   int   |    Valor produzido pelo efeito    |    1-50    |     não      |     |          |
-|   tipo   | varchar[100] |       tipo do efeito       |   a-z, A-Z   |     sim      |     |          |
+|   id-efeito   |     int      |    Código de identificação do efeito     |       1-5000       |          não           |    PK    |                   |
+|     item      |     int      | Identificador do item que sofre o efeito |       1-5000       |          não           |    FK    |                   |
+|     valor     |     int      |       Valor produzido pelo efeito        |        1-50        |          não           |          |                   |
+|     tipo      | varchar[100] |              tipo do efeito              |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Estação
 
@@ -122,11 +122,11 @@
 
 #### Observação: A cada 28 dias, muda a estção do ano: primavera, verão, outono e inverno.
 
-| Nome Variável |   Tipo   |       Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |             Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :--------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-estacao  |   int   | Código de identificação da estação |    1-5000    |     não      |  PK  |          |
-|   nome   | varchar[50] |     Nome da estação      |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |    Descrição da estação    |   a-z, A-Z   |     sim      |     |          |
+|  id-estacao   |     int      | Código de identificação da estação |       1-5000       |          não           |    PK    |                   |
+|     nome      | varchar[50]  |          Nome da estação           |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |        Descrição da estação        |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Ferramenta
 
@@ -134,12 +134,12 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Item`.
 
-| Nome Variável |   Tipo   |      Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-ferramenta |   int   | Identificador do item ferramenta |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |    Nome da ferramenta    |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |   Descrição da ferramenta   |   a-z, A-Z   |     sim      |     |          |
-| finalidade  | varchar[100] |   Finalidade da ferramenta   |   a-z, A-Z   |     não      |     |          |
+| id-ferramenta |     int      | Identificador do item ferramenta |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |        Nome da ferramenta        |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |     Descrição da ferramenta      |      a-z, A-Z      |          sim           |          |                   |
+|  finalidade   | varchar[100] |     Finalidade da ferramenta     |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Habilidade
 
@@ -147,14 +147,14 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Jogador`.
 
-| Nome Variável | Tipo |      Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+|  Nome Variável  | Tipo |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-------------: | :--: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   jogador   | int |   Identificador do jogador   |    1-5000    |     não      |  FK  |          |
-| nivel-coleta  | int | Nível da habilidade de coleta  |    1-10    |     não      |     |          |
-| nivel-cultivo | int | Nível da habilidade de cultivo |    1-10    |     não      |     |          |
-| nivel-mineracao | int | Nível da habilidade de mineração |    1-10    |     não      |     |          |
-|  nivel-pesca  | int |  Nível da habilidade de pesca  |    1-10    |     não      |     |          |
-| nivel-combate | int | Nível da habilidade de combate |    1-10    |     não      |     |          |
+|     jogador     | int  |     Identificador do jogador     |       1-5000       |          não           |    FK    |                   |
+|  nivel-coleta   | int  |  Nível da habilidade de coleta   |        1-10        |          não           |          |                   |
+|  nivel-cultivo  | int  |  Nível da habilidade de cultivo  |        1-10        |          não           |          |                   |
+| nivel-mineracao | int  | Nível da habilidade de mineração |        1-10        |          não           |          |                   |
+|   nivel-pesca   | int  |   Nível da habilidade de pesca   |        1-10        |          não           |          |                   |
+|  nivel-combate  | int  |  Nível da habilidade de combate  |        1-10        |          não           |          |                   |
 
 ## Entidade: Instancia-Monstro
 
@@ -162,11 +162,11 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Caverna` e `Monstro`.
 
-| Nome Variável | Tipo |             Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável | Tipo |                         Descrição                         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :--: | :-------------------------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  caverna  | int | Identificador da caverna onde está a instância do monstro |    1-5000    |     não      |  FK  |          |
-|  monstro  | int |         Identificador do Monstro         |    1-5000    |     não      |  FK  |          |
-|   saude   | int |        Saúde da instância de monstro        |    1-100    |     não      |     |          |
+|    caverna    | int  | Identificador da caverna onde está a instância do monstro |       1-5000       |          não           |    FK    |                   |
+|    monstro    | int  |                 Identificador do Monstro                  |       1-5000       |          não           |    FK    |                   |
+|     saude     | int  |               Saúde da instância de monstro               |       1-100        |          não           |          |                   |
 
 ## Entidade: Item-Estoque-Loja
 
@@ -174,11 +174,11 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Item` e `Loja`.
 
-| Nome Variável | Tipo |      Descrição      | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável | Tipo |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :--: | :---------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  produto  | int | Identificador do item-produto |    1-5000    |     não      |  FK  |          |
-|   loja   | int |   Identificador da loja   |    1-5000    |     não      |  FK  |          |
-|   preço   | int | Preço do produto no estoque |    1-5000    |     não      |     |          |
+|    produto    | int  | Identificador do item-produto |       1-5000       |          não           |    FK    |                   |
+|     loja      | int  |     Identificador da loja     |       1-5000       |          não           |    FK    |                   |
+|     preço     | int  |  Preço do produto no estoque  |       1-5000       |          não           |          |                   |
 
 ## Entidade: Item-Inventário
 
@@ -186,11 +186,11 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Item`.
 
-| Nome Variável | Tipo |    Descrição     | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável | Tipo |        Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :--: | :----------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  jogador  | int | Identificador do Jogador |    1-5000    |     não      |  FK  |          |
-|   item   | int | Identificador do Item  |    1-5000    |     não      |  FK  |          |
-|   qtdd   | int |  quantidade do item  |    1-5000    |     não      |     |          |
+|    jogador    | int  | Identificador do Jogador |       1-5000       |          não           |    FK    |                   |
+|     item      | int  |  Identificador do Item   |       1-5000       |          não           |    FK    |                   |
+|     qtdd      | int  |    quantidade do item    |       1-5000       |          não           |          |                   |
 
 ## Entidade: Item-Receita
 
@@ -198,11 +198,11 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Artesanato` e `Item`.
 
-| Nome Variável | Tipo |      Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável | Tipo |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :--: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| artesanato  | int |  Identificador do artesanato  |    1-5000    |     não      |  FK  |          |
-|   item   | int |   Identificador do item    |    1-5000    |     não      |  FK  |          |
-|   qtdd   | int | Quantidade desse item na receita |    1-5000    |     não      |     |          |
+|  artesanato   | int  |   Identificador do artesanato    |       1-5000       |          não           |    FK    |                   |
+|     item      | int  |      Identificador do item       |       1-5000       |          não           |    FK    |                   |
+|     qtdd      | int  | Quantidade desse item na receita |       1-5000       |          não           |          |                   |
 
 ## Entidade: Item
 
@@ -210,10 +210,10 @@
 
 #### Observação: Os itens podem ser de 6 tipos: arma, ferramenta, consumível, vestimenta, artesanato e semente.
 
-| Nome Variável |  Tipo   |      Descrição      | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |    Tipo     |            Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :-----------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-item  |   int   | Código de Identificação do item |    1-5000    |     não      |  PK  |          |
-|  id-tipo  | varchar[50] | Identificação do tipo do item |   a-z, A-Z   |     não      |     |          |
+|    id-item    |     int     | Código de Identificação do item |       1-5000       |          não           |    PK    |                   |
+|    id-tipo    | varchar[50] |  Identificação do tipo do item  |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Jogador
 
@@ -221,18 +221,18 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Local`, `Regiao`,`Estacao` e `Missao`.
 
-| Nome Variável |  Tipo   |       Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |    Tipo     |             Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :--------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-jogador  |   int   | Código de identificação do jogador |    1-5000    |     não      |  PK  |          |
-|   local   |   int   |    Identificador do local    |    1-5000    |     não      |  FK  |          |
-|  regiao   |   int   |   Identificador da região    |    1-5000    |     não      |  FK  |          |
-| estacao-atual |   int   |  Identificador da estação-atual  |    1-5000    |     não      |  FK  |          |
-| missao-atual |   int   |  Identificador da missao-atual  |    1-5000    |     sim      |  FK  |          |
-|   nome   | varchar[50] |     Nome do jogador      |   a-z, A-Z   |     não      |     |          |
-|   saude   |   int   |     Saude do jogador     |    1-100    |     não      |     |          |
-|  energia  |   int   |     Energia do jogador     |    1-100    |     não      |     |          |
-|   dia   |   int   |      Dia do jogador      |    1-100    |     não      |     |          |
-|  qtdd-ouro  |   int   |  Quantidade de ouro do jogador  |    min. 0    |     sim      |     |          |
+|  id-jogador   |     int     | Código de identificação do jogador |       1-5000       |          não           |    PK    |                   |
+|     local     |     int     |       Identificador do local       |       1-5000       |          não           |    FK    |                   |
+|    regiao     |     int     |      Identificador da região       |       1-5000       |          não           |    FK    |                   |
+| estacao-atual |     int     |   Identificador da estação-atual   |       1-5000       |          não           |    FK    |                   |
+| missao-atual  |     int     |   Identificador da missao-atual    |       1-5000       |          sim           |    FK    |                   |
+|     nome      | varchar[50] |          Nome do jogador           |      a-z, A-Z      |          não           |          |                   |
+|     saude     |     int     |          Saude do jogador          |       1-100        |          não           |          |                   |
+|    energia    |     int     |         Energia do jogador         |       1-100        |          não           |          |                   |
+|      dia      |     int     |           Dia do jogador           |       1-100        |          não           |          |                   |
+|   qtdd-ouro   |     int     |   Quantidade de ouro do jogador    |       min. 0       |          sim           |          |                   |
 
 ## Entidade: Local-Fechado
 
@@ -240,10 +240,10 @@
 
 #### Observação: Os locais fechados podem ser de 4 tipos: cabana do jogador, cabana de um NPC, caverna e loja.
 
-| Nome Variável  |  Tipo   |        Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+|  Nome Variável   |    Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :--------------: | :---------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-local-fechado |   int   | Código de identificação do local fechado |    1-5000    |     não      |  PK  |          |
-|   id-tipo   | varchar[50] | Identificação do tipo de local fechado |   a-z, A-Z   |     não      |     |          |
+| id-local-fechado |     int     | Código de identificação do local fechado |       1-5000       |          não           |    PK    |                   |
+|     id-tipo      | varchar[50] |  Identificação do tipo de local fechado  |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Loja
 
@@ -251,13 +251,13 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Local-Fechado`, `NPC` e `Regiao`.
 
-| Nome Variável |   Tipo   |        Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-loja  |   int   |     Identificador da loja      |    1-5000    |     não      |  FK  |          |
-| proprietario |   int   |   Identificador do proprietário    |    1-5000    |     não      |  FK  |          |
-|  regiao   |   int   | Identificador da região onde está a loja |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |        Nome da loja        |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |      Descrição da loja       |   a-z, A-Z   |     sim      |     |          |
+|    id-loja    |     int      |          Identificador da loja           |       1-5000       |          não           |    FK    |                   |
+| proprietario  |     int      |      Identificador do proprietário       |       1-5000       |          não           |    FK    |                   |
+|    regiao     |     int      | Identificador da região onde está a loja |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |               Nome da loja               |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |            Descrição da loja             |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Missao
 
@@ -265,12 +265,12 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Estacao`.
 
-| Nome Variável |   Tipo   |       Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |             Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :--------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-missao  |   int   | Código de identificação da missão |    1-5000    |     não      |  PK  |          |
-|  estacao  |   int   | Identificador da Estação da missão |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |      Nome da missão      |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |    Descrição da missão     |   a-z, A-Z   |     sim      |     |          |
+|   id-missao   |     int      | Código de identificação da missão  |       1-5000       |          não           |    PK    |                   |
+|    estacao    |     int      | Identificador da Estação da missão |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |           Nome da missão           |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |        Descrição da missão         |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Monstro
 
@@ -278,15 +278,15 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Item`.
 
-| Nome Variável |   Tipo   |              Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |                           Descrição                           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-monstro  |   int   |       Código de identificação do monstro        |    1-5000    |     não      |  PK  |          |
-|   drop   |   int   | Identificador do item deixado pelo monstro após ser derrotado |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |            Nome do monstro            |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |           Descrição do monstro           |   a-z, A-Z   |     sim      |     |          |
-|   dano   |   int   |          Dano causado pelo monstro          |    1-10    |     não      |     |          |
-|  defesa   |   int   |            Defesa do monstro            |    1-10    |     não      |     |          |
-| saude-maxima |   int   |          Saúde máxima do monstro          |    1-100    |     não      |     |          |
+|  id-monstro   |     int      |              Código de identificação do monstro               |       1-5000       |          não           |    PK    |                   |
+|     drop      |     int      | Identificador do item deixado pelo monstro após ser derrotado |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |                        Nome do monstro                        |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |                     Descrição do monstro                      |      a-z, A-Z      |          sim           |          |                   |
+|     dano      |     int      |                   Dano causado pelo monstro                   |        1-10        |          não           |          |                   |
+|    defesa     |     int      |                       Defesa do monstro                       |        1-10        |          não           |          |                   |
+| saude-maxima  |     int      |                    Saúde máxima do monstro                    |       1-100        |          não           |          |                   |
 
 ## Entidade: Mundo
 
@@ -294,10 +294,10 @@
 
 #### Observação: O mundo é formado por regiões e cada região tem uma fazenda diferente para o jogador cuidar.
 
-| Nome Variável |  Tipo   |      Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |    Tipo     |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-mundo  |   int   | Código de identificação do mundo |    1-5000    |     não      |  PK  |          |
-|   nome   | varchar[50] |     Nome do mundo      |   a-z, A-Z   |     não      |     |          |
+|   id-mundo    |     int     | Código de identificação do mundo |       1-5000       |          não           |    PK    |                   |
+|     nome      | varchar[50] |          Nome do mundo           |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: NPC
 
@@ -305,13 +305,13 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Regiao` e `Local`.
 
-| Nome Variável |   Tipo   |        Descrição        | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |                Descrição                | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-npc   |   int   |   Código de identificação do npc   |    1-5000    |     não      |  PK  |          |
-|  regiao   |   int   | Identificador da regiao onde o NPC está |    1-5000    |     não      |  FK  |          |
-|   local   |   int   | Identificador do local onde o NPC está |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |        Nome do npc        |   a-z, A-Z   |     não      |     |          |
-|  profissao  | varchar[100] |      Profissão do npc       |   a-z, A-Z   |     sim      |     |          |
+|    id-npc     |     int      |     Código de identificação do npc      |       1-5000       |          não           |    PK    |                   |
+|    regiao     |     int      | Identificador da regiao onde o NPC está |       1-5000       |          não           |    FK    |                   |
+|     local     |     int      | Identificador do local onde o NPC está  |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |               Nome do npc               |      a-z, A-Z      |          não           |          |                   |
+|   profissao   | varchar[100] |            Profissão do npc             |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Região
 
@@ -319,11 +319,11 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Mundo`. As regiões contém locais ao ar livre e locais fechados.
 
-| Nome Variável |  Tipo   |       Descrição       | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |    Tipo     |             Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :-------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-regiao  |   int   | Código de identificação da regiao |    1-5000    |     não      |  PK  |          |
-|   mundo   |   int   |   Identificador do mundo    |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |     Nome da regiao      |   a-z, A-Z   |     não      |     |          |
+|   id-regiao   |     int     | Código de identificação da regiao |       1-5000       |          não           |    PK    |                   |
+|     mundo     |     int     |      Identificador do mundo       |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50] |          Nome da regiao           |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Semente
 
@@ -331,14 +331,14 @@
 
 #### Observação: Essa tabela possui chaves estrangeiras das entidades `Item` e `Estacao`.
 
-|  Nome Variável  |   Tipo   |        Descrição        | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+|   Nome Variável   |     Tipo     |                Descrição                | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :---------------: | :----------: | :-------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-semente   |   int   |   Identificador do item semente   |    1-5000    |     não      |  FK  |          |
-|   estacao   |   int   |    Identificador da estação     |    1-5000    |     não      |  FK  |          |
-|    nome    | varchar[50] |     Nome do item semente      |   a-z, A-Z   |     não      |     |          |
-|   descricao   | varchar[150] |     Descrição da semente      |   a-z, A-Z   |     sim      |     |          |
-|  valor-venda  |   int   |      Preço da semente       |    1-5000    |     não      |     |          |
-| dias-para-crescer |   int   | Dias que a semente precisa para crescer |    1-28    |     não      |     |          |
+|    id-semente     |     int      |      Identificador do item semente      |       1-5000       |          não           |    FK    |                   |
+|      estacao      |     int      |        Identificador da estação         |       1-5000       |          não           |    FK    |                   |
+|       nome        | varchar[50]  |          Nome do item semente           |      a-z, A-Z      |          não           |          |                   |
+|     descricao     | varchar[150] |          Descrição da semente           |      a-z, A-Z      |          sim           |          |                   |
+|    valor-venda    |     int      |            Preço da semente             |       1-5000       |          não           |          |                   |
+| dias-para-crescer |     int      | Dias que a semente precisa para crescer |        1-28        |          não           |          |                   |
 
 ## Entidade: Vestimenta
 
@@ -346,8 +346,8 @@
 
 #### Observação: Essa tabela possui chave estrangeira da entidade `Item`.
 
-| Nome Variável |   Tipo   |      Description      | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| Nome Variável |     Tipo     |           Description            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-vestimenta |   int   | Identificador do item vestimenta |    1-5000    |     não      |  FK  |          |
-|   nome   | varchar[50] |    Nome da vestimenta    |   a-z, A-Z   |     não      |     |          |
-|  descricao  | varchar[150] |   Descrição da vestimenta   |   a-z, A-Z   |     sim      |     |          |
+| id-vestimenta |     int      | Identificador do item vestimenta |       1-5000       |          não           |    FK    |                   |
+|     nome      | varchar[50]  |        Nome da vestimenta        |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |     Descrição da vestimenta      |      a-z, A-Z      |          sim           |          |                   |
