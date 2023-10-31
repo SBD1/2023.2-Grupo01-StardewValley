@@ -340,7 +340,7 @@
 | Nome Variável |    Tipo     |             Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :-------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
 |   id-regiao   |     int     | Código de identificação da regiao |       1-5000       |          não           |    PK    |                   |
-|     mundo     |     int     |      Identificador do mundo       |       1-5000       |          não           |    FK    |                   |
+|     id-mundo     |     int     |      Identificador do mundo       |       1-5000       |          não           |    FK    |                   |
 |     nome      | varchar[50] |          Nome da regiao           |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Semente

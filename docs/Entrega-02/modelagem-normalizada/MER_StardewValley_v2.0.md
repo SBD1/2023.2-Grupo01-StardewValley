@@ -47,31 +47,31 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 ## 2. Atributos
 
 - **Dialogo**: <ins>id-dialogo</ins>, id-npc, fala;
-- **Efeito**: <ins>id-efeito</ins>, item, valor, tipo;
+- **Efeito**: <ins>id-efeito</ins>, id-item, valor, tipo;
 - **Estacao**: <ins>id-estacao</ins>, nome, descricao;
-- **Habilidade**: jogador, nivel-coleta, nivel-cultivo, nivel-mineracao, nivel-pesca, nivel-combate;
+- **Habilidade**: <ins>id-jogador</ins>, nivel-coleta, nivel-cultivo, nivel-mineracao, nivel-pesca, nivel-combate;
 - **Instância-Monstro**: caverna, monstro, saude;
-- **Item**: <ins>id-item</ins>, id-tipo;
-  - **Arma**: id-arma, nome, descricao, dano, finalidade;
-  - **Artesanato**: id-artesanato, nome, descricao;
-  - **Consumível**: id-consumivel, estacao, nome, descricao, valor-venda, dias-para-crescer;
-  - **Ferramenta**: id-ferramenta, nome, descricao;
-  - **Semente**: id-semente, estacao, nome, descricao, valor-venda, dias-para-crescer;
-  - **Vestimenta**: id-vestimenta, nome, descricao;
-- **Item-Estoque-Loja**: produto, loja, preco;
-- **Item-Inventário**: jogador, item, qtdd;
-- **Item-Receita**: id-artesanato, item, qtdd;
-- **Jogador**: <ins>id-jogador</ins>, local, regiao, estacao-atual, missao-atual, nome, saude, energia, dia, qtdd-ouro;
-- **Local-Fechado**: <ins>id-local-fechado</ins>, id-tipo;
-  - **Cabana-Jogador**: id-local-fechado, jogador, regiao, nome, descricao;
-  - **Cabana-NPC**: id-cabana-npc, npc, regiao, nome, descricao;
-  - **Caverna**: id-caverna, regiao, nome, descricao;
-  - **Loja**: id-loja, proprietario, regiao, nome, descricao;
-- **Missao**: <ins>id-missao</ins>, estacao, nome, descricao;
-- **Monstro**: <ins>id-monstro</ins>, drop, nome, descricao, dano, defesa, saude-maxima;
+- **Item**: <ins>id-item</ins>, id-tipo-item;
+  - **Arma**: <ins>id-arma</ins>, nome, descricao, dano, finalidade;
+  - **Artesanato**: <ins>id-artesanato</ins>, nome, descricao;
+  - **Consumível**: <ins>id-consumivel</ins>, nome, descricao;
+  - **Ferramenta**: <ins>id-ferramenta</ins>, nome, descricao, finalidade;
+  - **Semente**: <ins>id-semente</ins>, id-estacao, id-info-semente;
+  - **Vestimenta**: <ins>id-vestimenta</ins>, nome, descricao;
+- **Item-Estoque-Loja**: <ins>id-item</ins>, <ins>id-loja</ins>, preco;
+- **Item-Inventário**: <ins>id-jogador</ins>, <ins>id-item</ins>, qtdd;
+- **Item-Receita**: <ins>id-artesanato</ins>, <ins>id-item</ins>, qtdd;
+- **Jogador**: <ins>id-jogador</ins>, id-local-fechado, id-regiao, id-estacao, id-missao, nome, saude, energia, dia, hora, qtdd-ouro;
+- **Local-Fechado**: <ins>id-local-fechado</ins>, id-tipo-local-fechado;
+  - **Cabana-Jogador**: <ins>id-local-fechado</ins>, id-jogador, id-regiao, nome, descricao;
+  - **Cabana-NPC**: <ins>id-cabana-npc</ins>, id-npc, id-regiao, nome, descricao;
+  - **Caverna**: <ins>id-caverna</ins>, id-regiao, nome, descricao;
+  - **Loja**: <ins>id-loja</ins>, id-npc, id-regiao, nome, descricao;
+- **Missao**: <ins>id-missao</ins>, id-estacao, nome, descricao;
+- **Monstro**: <ins>id-monstro</ins>, id-drop, nome, descricao, dano, defesa, saude-maxima;
 - **Mundo**: <ins>id-mundo</ins>, nome;
-- **NPC**: <ins>id-npc</ins>, regiao, local, nome, profissao;
-- **Região**: <ins>id-regiao</ins>, mundo, nome;
+- **NPC**: <ins>id-npc</ins>, id-regiao, id-local-fechado, nome, profissao;
+- **Região**: <ins>id-regiao</ins>, id-mundo, nome;
 
 ## 3. Relacionamentos
 
@@ -130,7 +130,7 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - Durante a estação pode crescer nenhuma ou várias sementes (0,N)
 - A semente pode crescer em uma ou em até 4 estações (1, 4)
 
-**Item-Inventário _possui_ Item**
+**Item-Inventario _possui_ Item**
 
 - O item-inventário do jogador pode possuir nenhum a vários itens (0,N)
 - O item aparece em nenhum a vários item-inventários (0, N)
@@ -174,7 +174,7 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - Uma cabana-NPC pertecem apenas a um único NPC (1, 1)
 - Um NPC possui apenas uma única cabana-NPC (1, 1)
 
-**NPC _fala_ Diálogo**
+**NPC _fala_ Dialogo**
 
 - Um NPC possui nenhuma a várias falas em um diálogo (0, N)
 - Um Dialogo pertence a um único NPC (1, 1)
