@@ -20,11 +20,11 @@
 
 | Nome Variável |     Tipo     |         Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    id-arma    |     int      | Identificador do item arma |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |        Nome da arma        |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |     Descrição da arma      |      a-z, A-Z      |          sim           |          |                   |
+|    id_arma    |     int      | Identificador do item arma |       1-5000       |          não           |    FK    |                   |
+|     nome      | char[50]  |        Nome da arma        |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |     Descrição da arma      |      a-z, A-Z      |          sim           |          |                   |
 |     dano      |     int      |        Dano da arma        |        1-10        |          não           |          |                   |
-|  finalidade   | varchar[100] |     Finalidade da arma     |      a-z, A-Z      |          não           |          |                   |
+|  finalidade   | char[100] |     Finalidade da arma     |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Artesanato
 
@@ -34,9 +34,9 @@
 
 | Nome Variável |     Tipo     |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-artesanato |     int      | Identificador do item artesanato |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |    Nome do item de artesanato    |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] | Descrição do item de artesanato  |      a-z, A-Z      |          sim           |          |                   |
+| id_artesanato |     int      | Identificador do item artesanato |       1-5000       |          não           |    FK    |                   |
+|     nome      | char[50]  |    Nome do item de artesanato    |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] | Descrição do item de artesanato  |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Cabana-Jogador
 
@@ -46,11 +46,11 @@
 
 | Nome Variável |     Tipo     |                    Descrição                    | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :---------------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-cabana-jog |     int      |       Identificador da cabana do jogador        |       1-5000       |          não           |    FK    |                   |
+| id_cabana-jog |     int      |       Identificador da cabana do jogador        |       1-5000       |          não           |    FK    |                   |
 |    jogador    |     int      | Identificador do Jogador proprietário da cabana |       1-5000       |          não           |    FK    |                   |
 |    regiao     |     int      |   Identificador da Região onde está a cabana    |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |                 Nome da cabana                  |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |               Descrição da cabana               |      a-z, A-Z      |          sim           |          |                   |
+|     nome      | char[50]  |                 Nome da cabana                  |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |               Descrição da cabana               |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Cabana-NPC
 
@@ -60,11 +60,11 @@
 
 | Nome Variável |     Tipo     |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-cabana-npc |     int      |       Identificador da cabana do NPC        |       1-5000       |          não           |    FK    |                   |
+| id_cabana-npc |     int      |       Identificador da cabana do NPC        |       1-5000       |          não           |    FK    |                   |
 |      npc      |     int      | Identificador do NPC proprietário da cabana |       1-5000       |          não           |    FK    |                   |
 |    regiao     |     int      | Identificador da Região onde estã a cabana  |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |            Nome da cabana do NPC            |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |         Descrição da cabana do NPC          |      a-z, A-Z      |          sim           |          |                   |
+|     nome      | char[50]  |            Nome da cabana do NPC            |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |         Descrição da cabana do NPC          |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Caverna
 
@@ -74,10 +74,10 @@
 
 | Nome Variável |     Tipo     |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-caverna   |     int      |          Identificador da caverna           |       1-5000       |          não           |    FK    |                   |
+|  id_caverna   |     int      |          Identificador da caverna           |       1-5000       |          não           |    FK    |                   |
 |    regiao     |     int      | Identificador da Região onde está a caverna |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |               Nome da caverna               |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |            Descrição da caverna             |      a-z, A-Z      |          sim           |          |                   |
+|     nome      | char[50]  |               Nome da caverna               |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |            Descrição da caverna             |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Consumível
 
@@ -87,9 +87,9 @@
 
 | Nome Variável |     Tipo     |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-consumivel |     int      | Identificador do item consumível |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |     Nome do item consumível      |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |   Descrição do item consumível   |      a-z, A-Z      |          sim           |          |                   |
+| id_consumivel |     int      | Identificador do item consumível |       1-5000       |          não           |    FK    |                   |
+|     nome      | char[50]  |     Nome do item consumível      |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |   Descrição do item consumível   |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Diálogo
 
@@ -99,9 +99,9 @@
 
 | Nome Variável |     Tipo     |              Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :---------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-dialogo   |     int      | Código de identificação do diálogo  |       1-5000       |          não           |    PK    |                   |
+|  id_dialogo   |     int      | Código de identificação do diálogo  |       1-5000       |          não           |    PK    |                   |
 |      npc      |     int      | codigo do NPC que usa essse dialogo |       1-5000       |          não           |    FK    |                   |
-|     fala      | varchar[150] |         Conteúdo do diálogo         |      a-z, A-Z      |          não           |          |                   |
+|     fala      | char[800] |         Conteúdo do diálogo         |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Efeito
 
@@ -111,10 +111,10 @@
 
 | Nome Variável |     Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   id-efeito   |     int      |    Código de identificação do efeito     |       1-5000       |          não           |    PK    |                   |
+|   id_efeito   |     int      |    Código de identificação do efeito     |       1-5000       |          não           |    PK    |                   |
 |     item      |     int      | Identificador do item que sofre o efeito |       1-5000       |          não           |    FK    |                   |
 |     valor     |     int      |       Valor produzido pelo efeito        |        1-50        |          não           |          |                   |
-|     tipo      | varchar[100] |              tipo do efeito              |      a-z, A-Z      |          sim           |          |                   |
+|     tipo      | char[100] |              tipo do efeito              |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Estação
 
@@ -124,9 +124,9 @@
 
 | Nome Variável |     Tipo     |             Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :--------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-estacao   |     int      | Código de identificação da estação |       1-5000       |          não           |    PK    |                   |
-|     nome      | varchar[50]  |          Nome da estação           |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |        Descrição da estação        |      a-z, A-Z      |          sim           |          |                   |
+|  id_estacao   |     int      | Código de identificação da estação |       1-5000       |          não           |    PK    |                   |
+|     nome      | char[50]  |          Nome da estação           |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |        Descrição da estação        |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Ferramenta
 
@@ -136,10 +136,10 @@
 
 | Nome Variável |     Tipo     |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-ferramenta |     int      | Identificador do item ferramenta |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |        Nome da ferramenta        |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |     Descrição da ferramenta      |      a-z, A-Z      |          sim           |          |                   |
-|  finalidade   | varchar[100] |     Finalidade da ferramenta     |      a-z, A-Z      |          não           |          |                   |
+| id_ferramenta |     int      | Identificador do item ferramenta |       1-5000       |          não           |    FK    |                   |
+|     nome      | char[50]  |        Nome da ferramenta        |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |     Descrição da ferramenta      |      a-z, A-Z      |          sim           |          |                   |
+|  finalidade   | char[100] |     Finalidade da ferramenta     |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Habilidade
 
@@ -212,8 +212,8 @@
 
 | Nome Variável |    Tipo     |            Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :-----------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    id-item    |     int     | Código de Identificação do item |       1-5000       |          não           |    PK    |                   |
-|    id-tipo    | varchar[50] |  Identificação do tipo do item  |      a-z, A-Z      |          não           |          |                   |
+|    id_item    |     int     | Código de Identificação do item |       1-5000       |          não           |    PK    |                   |
+|    id_tipo    | char[50] |  Identificação do tipo do item  |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Jogador
 
@@ -223,12 +223,12 @@
 
 | Nome Variável |    Tipo     |             Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :--------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-jogador   |     int     | Código de identificação do jogador |       1-5000       |          não           |    PK    |                   |
-|     local     |     int     |       Identificador do local       |       1-5000       |          não           |    FK    |                   |
+|  id_jogador   |     int     | Código de identificação do jogador |       1-5000       |          não           |    PK    |                   |
+|     local_jogador    |     int     |       Identificador do local       |       1-5000       |          não           |    FK    |                   |
 |    regiao     |     int     |      Identificador da região       |       1-5000       |          não           |    FK    |                   |
 | estacao-atual |     int     |   Identificador da estação-atual   |       1-5000       |          não           |    FK    |                   |
 | missao-atual  |     int     |   Identificador da missao-atual    |       1-5000       |          sim           |    FK    |                   |
-|     nome      | varchar[50] |          Nome do jogador           |      a-z, A-Z      |          não           |          |                   |
+|     nome      | char[50] |          Nome do jogador           |      a-z, A-Z      |          não           |          |                   |
 |     saude     |     int     |          Saude do jogador          |       1-100        |          não           |          |                   |
 |    energia    |     int     |         Energia do jogador         |       1-100        |          não           |          |                   |
 |      dia      |     int     |           Dia do jogador           |       1-100        |          não           |          |                   |
@@ -242,8 +242,8 @@
 
 |  Nome Variável   |    Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :--------------: | :---------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-local-fechado |     int     | Código de identificação do local fechado |       1-5000       |          não           |    PK    |                   |
-|     id-tipo      | varchar[50] |  Identificação do tipo de local fechado  |      a-z, A-Z      |          não           |          |                   |
+| id_local-fechado |     int     | Código de identificação do local fechado |       1-5000       |          não           |    PK    |                   |
+|     id_tipo      | char[50] |  Identificação do tipo de local fechado  |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Loja
 
@@ -253,11 +253,11 @@
 
 | Nome Variável |     Tipo     |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    id-loja    |     int      |          Identificador da loja           |       1-5000       |          não           |    FK    |                   |
+|    id_loja    |     int      |          Identificador da loja           |       1-5000       |          não           |    FK    |                   |
 | proprietario  |     int      |      Identificador do proprietário       |       1-5000       |          não           |    FK    |                   |
 |    regiao     |     int      | Identificador da região onde está a loja |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |               Nome da loja               |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |            Descrição da loja             |      a-z, A-Z      |          sim           |          |                   |
+|     nome      | char[50]  |               Nome da loja               |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |            Descrição da loja             |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Missao
 
@@ -267,10 +267,10 @@
 
 | Nome Variável |     Tipo     |             Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :--------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   id-missao   |     int      | Código de identificação da missão  |       1-5000       |          não           |    PK    |                   |
+|   id_missao   |     int      | Código de identificação da missão  |       1-5000       |          não           |    PK    |                   |
 |    estacao    |     int      | Identificador da Estação da missão |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |           Nome da missão           |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |        Descrição da missão         |      a-z, A-Z      |          sim           |          |                   |
+|     nome      | char[50]  |           Nome da missão           |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |        Descrição da missão         |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Monstro
 
@@ -280,10 +280,10 @@
 
 | Nome Variável |     Tipo     |                           Descrição                           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id-monstro   |     int      |              Código de identificação do monstro               |       1-5000       |          não           |    PK    |                   |
-|     drop      |     int      | Identificador do item deixado pelo monstro após ser derrotado |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |                        Nome do monstro                        |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |                     Descrição do monstro                      |      a-z, A-Z      |          sim           |          |                   |
+|  id_monstro   |     int      |              Código de identificação do monstro               |       1-5000       |          não           |    PK    |                   |
+|     item_drop      |     int      | Identificador do item deixado pelo monstro após ser derrotado |       1-5000       |          não           |    FK    |                   |
+|     nome      | char[50]  |                        Nome do monstro                        |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |                     Descrição do monstro                      |      a-z, A-Z      |          sim           |          |                   |
 |     dano      |     int      |                   Dano causado pelo monstro                   |        1-10        |          não           |          |                   |
 |    defesa     |     int      |                       Defesa do monstro                       |        1-10        |          não           |          |                   |
 | saude-maxima  |     int      |                    Saúde máxima do monstro                    |       1-100        |          não           |          |                   |
@@ -296,8 +296,8 @@
 
 | Nome Variável |    Tipo     |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   id-mundo    |     int     | Código de identificação do mundo |       1-5000       |          não           |    PK    |                   |
-|     nome      | varchar[50] |          Nome do mundo           |      a-z, A-Z      |          não           |          |                   |
+|   id_mundo    |     int     | Código de identificação do mundo |       1-5000       |          não           |    PK    |                   |
+|     nome      | char[50] |          Nome do mundo           |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: NPC
 
@@ -307,11 +307,11 @@
 
 | Nome Variável |     Tipo     |                Descrição                | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    id-npc     |     int      |     Código de identificação do npc      |       1-5000       |          não           |    PK    |                   |
+|    id_npc     |     int      |     Código de identificação do npc      |       1-5000       |          não           |    PK    |                   |
 |    regiao     |     int      | Identificador da regiao onde o NPC está |       1-5000       |          não           |    FK    |                   |
-|     local     |     int      | Identificador do local onde o NPC está  |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |               Nome do npc               |      a-z, A-Z      |          não           |          |                   |
-|   profissao   | varchar[100] |            Profissão do npc             |      a-z, A-Z      |          sim           |          |                   |
+|     local_NPC    |     int      | Identificador do local onde o NPC está  |       1-5000       |          não           |    FK    |                   |
+|     nome      | char[50]  |               Nome do npc               |      a-z, A-Z      |          não           |          |                   |
+|   profissao   | char[100] |            Profissão do npc             |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Região
 
@@ -321,9 +321,9 @@
 
 | Nome Variável |    Tipo     |             Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :-------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   id-regiao   |     int     | Código de identificação da regiao |       1-5000       |          não           |    PK    |                   |
+|   id_regiao   |     int     | Código de identificação da regiao |       1-5000       |          não           |    PK    |                   |
 |     mundo     |     int     |      Identificador do mundo       |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50] |          Nome da regiao           |      a-z, A-Z      |          não           |          |                   |
+|     nome      | char[50] |          Nome da regiao           |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: Semente
 
@@ -333,10 +333,10 @@
 
 |   Nome Variável   |     Tipo     |                Descrição                | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :---------------: | :----------: | :-------------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    id-semente     |     int      |      Identificador do item semente      |       1-5000       |          não           |    FK    |                   |
+|    id_semente     |     int      |      Identificador do item semente      |       1-5000       |          não           |    FK    |                   |
 |      estacao      |     int      |        Identificador da estação         |       1-5000       |          não           |    FK    |                   |
-|       nome        | varchar[50]  |          Nome do item semente           |      a-z, A-Z      |          não           |          |                   |
-|     descricao     | varchar[150] |          Descrição da semente           |      a-z, A-Z      |          sim           |          |                   |
+|       nome        | char[50]  |          Nome do item semente           |      a-z, A-Z      |          não           |          |                   |
+|     descricao     | char[800] |          Descrição da semente           |      a-z, A-Z      |          sim           |          |                   |
 |    valor-venda    |     int      |            Preço da semente             |       1-5000       |          não           |          |                   |
 | dias-para-crescer |     int      | Dias que a semente precisa para crescer |        1-28        |          não           |          |                   |
 
@@ -348,6 +348,6 @@
 
 | Nome Variável |     Tipo     |           Description            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id-vestimenta |     int      | Identificador do item vestimenta |       1-5000       |          não           |    FK    |                   |
-|     nome      | varchar[50]  |        Nome da vestimenta        |      a-z, A-Z      |          não           |          |                   |
-|   descricao   | varchar[150] |     Descrição da vestimenta      |      a-z, A-Z      |          sim           |          |                   |
+| id_vestimenta |     int      | Identificador do item vestimenta |       1-5000       |          não           |    FK    |                   |
+|     nome      | char[50]  |        Nome da vestimenta        |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | char[800] |     Descrição da vestimenta      |      a-z, A-Z      |          sim           |          |                   |
