@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  game:
+    image: stardew-valley-game
+    container_name: stardew-valley-game
+    build:
+      context: .
+      dockerfile: gameDockerFile
+    volumes:
+      - ".:/app"
+    depends_on:
+      - db
+    restart: always
+    networks:
+      - postgres-connection
+
+  db:
+    image: postgres:15.4
+    container_name: postgres-container
+    build:
+      context: .
+      dockerfile: postgresDockerfile
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    ports:
+      - 5432:5432
+    expose:
+      - "5432"
+    restart: always
+    networks:
+      - postgres-connection
+
+networks:
+  postgres-connection:
+    driver: bridge

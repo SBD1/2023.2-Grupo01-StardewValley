@@ -1,0 +1,7 @@
+FROM postgres:15.4
+
+ADD ./docs/Entrega-02/DDL.sql /docker-entrypoint-initdb.d
+ADD ./docs/Entrega-02/DML.sql /docker-entrypoint-initdb.d
+ADD ./docs/Entrega-02/DQL.sql /docker-entrypoint-initdb.d
+
+# Triggers-e-Store-Procedures.sql
