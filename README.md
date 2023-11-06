@@ -11,7 +11,7 @@
 | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)       | 222014984 |
 | [Marcus Vinícius Paiva Martins](https://github.com/marcusmartinss) | 211043683 |
 | [Matheus Phillipo Silverio Silva](https://github.com/MattSilverio) | 150154348 |
-| [Zenilda Pedrosa Vieira](https://github.com/ZenildaVieira)         | 212002907 |
+| [Zenilda Vieira](https://github.com/zenildavieira)         | 212002907 |
 
 ## Jogo
 
@@ -49,9 +49,17 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
   - [Modelo Entidade-Relacionamento](./docs/Entrega-01/MER_StardewValley_v1.0.md)
   - [Modelo Relacional](./docs/Entrega-01/MREL_StardewValley_v1.0.md)
 
+- Módulo 2
+  - [Normalização](./docs/Entrega-02/modelagem-normalizada)
+  - [DDL](./docs/Entrega-02/DDL.sql)
+  - [DML](./docs/Entrega-02/DML.sql)
+  - [DQL](./docs/Entrega-02/DQL.sql)
+  - [Álgebra Relacional](./docs/Entrega-02/algebra_relacional.pdf)
+
 ### Histórico de versões
 
 | Versão |    Data    | Descrição                                      | Autor                                               | Revisão                                             |
 | :----: | :--------: | ---------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
 | `1.0`  | 24/09/2023 | Inclusão das considerações feitas na modelagem | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Marcus Martins](https://github.com/marcusmartinss) |
-| `1.1`  | 28/09/2023 | Estruturação do README do projeto              | [Marcus Martins](https://github.com/marcusmartinss) |                                                     |
+| `1.1`  | 28/09/2023 | Estruturação do README do projeto              | [Marcus Martins](https://github.com/marcusmartinss) | |
+| `1.2`  | 30/10/2023 | Links da entrega 02                            | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria) |
