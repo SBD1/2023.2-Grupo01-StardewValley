@@ -6,7 +6,7 @@
 
 # Product Backlog
 
-Esse documento visa registrar todas as funcionalidades que vamos implementar no jogo. Ele serve como orientação aos desenvolvedores e uma forma de controle para quem vai ser responsãovel por desenvolver cada funcionalidade e se ela ja foi implementada ou não.
+Esse documento visa registrar todas as funcionalidades que vamos implementar no jogo. Ele serve como orientação aos desenvolvedores e uma forma de controle para quem vai ser responsavel por desenvolver cada funcionalidade e se ela ja foi implementada ou não.
 
 ## User Stories (Histórias de usuário adaptado)
 
@@ -14,7 +14,7 @@ Na tabela 1 constam as funcionalidades escolhidas do jogo Stardew-Valley para se
 
 No campo Observações, colocar onde vai ser implementado: banco ou frontend, e se for no banco, detalhes de como vai ser, por exemplo, por store procedure ou trigger, etc.
 
-No campo prioridade, colocar: "Alta" - sem ela o jogo não funciona", "Média" - o jogo funciona incompleto ou "Baixa" - funcionalidade dispensável, serve só para deixar o jogo mais interessante.
+No campo prioridade, colocar: "Alta" - sem ela o jogo não funciona, "Média" - o jogo funciona incompleto ou "Baixa" - funcionalidade dispensável, serve só para deixar o jogo mais interessante.
 
 No campo Status, colocar uma das seguintes opções: "não iniciada", "em andamento" ou "finalizado".
 
@@ -23,8 +23,8 @@ No campo Status, colocar uma das seguintes opções: "não iniciada", "em andame
     <thead>
         <tr>
             <th>ID</th>
-            <th>Como um...</th>
-            <th>eu gostaria de...</th>
+            <th>Eu como...</th>
+            <th>gostaria de...</th>
             <th>para...</th>
             <th>Observações</th>
             <th>Prioridade</th>
