@@ -177,3 +177,4 @@
 
 1. Vestimenta
 2. Missao
+3. Processo randômico para coleta, pesca, mineração, etc.
