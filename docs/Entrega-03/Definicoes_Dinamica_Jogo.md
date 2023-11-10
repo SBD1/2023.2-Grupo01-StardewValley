@@ -4,7 +4,7 @@
 
 | Data de Entrega | Tarefa | Responsáveis | Na reunião |
 | --- | --- | --- | --- |
-| 13/11 - segunda - 18h30 | Transformar pontos desse documento em histórias de usuário | Edilberto e Marcus | Priorização e divisão das histórias de usuários para cada um fazer as store procedures e triggers e define como vão ser feitas as views (e quem vai fazer) |
+| 13/11 - segunda - 18h30 | Transformar pontos desse documento em histórias de usuário | Edilberto e Marcus | Priorização e divisão das histórias de usuários para cada um fazer as store procedures, triggers e views (e quem vai fazer) |
 | 13/11 - segunda - 18h30 | Adaptar e popular o banco de acordo com esse documento e a wiki (o mínimo possível) | Matheus e Zenilda |   |
 
 **Reunião de acompanhamento de status - Quinta 16/11, 15h.**
