@@ -56,17 +56,17 @@
     * Seta energia para 100% novamente (tabela **Jogador**).
   * Dinâmica de comer item com efeito:
     * Mostra os itens consumíveis disponíveis com seus efeitos e pede pra o jogador escolher
-    * Incremetna ou decrementa a energia do jogador
+    * Incrementa ou decrementa a energia do jogador
 
 ## Segunda Tela - Tela de regiao
 
 * Mostra na tela status do jogo: região, estação, dia e hora (tabela **Jogador**)
 * Mostra na tela status do Jogador: energia, qtdd-ouro, niveis de habilidade (tabela **Jogador join Habilidade**)
-* Mostra na tela a descrição da região atual e os locais fechados que le tem (tabela **Regiao join Local_Fechado join Jogador** e **local_Fechado join _tabela específica de acordo com o local fechado disponível_**)
+* Mostra na tela a descrição da região atual e os locais fechados que ela tem (tabela **Regiao join Local_Fechado join Jogador** e **local_Fechado join _tabela específica de acordo com o local fechado disponível_**)
 * Pergunta ao jogador o que ele quer fazer:
 
 1. Coletar
-    * Mostra itens que podem ser coletados nessa região, como madeira, feno, pedra, frutos, sementes (tabela **Consumivel** filtrado por região) e pede pra escolher e dispara "dinâmica de coleta."
+    * Mostra itens que podem ser coletados nessa região, como madeira, feno, pedra, frutos, sementes (tabela **Consumivel** filtrado por local_fechado=NULL) e pede pra escolher e dispara "dinâmica de coleta."
     * Dinâmica de coleta:
       * Para simplificar, escolhe automaticamente a ferramenta: machado, foice, picareta, de acordo com o item escolhido e informa ao jogador que ele vai usar essa ferramenta (para simplificar na tabela **Item-Ferramenta** vai dizer para qual item ela é usada). Para frutos e sementes não precisa de ferramentas (NULL).
       * Coletar: incrementa no inventário o item colhido e incrementa +1 em habilidade de coleta.
@@ -79,36 +79,36 @@
       * Após plantar, insere na tabela **Plantacao** o dia que ela vai ser colhida (soma o dia de hoje com o dias-para-crescer da tabela **Informacao_Semente**) e incrementa +1 em habilidade de cultivo.
       * Volta para o menu inicial
 
-3. Pescar (só se tiver na região “praia”)
-    * Mostra os itens que podem ser pescados e pede pra escolher (tabela **Consumivel** filtrado por região).
+3. Pescar (só se tiver no local_fechado “praia”)
+    * Mostra os itens que podem ser pescados e pede pra escolher (tabela **Consumivel** filtrado por local_fechado="praia").
     * Para simplificar já escolhe automaticamente a ferramenta vara de pescar (tabela **Item-Ferramenta** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realiza a pesca.
     * Após pescar, insere na tabela **Item_Inventario** o item pescado e incrementa +1 em habilidade de pesca.
       * Volta para o menu inicial
   
 4. Craftar
-    * Mostra receitas disponíveis (tabela **Artesanato** join **Item_Reeita** join **Item_Inventario**) e pedir pra escolher e dispara "dinâmica de crafting"
+    * Mostra receitas disponíveis (tabela **Artesanato** join **Item_Receita** join **Item_Inventario**) e pedir pra escolher e dispara "dinâmica de crafting"
     * Dinâmica de crafting:
       * Verificar se tem itens suficientes no inventario para a receita escollhida (qtdd na tabela **Item_Inventario**)
       * Se não tiver, avisa e pede pra escolher outro.
       * Se sim, deleta do inventario a quantidade de linhas de itens usados e incrementa no inventario o item craftado.
       * Volta para o menu inicial
 
-5. Conversar com um NPC que consta nesta região (mostra opções)
+5. Conversar com um NPC que consta nesta região
     * Mostra os NPCs que estão disponíveis e pede pra escolher
     * Mostra fala do NPC tabela **Dialogo**
-      * Volta para o menu inicial
+    * Volta para o menu inicial
 
 6. Minerar ou combater (só se tiver caverna nessa região)
     * Mostra as cavernas que estão disponíveis e pede pra escolher
     * Atualiza local_fechado na tabela **Jogador**
-    * Vai para a tela de local fechado "caverna"
+    * Vai para a tela de local_fechado="caverna"
 
-7. Ir a um local fechado que consta nesta região (mostra opções)
+7. Ir a um local fechado que consta nesta região
     * Mostra os locais fechados que estão disponíveis e pede pra escolher
     * Atualiza local_fechado na tabela **Jogador**
     * Vai para a tela de local fechado escolhido
 
-8. Mudar de região (mostra opções)
+8. Mudar de região
     * Mostra as regiões que estão disponíveis e pede pra escolher
     * Atualiza regiao  na tabela **Jogador**
     * Reinicia essa tela com a nova região escolhida
@@ -139,7 +139,7 @@
     * Atualiza regiao  na tabela **Jogador**
     * Vai para segunda tela com a nova região escolhida
   * Se quer minerar:
-    * Mostra itens que podem ser minerados: pedra, minério de cobre (tabela **Consumivel** filtrado por local_fechado).
+    * Mostra itens que podem ser minerados: pedra, minério de cobre (tabela **Consumivel** filtrado por local_fechado="caverna").
     * Para simplificar já escolhe automaticamente a ferramenta picareta (tabela **Item-Ferramenta** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realiza a mineração.
     * Após minerar, insere na tabela **Item_Inventario** o item minerado e incrementa +1 em habilidade de mineração.
     * Reinicializa tela atual
