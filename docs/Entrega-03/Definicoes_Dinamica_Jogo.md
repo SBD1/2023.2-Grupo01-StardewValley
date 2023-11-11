@@ -76,13 +76,13 @@
     * Mostra sementes disponíveis no inventário e pede pra ele escolher e dispara "dinâmica de plantação".
     * Dinâmica de plantação:
       * Para simplificar já escolhe automaticamente a ferramenta enxada (tabela **Item-Ferramenta** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realizar a plantação.
-      * Após plantar, insere na tabela **Plantacao** o dia que ela vai ser colhida (soma o dia de hoje com o dias-para-crescer da tabela **Informacao_Semente**) e incrementa +1 em habilidade de cultivo.
+      * Após plantar, insere na tabela **Plantacao** o dia que ela vai ser colhida (soma o dia de hoje com o dias-para-crescer da tabela **Informacao_Semente**), incrementa +1 em habilidade de cultivo e decrementa energia em 5%.
       * Volta para o menu inicial
 
 3. Pescar (só se tiver no local_fechado “praia”)
     * Mostra os itens que podem ser pescados e pede pra escolher (tabela **Consumivel** filtrado por local_fechado="praia").
     * Para simplificar já escolhe automaticamente a ferramenta vara de pescar (tabela **Item-Ferramenta** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realiza a pesca.
-    * Após pescar, insere na tabela **Item_Inventario** o item pescado e incrementa +1 em habilidade de pesca.
+    * Após pescar, insere na tabela **Item_Inventario** o item pescado, incrementa +1 em habilidade de pesca  e decrementa energia em 5%..
       * Volta para o menu inicial
   
 4. Craftar
@@ -141,7 +141,7 @@
   * Se quer minerar:
     * Mostra itens que podem ser minerados: pedra, minério de cobre (tabela **Consumivel** filtrado por local_fechado="caverna").
     * Para simplificar já escolhe automaticamente a ferramenta picareta (tabela **Item-Ferramenta** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realiza a mineração.
-    * Após minerar, insere na tabela **Item_Inventario** o item minerado e incrementa +1 em habilidade de mineração.
+    * Após minerar, insere na tabela **Item_Inventario** o item minerado, incrementa +1 em habilidade de mineração e decrementa energia em 5%..
     * Reinicializa tela atual
   * Se quer combater:
     * Mostra instâncias de monstros que podem ser combatidos (tabela **Instancia_Monstro** filtrado por id_caverna).
