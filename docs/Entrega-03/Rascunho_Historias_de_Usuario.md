@@ -2,7 +2,7 @@
 
 | Versão |    Data    | Descrição            | Autor                                               |
 | :----: | :--------: | -------------------- | --------------------------------------------------- |
-| `1.0`  | 08/11/2023 | Criação do documento | [Zenilda Vieira](https://github.com/ZenildaVieira)  |
+| `1.0`  | 13/11/2023| Criação do documento | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)  |
 
 
 ## User Stories (Histórias de usuário adaptado)
