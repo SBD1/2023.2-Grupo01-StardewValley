@@ -10,6 +10,8 @@
 | `2.0`  | 22/10/2023 | Normalização na primeira e segunda forma normal | [Marcus Martins](https://github.com/marcusmartinss)                                           |
 | `2.1`  | 23/10/2023 | Normalização na terceira forma normal           | [Marcus Martins](https://github.com/marcusmartinss)                                           |
 | `3.0`  | 13/11/2023 | Modificações da terceira entrega                | [Zenilda Vieira](https://github.com/ZenildaVieira)                                            |
+| `3.1`  | 14/11/2023 | Correções nos relacionamentos de chave estrangeira | [Matheus Phillipo](https://github.com/MattSilverio)                                            |
+
 
 # DD - Dicionário de Dados
 
@@ -27,7 +29,8 @@ Essa tabela possui chave estrangeira da entidade `Item`.
 
 |  Nome Variável  |   Tipo    |                    Descrição                    | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-------------: | :-------: | :---------------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|     id_arma     |    int    |           Identificador do item arma            |       1-5000       |          não           |  PK, FK  |                    |
+|     id_arma     |    int    |           Identificador do item arma            |       1-5000       |          não           |  PK  |                    |
+|     id_item     |    int    |           Chave estrangeira para Item           |       1-5000       |          não           | FK  |                    |
 |      nome       | char[50]  |                  Nome da arma                   |      a-z, A-Z      |          não           |          |                    |
 |    descricao    | char[800] |                Descrição da arma                |      a-z, A-Z      |          sim           |          |                    |
 |      dano       |    int    |                  Dano da arma                   |        1-10        |          não           |          |                    |
@@ -46,7 +49,8 @@ Essa tabela possui chave estrangeira da entidade `Item`.
 
 | Nome Variável |   Tipo    |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-----------: | :-------: | :------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-| id_artesanato |    int    | Identificador do item artesanato |       1-5000       |          não           |  PK, FK  |                    |
+| id_artesanato |    int    | Identificador do item artesanato |       1-5000       |          não           |  PK  |                    |
+|     id_item     |    int    |           Chave estrangeira para Item           |       1-5000       |          não           | FK  |                    |
 |     nome      | char[50]  |    Nome do item de artesanato    |      a-z, A-Z      |          não           |          |                    |
 |   descricao   | char[800] | Descrição do item de artesanato  |      a-z, A-Z      |          sim           |          |                    |
 
@@ -62,8 +66,9 @@ Essa tabela possui chaves estrangeiras das entidades `Local_Fechado`, `Jogador` 
 
 |  Nome Variável  |   Tipo    |                    Descrição                    | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-------------: | :-------: | :---------------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|  id_cabana_jog  |    int    |         Identificador do local fechado          |       1-5000       |          não           |  PK, FK  |                    |
-| id_prop_cab_jog |    int    | Identificador do Jogador proprietário da cabana |       1-5000       |          não           |  PK, FK  |                    |
+|  id_cabana_jogador  |    int    |         Identificador da cabana do jogador         |       1-5000       |          não           |  PK  |                    |
+|     id_local_fechado     |    int    |           Chave estrangeira para Local Fechado           |       1-5000       |          não           | FK  |                    |
+| id_prop_cab_jog |    int    | Identificador do Jogador proprietário da cabana |       1-5000       |          não           |  FK  |                    |
 |    id_regiao    |    int    |   Identificador da Região onde está a cabana    |       1-5000       |          não           |    FK    | DEFAULT 1          |
 |      nome       | char[50]  |                 Nome da cabana                  |      a-z, A-Z      |          não           |          |                    |
 |    descricao    | char[800] |               Descrição da cabana               |      a-z, A-Z      |          sim           |          |                    |
@@ -80,8 +85,9 @@ Essa tabela possui chaves estrangeiras das entidades `Local_Fechado`, `NPC` e `R
 
 |  Nome Variável  |   Tipo    |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-------------: | :-------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|  id_cabana_NPC  |    int    |       Identificador do local fechado        |       1-5000       |          não           |  PK, FK  |                    |
-| id_prop_cab_NPC |    int    | Identificador do NPC proprietário da cabana |       1-5000       |          não           |  PK, FK  |                    |
+|  id_cabana_npc  |    int    |       Identificador da Cabana NPC        |       1-5000       |          não           |  PK  |
+|     id_local_fechado     |    int    |           Chave estrangeira para Local Fechado           |       1-5000       |          não           | FK  |                    |                    |
+| id_npc |    int    | Identificador do NPC proprietário da cabana |       1-5000       |          não           |  FK  |                    |
 |    id_regiao    |    int    | Identificador da Região onde estã a cabana  |       1-5000       |          não           |    FK    |                    |
 |      nome       | char[50]  |            Nome da cabana do NPC            |      a-z, A-Z      |          não           |          |                    |
 |    descricao    | char[800] |         Descrição da cabana do NPC          |      a-z, A-Z      |          sim           |          |                    |
@@ -98,8 +104,9 @@ Essa tabela possui chaves estrangeiras das entidades `Caverna` e `Região`.
 
 | Nome Variável |   Tipo    |                  Descrição                  | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-----------: | :-------: | :-----------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|  id_caverna   |    int    |       Identificador do local fechado        |       1-5000       |          não           |  PK, FK  |                    |
-|   id_regiao   |    int    | Identificador da Região onde está a caverna |       1-5000       |          não           |  PK, FK  |                    |
+|  id_caverna   |    int    |       Identificador do local fechado        |       1-5000       |          não           |  PK  |                    |
+|     id_local_fechado     |    int    |           Chave estrangeira para Local Fechado           |       1-5000       |          não           | FK  |                    |  
+|   id_regiao   |    int    | Identificador da Região onde está a caverna |       1-5000       |          não           |   FK  |                    |
 |     nome      | char[50]  |               Nome da caverna               |      a-z, A-Z      |          não           |          |                    |
 |   descricao   | char[800] |            Descrição da caverna             |      a-z, A-Z      |          sim           |          |                    |
 
@@ -115,7 +122,8 @@ Essa tabela possui chave estrangeira da entidade `Item`, `Ferramenta`, `Regiao` 
 
 |  Nome Variável   |   Tipo    |                     Descrição                      | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :--------------: | :-------: | :------------------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|  id_consumivel   |    int    |          Identificador do item consumível          |       1-5000       |          não           |  PK, FK  |                    |
+|  id_consumivel   |    int    |          Identificador do item consumível          |       1-5000       |          não           |  PK  |                    |
+|     id_item     |    int    |           Chave estrangeira para Item           |       1-5000       |          não           | FK  |   
 |    id_regiao     |    int    | Identificador da regiao onde se encontra esse item |       1-5000       |          não           |    FK    |                    |
 | id_local_fechado |    int    |   Id do local fechado onde se encontra esse item   |       1-5000       |          sim           |    FK    |                    |
 |  id_ferramenta   |    int    |     Id da ferramenta que é usada com esse item     |       1-5000       |          não           |    FK    |                    |
@@ -183,7 +191,8 @@ Essa tabela possui chaves estrangeiras das entidades `Item`.
 
 |  Nome Variável  |   Tipo    |                    Descrição                    | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-------------: | :-------: | :---------------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|  id_ferramenta  |    int    |        Identificador do item ferramenta         |       1-5000       |          não           |  PK, FK  |                    |
+|  id_ferramenta  |    int    |        Identificador do item ferramenta         |       1-5000       |          não           |  PK  |                    |
+|     id_item     |    int    |           Chave estrangeira para Item           |       1-5000       |          não           | FK  |   
 |      nome       | char[50]  |               Nome da ferramenta                |      a-z, A-Z      |          não           |          |                    |
 |    descricao    | char[800] |             Descrição da ferramenta             |      a-z, A-Z      |          sim           |          |                    |
 |   finalidade    | char[100] |            Finalidade da ferramenta             |      a-z, A-Z      |          não           |          |                    |
@@ -201,7 +210,8 @@ Essa tabela possui chave estrangeira da entidade `Jogador`.
 
 |  Nome Variável  | Tipo  |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-------------: | :---: | :------------------------------: | :----------------: | :--------------------: | :------: | :----------------: |
-|   id_jogador    |  int  |     Identificador do jogador     |       1-5000       |          não           |  PK, FK  |                    |
+|     id_habilidade     |    int    |          Identificador da habilidade           |       1-5000       |          não           | PK  |  
+|   id_jogador    |  int  |     Identificador do jogador     |       1-5000       |          não           |   FK  |                    |
 |  nivel_coleta   |  int  |  Nível da habilidade de coleta   |       1-1000       |          não           |          |     DEFAULT 1      |
 |  nivel_cultivo  |  int  |  Nível da habilidade de cultivo  |       1-1000       |          não           |          |     DEFAULT 1      |
 | nivel_mineracao |  int  | Nível da habilidade de mineração |       1-1000       |          não           |          |     DEFAULT 1      |
@@ -220,8 +230,9 @@ Essa tabela possui chaves estrangeiras das entidades `Caverna` e `Monstro`.
 
 | Nome Variável | Tipo  |                         Descrição                         | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-----------: | :---: | :-------------------------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|  id_caverna   |  int  | Identificador da caverna onde está a instância do monstro |       1-5000       |          não           |  PK, FK  |                    |
-|  id_monstro   |  int  |                 Identificador do Monstro                  |       1-5000       |          não           |  PK, FK  |                    |
+|     id_instancia_monstro    |    int    |           Identificador da instância do monstro           |       1-5000       |          não           | PK  |   
+|  id_caverna   |  int  | Identificador da caverna onde está a instância do monstro |       1-5000       |          não           |  FK  |                    |
+|  id_monstro   |  int  |                 Identificador do Monstro                  |       1-5000       |          não           |  FK  |                    |
 |    energia    |  int  |              Energia da instância de monstro              |       1-100        |          não           |          |                    |
 
 ## Entidade: Item
@@ -251,8 +262,9 @@ Essa tabela possui chaves estrangeiras das entidades `Item` e `Loja`.
 
 | Nome Variável | Tipo  |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-----------: | :---: | :---------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|    id_item    |  int  | Identificador do item-produto |       1-5000       |          não           |  PK, FK  |                    |
-|    id_loja    |  int  |     Identificador da loja     |       1-5000       |          não           |  PK, FK  |                    |
+|    id_estoque_loja    |  int  | Identificador do item em estoque da loja |       1-5000       |          não           |  PK  |                    |
+|    id_item    |  int  | Identificador do item-produto |       1-5000       |          não           |   FK  |                    |
+|    id_loja    |  int  |     Identificador da loja     |       1-5000       |          não           |   FK  |                    |
 |     preco     |  int  |  Preço do produto no estoque  |      1-500000      |          não           |          |                    |
 
 ## Entidade: Item_Inventário
@@ -267,8 +279,9 @@ Essa tabela possui chave estrangeira da entidade `Item`.
 
 | Nome Variável | Tipo  |        Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-----------: | :---: | :----------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|  id_jogador   |  int  | Identificador do Jogador |       1-5000       |          não           |  PK, FK  |                    |
-|    id_item    |  int  |  Identificador do Item   |       1-5000       |          não           |  PK, FK  |                    |
+|    id_item_inventario    |  int  | Identificador de um item no inventário |       1-5000       |          não           |  PK  |                    |
+|  id_jogador   |  int  | Identificador do Jogador |       1-5000       |          não           |   FK  |                    |
+|    id_item    |  int  |  Identificador do Item   |       1-5000       |          não           |   FK  |                    |
 |     qtdd      |  int  |    quantidade do item    |       1-5000       |          não           |          |                    |
 
 ## Entidade: Item_Receita
@@ -283,8 +296,9 @@ Essa tabela possui chaves estrangeiras das entidades `Artesanato` e `Item`.
 
 | Nome Variável | Tipo  |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-----------: | :---: | :------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-| id_artesanato |  int  |   Identificador do artesanato    |       1-5000       |          não           |  PK, FK  |                    |
-|    id_item    |  int  |      Identificador do item       |       1-5000       |          não           |  PK, FK  |                    |
+|    id_item_receita    |  int  | Identificador de um item na receita |       1-5000       |          não           |  PK  |                    |
+| id_artesanato |  int  |   Identificador do artesanato    |       1-5000       |          não           |  FK  |                    |
+|    id_item    |  int  |      Identificador do item       |       1-5000       |          não           |  FK  |                    |
 |     qtdd      |  int  | Quantidade desse item na receita |       1-5000       |          não           |          |                    |
 
 ## Entidade: Jogador
@@ -337,8 +351,9 @@ Essa tabela possui chaves estrangeiras das entidades `Local_Fechado`, `NPC` e `R
 
 | Nome Variável |   Tipo    |                Descrição                 | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-----------: | :-------: | :--------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|    id_loja    |    int    |      Identificador do local fechado      |       1-5000       |          não           |  PK, FK  |                    |
-|  id_npc_prop  |    int    |      Identificador do proprietário       |       1-5000       |          não           |    FK    |                    |
+|    id_loja    |    int    |      Identificador de loja      |       1-5000       |          não           |  PK  |                    |
+|    id_local_fechado    |    int    |      Identificador do local fechado      |       1-5000       |          não           |   FK  |                    |
+|  id_npc  |    int    |      Identificador do proprietário       |       1-5000       |          não           |    FK    |                    |
 |   id_regiao   |    int    | Identificador da região onde está a loja |       1-5000       |          não           |    FK    |                    |
 |     nome      | char[50]  |               Nome da loja               |      a-z, A-Z      |          não           |          |                    |
 |   descricao   | char[800] |            Descrição da loja             |      a-z, A-Z      |          sim           |          |                    |
@@ -394,7 +409,7 @@ O mundo é formado por regiões e cada região tem uma fazenda diferente para o 
 | :-----------: | :-------: | :------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
 |   id_mundo    |    int    | Código de identificação do mundo |       1-5000       |          não           |    PK    |                    |
 |     nome      | char[50]  |          Nome do mundo           |      a-z, A-Z      |          não           |          |                    |
-|   descrição   | char[800] |        Descrição do mundo        |      a-z, A-Z      |          não           |          |                    |
+|   descricao   | char[800] |        Descrição do mundo        |      a-z, A-Z      |          não           |          |                    |
 
 ## Entidade: NPC
 
@@ -408,7 +423,7 @@ Essa tabela possui chaves estrangeiras das entidades `Regiao` e `Local`.
 
 |  Nome Variável   |   Tipo    |                Descrição                | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :--------------: | :-------: | :-------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|      id_NPC      |    int    |     Código de identificação do npc      |       1-5000       |          não           |    PK    |                    |
+|      id_npc      |    int    |     Código de identificação do npc      |       1-5000       |          não           |    PK    |                    |
 |    id_regiao     |    int    | Identificador da regiao onde o NPC está |       1-5000       |          não           |    FK    |                    |
 | id_local_fechado |    int    | Identificador do local onde o NPC está  |       1-5000       |          sim           |    FK    |                    |
 |       nome       | char[50]  |               Nome do npc               |      a-z, A-Z      |          não           |          |                    |
@@ -426,7 +441,8 @@ Essa tabela possui chave estrangeira da entidade `Item`.
 
 | Nome Variável | Tipo  |            Descrição             | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-----------: | :---: | :------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|  id_semente   |  int  | Identificador do item da semente |       1-5000       |          não           |  PK, FK  |                    |
+|  id_plantacao   |  int  | Identificador da plantação |       1-5000       |          não           |  PK |  
+|  id_semente   |  int  | Identificador do item da semente |       1-5000       |          não           |   FK  |                    |
 | dia_colheita  |  int  |    dia de colheita calculado     |        1-28        |          não           |          |                    |
 
 ## Entidade: Região
@@ -458,7 +474,8 @@ Essa tabela possui chaves estrangeiras das entidades `Item` e `Estacao`.
 
 |   Nome Variável   |   Tipo    |                Descrição                | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :---------------: | :-------: | :-------------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-|    id_semente     |    int    |        Identificador da semente         |       1-5000       |          não           |  PK, FK  |                    |
+|    id_semente     |    int    |        Identificador da semente         |       1-5000       |          não           |  PK |                    |
+|    id_item     |    int    |        Chave estrangeira para item         |       1-5000       |          não           |  FK  |                    |
 |    id_estacao     |    int    |        Identificador da estação         |       1-5000       |          não           |    FK    |                    |
 |       nome        | char[50]  |          Nome do item semente           |      a-z, A-Z      |          não           |          |                    |
 |     descricao     | char[800] |          Descrição da semente           |      a-z, A-Z      |          sim           |          |                    |
@@ -507,6 +524,7 @@ Essa tabela possui chave estrangeira da entidade `Item`.
 
 | Nome Variável |   Tipo    |           Description            | Valores permitidos | Permite valores nulos? | É chave? | Outras Observações |
 | :-----------: | :-------: | :------------------------------: | :----------------: | :--------------------: | :------: | ------------------ |
-| id_vestimenta |    int    | Identificador do item vestimenta |       1-5000       |          não           |  PK, FK  |                    |
+| id_vestimenta |    int    | Identificador do item vestimenta |       1-5000       |          não           |  PK  |                    |
+|     id_item     |    int    |           Chave estrangeira para Item           |       1-5000       |          não           | FK  |                    |
 |     nome      | char[50]  |        Nome da vestimenta        |      a-z, A-Z      |          não           |          |                    |
 |   descricao   | char[800] |     Descrição da vestimenta      |      a-z, A-Z      |          sim           |          |                    |
