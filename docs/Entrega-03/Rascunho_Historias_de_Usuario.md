@@ -19,8 +19,8 @@ No campo Status, colocar uma das seguintes opções: "não iniciada", "em andame
 
 | ID  | Eu como...     | Gostaria de...                                         | Para...               | Observações                                        | Prioridade | Responsável                  | Status       |
 | --- | -------------- | ------------------------------------------------------ | --------------------- | -------------------------------------------------- | ---------- | ---------------------------- | ------------ |
-| 01  | Jogador        | Inicializar o jogo                                     | Poder começar a jogar | Deve ser implementado no frontend                  | Alta       | Nome de quem vai implementar | Não iniciado |
-| 02  | Banco de Dados | Atualizar os dados do novo jogador na tabela "Jogador" | Para iniciar o jogo   | Deve ser implementado no banco por store procedure | Alta       | Nome de quem vai implementar | Não iniciado |
+| 00  | Jogador        | Inicializar o jogo                                     | Poder começar a jogar | Deve ser implementado no frontend                  | Alta       | Nome de quem vai implementar | Não iniciado |
+| 01  | Banco de Dados | Atualizar os dados do novo jogador na tabela "Jogador" | Para iniciar o jogo   | Deve ser implementado no banco por store procedure | Alta       | Nome de quem vai implementar | Não iniciado |
 
 _Fonte:_ Autores, 2023
 
