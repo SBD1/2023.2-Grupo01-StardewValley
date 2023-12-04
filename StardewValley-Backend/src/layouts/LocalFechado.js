@@ -1,4 +1,4 @@
-const LocalFechado = () => {
+/* const LocalFechado = () => {
     console.log(" __________________________________________\n")
     console.log("|                                          |\n")
     console.log("|           Stardew Valley - MUD           |\n")
@@ -10,7 +10,7 @@ const LocalFechado = () => {
     console.log("2. Ação 2")
     console.log("3. Status do jogador")
     console.log("4. Status do jogo")
-}
+} */
 
 /* const LocalFechado = () => {
     console.log(" __________________________________________\n")
@@ -28,3 +28,15 @@ const LocalFechado = () => {
     console.log("1. Opção 1\n")
     console.log("2. Opção 2\n")
 } */
+
+export default LocalFechado = () => {
+    let numAcao = 2;
+
+    console.log(
+        `1. Sair do local
+        ${acoes.forEach(element => {
+            console.log(`${numAcao}. ${element}`)
+            numAcao++
+        })}
+`)
+}
