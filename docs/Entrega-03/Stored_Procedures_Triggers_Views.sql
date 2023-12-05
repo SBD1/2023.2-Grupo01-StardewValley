@@ -49,6 +49,60 @@
 -- Observações: 
 -- Autor: Marcus Martins
 
+-- Trigger para atualizar a estação do jogador após reiniciar para o dia 01
+CREATE OR REPLACE FUNCTION atualizar_estacao()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Verifica se o dia atual é 29 ou superior (após o dia 28)
+    IF NEW.dia >= 29 THEN
+        -- Atualiza a estação para o próximo ciclo (de 1 a 4)
+        NEW.id_estacao = (NEW.id_estacao % 4) + 1;
+        -- Atualiza o dia para 01
+        NEW.dia = 1;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER reiniciar_jogo
+BEFORE UPDATE ON Jogador
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_estacao();
+
+-- Stored Procedure para reiniciar o jogo
+CREATE OR REPLACE PROCEDURE reiniciar_jogo_procedure(jogador_id INT)
+AS $$
+DECLARE
+    jogador_rec Jogador%ROWTYPE;
+BEGIN
+    -- Obtém o jogador pelo ID
+    SELECT * INTO jogador_rec FROM Jogador WHERE id_jogador = jogador_id;
+
+    -- Chama a trigger para atualizar a estação
+    PERFORM atualizar_estacao() FROM jogador_rec;
+  
+    -- Atualiza o jogador
+    UPDATE Jogador SET 
+        id_estacao = jogador_rec.id_estacao,
+        dia = jogador_rec.dia
+    WHERE id_jogador = jogador_id;
+END;
+$$ LANGUAGE plpgsql;
+
+-- View para informações do jogador com nome da estação
+CREATE OR REPLACE VIEW jogador_info AS
+SELECT 
+    j.id_jogador,
+    j.nome,
+    e.nome AS estacao,
+    j.saude,
+    j.energia,
+    j.dia,
+    j.hora,
+    j.qtdd_ouro
+FROM Jogador j
+JOIN Estacao e ON j.id_estacao = e.id_estacao;
 
 
 -- 06 - Eu como Banco de Dados gostaria de Apagar todas as linhas da tabela Plantacao 
@@ -56,12 +110,52 @@
 -- Observações: 
 -- Autor: Marcus Martins
 
+-- Trigger para apagar todas as linhas da tabela Plantacao ao mudar a estação
+CREATE OR REPLACE FUNCTION LimparPlantacao()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Verifica se a estação foi alterada
+    IF NEW.id_estacao <> OLD.id_estacao THEN
+        -- Apaga todas as linhas da tabela Plantacao
+        DELETE FROM Plantacao;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Criação da Trigger
+CREATE TRIGGER LimparPlantacaoTrigger
+AFTER UPDATE ON Jogador
+FOR EACH ROW
+EXECUTE FUNCTION LimparPlantacao();
+
+-- Stored Procedure para iniciar nova estação
+CREATE OR REPLACE PROCEDURE IniciarNovaEstacao(in_id_jogador INT, in_nova_estacao INT)
+AS $$
+BEGIN
+    -- Atualiza a estação do jogador
+    UPDATE Jogador
+    SET id_estacao = in_nova_estacao
+    WHERE id_jogador = in_id_jogador;
+    
+    -- Chama a trigger para limpar a tabela Plantacao
+    PERFORM LimparPlantacao()
+    FROM Jogador
+    WHERE id_jogador = in_id_jogador;
+END;
+$$ LANGUAGE plpgsql;
+
+-- View para obter informações da tabela Plantacao
+CREATE OR REPLACE VIEW InformacoesPlantacao AS
+SELECT *
+FROM Plantacao;
 
 
 -- 07 - Eu como Banco de Dados gostaria de Verificar se há plantações prontas para colher 
 -- para Identificar e recompensar o jogador por plantações prontas 
 -- Observações: 
 -- Autor: Marcus Martins
+
 
 
 
