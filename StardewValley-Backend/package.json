@@ -8,11 +8,11 @@
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
     "createdb": "psql -U postgres -h localhost -a -f src/database/auxs/001-create-db.sql",
-    "createtb":"psql -U postgres -h localhost -f src/database/auxs/002-create-tables.sql",
+    "createtb": "psql -U postgres -h localhost -f src/database/auxs/002-create-tables.sql",
     "pulldb": "psql -U postgres -h localhost -a -f src/database/auxs/003-create-infos.sql",
-    "droptb":"psql -U postgres -h localhost -a -f src/database/auxs/333-destroy-tables.sql",
-    "dropdb": "psql -U postgres -h localhost -a -f src/database/auxs/666-destroydb.sql"
-
+    "droptb": "psql -U postgres -h localhost -a -f src/database/auxs/333-destroy-tables.sql",
+    "dropdb": "psql -U postgres -h localhost -a -f src/database/auxs/666-destroydb.sql",
+    "game": "npm-run-all --parallel createdb createtb pulldb start"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
     "nanoid": "^5.0.2",
     "nodemon": "^3.0.1",
     "pg": "^8.11.3",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "npm-run-all": "^4.1.5"
   }
 }
