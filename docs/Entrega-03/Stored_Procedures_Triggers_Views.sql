@@ -554,6 +554,23 @@ FROM mundo;
 -- Autor: Matheus Silverio
 -- =======================================================================================
 
+CREATE OR REPLACE PROCEDURE AdicionarNovoJogador(
+    nome_jogador CHAR(50),
+    energia INT,
+    qtdd_ouro INT,
+    dia INT,
+    hora INT,
+    id_estacao INT,
+    id_missao INT,
+    id_regiao INT
+)
+AS $$
+BEGIN
+    -- Inserir um novo jogador
+    INSERT INTO Jogador (nome, energia, qtdd_ouro, dia, hora, id_estacao, id_missao, id_regiao)
+    VALUES (nome_jogador, energia, qtdd_ouro, dia, hora, id_estacao, id_missao, id_regiao);
+END;
+$$ LANGUAGE plpgsql;
 
 
 -- =======================================================================================
@@ -563,6 +580,14 @@ FROM mundo;
 -- Autor: Matheus Silverio
 -- =======================================================================================
 
+CREATE OR REPLACE PROCEDURE AdicionarHabilidadesIniciais(jogador_id INT)
+AS $$
+BEGIN
+    -- Inserir habilidades iniciais para o jogador
+    INSERT INTO Habilidade (id_jogador, nivel_coleta, nivel_cultivo, nivel_mineracao, nivel_pesca, nivel_combate)
+    VALUES (jogador_id, 1, 1, 1, 1, 1);
+END;
+$$ LANGUAGE plpgsql;
 
 
 -- =======================================================================================
@@ -571,6 +596,36 @@ FROM mundo;
 -- Observações: 
 -- Autor: Matheus Silverio
 -- =======================================================================================
+
+CREATE OR REPLACE PROCEDURE AdicionarItensIniciaisInventario(jogador_id INT)
+AS $$
+BEGIN
+    -- Inserir itens iniciais no inventário do jogador
+    INSERT INTO Item_Inventario (id_jogador, id_item, qtdd)
+    VALUES (jogador_id, 1, 1),
+           (jogador_id, 2, 1);
+END;
+$$ LANGUAGE plpgsql;
+
+-- TRIGGER PARA AUTOMATIZAR PROCESSOS 21 - 23
+
+CREATE TRIGGER AdicionarNovoJogadorTrigger
+AFTER INSERT ON Jogador
+FOR EACH ROW
+EXECUTE PROCEDURE AdicionarHabilidadesEItens();
+
+CREATE OR REPLACE FUNCTION AdicionarHabilidadesEItens()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Chama a stored procedure para adicionar habilidades iniciais
+    CALL AdicionarHabilidadesIniciais(NEW.id_jogador);
+
+    -- Chama a stored procedure para adicionar itens iniciais no inventário
+    CALL AdicionarItensIniciaisInventario(NEW.id_jogador);
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
 
 
@@ -1212,6 +1267,20 @@ LANGUAGE plpgsql;
 -- Autor: Matheus Silverio
 -- =======================================================================================
 
+-- Atualizar o inventário do jogador após a mineração
+CREATE OR REPLACE PROCEDURE AtualizarInventarioAposMineracao(
+    jogador_id INT, 
+    item_minerado_id INT, 
+    quantidade INT
+)
+AS $$
+BEGIN
+    INSERT INTO Item_Inventario (id_jogador, id_item, qtdd)
+    VALUES (jogador_id, item_minerado_id, quantidade)
+    ON CONFLICT (id_jogador, id_item)
+    DO UPDATE SET qtdd = Item_Inventario.qtdd + quantidade;
+END;
+$$ LANGUAGE plpgsql;
 
 
 -- =======================================================================================
@@ -1221,6 +1290,17 @@ LANGUAGE plpgsql;
 -- Autor: Matheus Silverio
 -- =======================================================================================
 
+-- Incrementar a habilidade de mineração do jogador após a mineração
+CREATE OR REPLACE PROCEDURE IncrementarHabilidadeMineracao(
+    jogador_id INT
+)
+AS $$
+BEGIN
+    UPDATE Habilidade
+    SET nivel_mineracao = nivel_mineracao + 1
+    WHERE id_jogador = jogador_id;
+END;
+$$ LANGUAGE plpgsql;
 
 
 -- =======================================================================================
