@@ -281,6 +281,60 @@ FROM Plantacao;
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Trigger para verificar se há plantações prontas para colher
+CREATE OR REPLACE FUNCTION verificar_colheita()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.dias_crescimento <= 0 THEN
+        RAISE NOTICE 'Plantação pronta para colher!'; -- Substitua pela lógica desejada
+        -- Você pode adicionar aqui a lógica para realizar alguma ação quando a plantação está pronta para colher
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Aplique a trigger na tabela de Sementes
+CREATE TRIGGER semente_verificar_colheita
+BEFORE INSERT OR UPDATE ON Semente
+FOR EACH ROW
+EXECUTE FUNCTION verificar_colheita();
+
+-- Stored Procedure para simular o plantio de uma semente
+CREATE OR REPLACE PROCEDURE plantar_semente(
+    IN semente_id INT,
+    IN estacao_id INT
+)
+AS $$
+DECLARE
+    dias_crescimento INT;
+BEGIN
+    -- Obter informações da semente
+    SELECT dias_para_crescer INTO dias_crescimento
+    FROM Informacao_Semente
+    WHERE id_info_semente = semente_id;
+
+    -- Inserir a semente na tabela
+    INSERT INTO Semente(id_info_semente, id_estacao, dias_crescimento)
+    VALUES (semente_id, estacao_id, dias_crescimento);
+END;
+$$ LANGUAGE plpgsql;
+
+-- View para listar plantações prontas para colher
+CREATE OR REPLACE VIEW plantacoes_prontas_para_colher AS
+SELECT
+    S.id_semente,
+    IS.nome AS nome_semente,
+    S.id_estacao,
+    E.nome AS nome_estacao,
+    S.dias_crescimento
+FROM
+    Semente S
+JOIN
+    Informacao_Semente IS ON S.id_info_semente = IS.id_info_semente
+JOIN
+    Estacao E ON S.id_estacao = E.id_estacao
+WHERE
+    S.dias_crescimento <= 0;
 
 
 -- =======================================================================================
@@ -519,7 +573,6 @@ SELECT id_mundo, nome, descricao
 FROM mundo;
 
 
-
 -- =======================================================================================
 -- 18 - Eu como Banco de Dados gostaria de Inserir dados do mundo escolhido na tabela 
 -- "Mundo" para Registrar a escolha do jogador 
@@ -527,6 +580,43 @@ FROM mundo;
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Função para inserir dados do mundo escolhido ao criar um novo jogador
+CREATE OR REPLACE FUNCTION InserirMundoEscolhidoParaNovoJogador()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Chama a stored procedure para inserir dados do mundo
+    PERFORM InserirMundoEscolhido(NEW.mundo);
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger que aciona a função acima após a inserção de um novo jogador
+CREATE TRIGGER TriggerInserirMundoEscolhido
+AFTER INSERT ON Jogador
+FOR EACH ROW
+EXECUTE FUNCTION InserirMundoEscolhidoParaNovoJogador();
+
+-- Stored Procedure para inserir dados do mundo na tabela "Mundo"
+CREATE OR REPLACE PROCEDURE InserirMundoEscolhido(
+    IN mundo_nome VARCHAR
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Insere dados do mundo na tabela "Mundo"
+    INSERT INTO Mundo (nome) VALUES (mundo_nome);
+END;
+$$;
+
+-- View que fornece uma visão simplificada dos jogadores com o mundo escolhido
+CREATE OR REPLACE VIEW JogadoresComMundo AS
+SELECT
+    Jogador.*,
+    Mundo.nome AS mundo_escolhido
+FROM
+    Jogador
+JOIN
+    Mundo ON Jogador.id_mundo = Mundo.id_mundo;
 
 
 -- =======================================================================================
@@ -536,6 +626,47 @@ FROM mundo;
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Trigger para acionar a stored procedure após uma atualização no jogador
+CREATE OR REPLACE FUNCTION EscolherRegiaoExplorarTrigger()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Chama a stored procedure EscolherRegiaoExplorar passando os parâmetros necessários
+    PERFORM EscolherRegiaoExplorar(NEW.id_jogador, 'Fazenda', 'Lavouras');
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Adiciona a Trigger à tabela Jogador
+CREATE TRIGGER escolher_regiao_trigger
+AFTER UPDATE ON Jogador
+FOR EACH ROW
+EXECUTE FUNCTION EscolherRegiaoExplorarTrigger();
+
+-- Stored Procedure para Escolher uma Região para Explorar
+CREATE OR REPLACE PROCEDURE EscolherRegiaoExplorar(
+    jogador_id INT,
+    mundo_nome VARCHAR(255),
+    regiao_nome VARCHAR(255)
+)
+LANGUAGE SQL
+AS $$
+BEGIN
+    -- Atualiza a região escolhida para o jogador
+    UPDATE Jogador SET id_regiao = R.id_regiao
+    FROM Regiao R, Mundo M
+    WHERE R.mundo = M.id_mundo
+        AND R.nome = regiao_nome
+        AND M.nome = mundo_nome
+        AND Jogador.id_jogador = jogador_id;
+END;
+$$;
+
+-- View para fornecer informações simplificadas sobre a região escolhida
+CREATE OR REPLACE VIEW InformacoesRegiaoEscolhida AS
+SELECT J.nome AS nome_jogador, R.nome AS nome_regiao, M.nome AS nome_mundo
+FROM Jogador J
+JOIN Regiao R ON J.id_regiao = R.id_regiao
+JOIN Mundo M ON R.mundo = M.id_mundo;
 
 
 -- =======================================================================================
@@ -545,6 +676,42 @@ FROM mundo;
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+
+-- Função para inserir dados na tabela Regiao_Mundo após a inserção de uma nova região
+CREATE OR REPLACE FUNCTION inserir_regiao_mundo()
+RETURNS TRIGGER AS $$
+BEGIN
+   -- Inserindo na tabela Regiao_Mundo os dados da nova região e seu respectivo mundo
+   INSERT INTO Regiao_Mundo (id_regiao, id_mundo)
+   VALUES (NEW.id_regiao, (SELECT id_mundo FROM Mundo WHERE nome = NEW.nome_mundo));
+   
+   -- Retornando a nova região
+   RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger que chama a função inserir_regiao_mundo após a inserção de uma nova região
+CREATE TRIGGER tr_inserir_regiao_mundo
+AFTER INSERT ON Regiao
+FOR EACH ROW
+EXECUTE FUNCTION inserir_regiao_mundo();
+
+-- Procedure para escolher uma região, inserindo dados diretamente na tabela Regiao
+CREATE OR REPLACE PROCEDURE escolher_regiao(in_nome_regiao VARCHAR, in_nome_mundo VARCHAR)
+AS $$
+BEGIN
+   -- Inserindo na tabela Regiao os dados da nova região e seu respectivo mundo
+   INSERT INTO Regiao (nome, mundo)
+   VALUES (in_nome_regiao, in_nome_mundo);
+END;
+$$ LANGUAGE plpgsql;
+
+-- View para visualizar dados da tabela Regiao_Mundo combinando informações das tabelas Regiao e Mundo
+CREATE OR REPLACE VIEW vw_regiao_mundo AS
+SELECT R.nome AS nome_regiao, M.nome AS nome_mundo
+FROM Regiao_Mundo RM
+JOIN Regiao R ON RM.id_regiao = R.id_regiao
+JOIN Mundo M ON RM.id_mundo = M.id_mundo;
 
 
 -- =======================================================================================
