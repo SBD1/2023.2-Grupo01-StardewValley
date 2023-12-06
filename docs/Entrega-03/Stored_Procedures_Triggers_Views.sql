@@ -239,8 +239,8 @@ RETURNS TRIGGER AS $$
 BEGIN
     -- Verifica se a estação foi alterada
     IF NEW.id_estacao <> OLD.id_estacao THEN
-        -- Apaga todas as linhas da tabela Plantacao
-        DELETE FROM Plantacao;
+        -- Chama a stored procedure para iniciar nova estação
+        PERFORM IniciarNovaEstacao(NEW.id_jogador, NEW.id_estacao);
     END IF;
     RETURN NEW;
 END;
@@ -261,9 +261,8 @@ BEGIN
     SET id_estacao = in_nova_estacao
     WHERE id_jogador = in_id_jogador;
     
-    -- Chama a trigger para limpar a tabela Plantacao
-    PERFORM LimparPlantacao()
-    FROM Jogador
+    -- Apaga todas as linhas da tabela Plantacao relacionadas ao jogador
+    DELETE FROM Plantacao
     WHERE id_jogador = in_id_jogador;
 END;
 $$ LANGUAGE plpgsql;
@@ -274,6 +273,7 @@ SELECT *
 FROM Plantacao;
 
 
+
 -- =======================================================================================
 -- 07 - Eu como Banco de Dados gostaria de Verificar se há plantações prontas para colher 
 -- para Identificar e recompensar o jogador por plantações prontas 
@@ -281,6 +281,47 @@ FROM Plantacao;
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Trigger para verificar e recompensar o jogador por plantações prontas
+CREATE OR REPLACE FUNCTION verificar_colheita() RETURNS TRIGGER AS $$
+BEGIN
+    -- Verificar plantações prontas para colher
+    UPDATE Jogador SET qtdd_ouro = qtdd_ouro + (SELECT COUNT(*) * valor_venda 
+                                                 FROM Semente 
+                                                 WHERE id_estacao = NEW.id_estacao 
+                                                 AND dias_para_crescer <= NEW.dia - OLD.dia 
+                                                 AND NEW.dia >= dias_para_crescer) 
+    WHERE id_jogador = NEW.id_jogador;
+
+    -- Retornar a linha atualizada
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger para acionar a função ao atualizar o dia do jogador
+CREATE TRIGGER trigger_verificar_colheita
+AFTER UPDATE OF dia ON Jogador
+FOR EACH ROW
+EXECUTE FUNCTION verificar_colheita();
+
+-- Stored Procedure para recompensar manualmente por plantações prontas
+CREATE OR REPLACE FUNCTION recompensar_por_colheita(jogador_id INT) RETURNS VOID AS $$
+BEGIN
+    -- Verificar plantações prontas para colher
+    UPDATE Jogador SET qtdd_ouro = qtdd_ouro + (SELECT COUNT(*) * valor_venda 
+                                                 FROM Semente 
+                                                 WHERE id_estacao = Jogador.id_estacao 
+                                                 AND dias_para_crescer <= Jogador.dia
+                                                 AND Jogador.dia >= dias_para_crescer) 
+    WHERE id_jogador = jogador_id;
+END;
+$$ LANGUAGE plpgsql;
+
+-- View que mostra as plantações prontas para colher
+CREATE OR REPLACE VIEW Plantacoes_Prontas AS
+SELECT Jogador.id_jogador, Jogador.nome AS jogador_nome, Semente.nome AS semente_nome, Semente.descricao AS semente_descricao
+FROM Jogador
+JOIN Semente ON Jogador.id_estacao = Semente.id_estacao
+WHERE Jogador.dia >= Semente.dias_para_crescer;
 
 
 -- =======================================================================================
