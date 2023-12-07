@@ -171,7 +171,7 @@ EXECUTE FUNCTION DispararVerificacaoReinicioCicloDias();
 -- =======================================================================================
 
 -- Trigger para atualizar a estação do jogador após reiniciar para o dia 01
-CREATE OR REPLACE FUNCTION atualizar_estacao()
+CREATE OR REPLACE FUNCTION AtualizarEstacao()
 RETURNS TRIGGER AS $$
 BEGIN
     -- Verifica se o dia atual é 29 ou superior (após o dia 28)
@@ -186,13 +186,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER reiniciar_jogo
+CREATE TRIGGER tr_ReiniciarEstacao
 BEFORE UPDATE ON Jogador
 FOR EACH ROW
-EXECUTE FUNCTION atualizar_estacao();
+EXECUTE FUNCTION AtualizarEstacao();
 
 -- Stored Procedure para reiniciar o jogo
-CREATE OR REPLACE PROCEDURE reiniciar_jogo_procedure(jogador_id INT)
+CREATE OR REPLACE PROCEDURE sp_ReiniciarJogo(jogador_id INT)
 AS $$
 DECLARE
     jogador_rec Jogador%ROWTYPE;
@@ -212,7 +212,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- View para informações do jogador com nome da estação
-CREATE OR REPLACE VIEW jogador_info AS
+CREATE OR REPLACE VIEW vw_JogadorInfo AS
 SELECT 
     j.id_jogador,
     j.nome,
@@ -247,13 +247,13 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Criação da Trigger
-CREATE TRIGGER LimparPlantacaoTrigger
+CREATE TRIGGER tr_LimparPlantacao
 AFTER UPDATE ON Jogador
 FOR EACH ROW
 EXECUTE FUNCTION LimparPlantacao();
 
 -- Stored Procedure para iniciar nova estação
-CREATE OR REPLACE PROCEDURE IniciarNovaEstacao(in_id_jogador INT, in_nova_estacao INT)
+CREATE OR REPLACE PROCEDURE sp_IniciarNovaEstacao(in_id_jogador INT, in_nova_estacao INT)
 AS $$
 BEGIN
     -- Atualiza a estação do jogador
@@ -268,7 +268,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- View para obter informações da tabela Plantacao
-CREATE OR REPLACE VIEW InformacoesPlantacao AS
+CREATE OR REPLACE VIEW vw_InformacoesPlantacao AS
 SELECT *
 FROM Plantacao;
 
@@ -282,7 +282,7 @@ FROM Plantacao;
 -- =======================================================================================
 
 -- Trigger para verificar se há plantações prontas para colher
-CREATE OR REPLACE FUNCTION verificar_colheita()
+CREATE OR REPLACE FUNCTION VerificarColheita()
 RETURNS TRIGGER AS $$
 BEGIN
     IF NEW.dias_crescimento <= 0 THEN
@@ -294,13 +294,13 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Aplique a trigger na tabela de Sementes
-CREATE TRIGGER semente_verificar_colheita
+CREATE TRIGGER tr_SementeVerificarColheita
 BEFORE INSERT OR UPDATE ON Semente
 FOR EACH ROW
-EXECUTE FUNCTION verificar_colheita();
+EXECUTE FUNCTION VerificarColheita();
 
 -- Stored Procedure para simular o plantio de uma semente
-CREATE OR REPLACE PROCEDURE plantar_semente(
+CREATE OR REPLACE PROCEDURE sp_PlantarSemente(
     IN semente_id INT,
     IN estacao_id INT
 )
@@ -320,7 +320,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- View para listar plantações prontas para colher
-CREATE OR REPLACE VIEW plantacoes_prontas_para_colher AS
+CREATE OR REPLACE VIEW vw_PlantacoesProntasParaColher AS
 SELECT
     S.id_semente,
     IS.nome AS nome_semente,
@@ -335,48 +335,6 @@ JOIN
     Estacao E ON S.id_estacao = E.id_estacao
 WHERE
     S.dias_crescimento <= 0;
--- Trigger para verificar e recompensar o jogador por plantações prontas
-CREATE OR REPLACE FUNCTION verificar_colheita() RETURNS TRIGGER AS $$
-BEGIN
-    -- Verificar plantações prontas para colher
-    UPDATE Jogador SET qtdd_ouro = qtdd_ouro + (SELECT COUNT(*) * valor_venda 
-                                                 FROM Semente 
-                                                 WHERE id_estacao = NEW.id_estacao 
-                                                 AND dias_para_crescer <= NEW.dia - OLD.dia 
-                                                 AND NEW.dia >= dias_para_crescer) 
-    WHERE id_jogador = NEW.id_jogador;
-
-    -- Retornar a linha atualizada
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
--- Trigger para acionar a função ao atualizar o dia do jogador
-CREATE TRIGGER trigger_verificar_colheita
-AFTER UPDATE OF dia ON Jogador
-FOR EACH ROW
-EXECUTE FUNCTION verificar_colheita();
-
--- Stored Procedure para recompensar manualmente por plantações prontas
-CREATE OR REPLACE FUNCTION recompensar_por_colheita(jogador_id INT) RETURNS VOID AS $$
-BEGIN
-    -- Verificar plantações prontas para colher
-    UPDATE Jogador SET qtdd_ouro = qtdd_ouro + (SELECT COUNT(*) * valor_venda 
-                                                 FROM Semente 
-                                                 WHERE id_estacao = Jogador.id_estacao 
-                                                 AND dias_para_crescer <= Jogador.dia
-                                                 AND Jogador.dia >= dias_para_crescer) 
-    WHERE id_jogador = jogador_id;
-END;
-$$ LANGUAGE plpgsql;
-
--- View que mostra as plantações prontas para colher
-CREATE OR REPLACE VIEW Plantacoes_Prontas AS
-SELECT Jogador.id_jogador, Jogador.nome AS jogador_nome, Semente.nome AS semente_nome, Semente.descricao AS semente_descricao
-FROM Jogador
-JOIN Semente ON Jogador.id_estacao = Semente.id_estacao
-WHERE Jogador.dia >= Semente.dias_para_crescer;
-
 
 -- =======================================================================================
 
@@ -621,43 +579,44 @@ FROM mundo;
 -- Autor: Marcus Martins
 -- =======================================================================================
 
--- Função para inserir dados do mundo escolhido ao criar um novo jogador
-CREATE OR REPLACE FUNCTION InserirMundoEscolhidoParaNovoJogador()
+-- Trigger para registrar a escolha do mundo quando um novo jogador é adicionado
+CREATE OR REPLACE FUNCTION RegistrarMundoEscolhido()
 RETURNS TRIGGER AS $$
 BEGIN
-    -- Chama a stored procedure para inserir dados do mundo
-    PERFORM InserirMundoEscolhido(NEW.mundo);
+    INSERT INTO Mundo (nome) VALUES (NEW.mundo);
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
--- Trigger que aciona a função acima após a inserção de um novo jogador
-CREATE TRIGGER TriggerInserirMundoEscolhido
+-- Ativando a Trigger quando um novo jogador é adicionado
+CREATE TRIGGER tg_RegistrarMundo
 AFTER INSERT ON Jogador
 FOR EACH ROW
-EXECUTE FUNCTION InserirMundoEscolhidoParaNovoJogador();
+EXECUTE FUNCTION RegistrarMundoEscolhido();
 
--- Stored Procedure para inserir dados do mundo na tabela "Mundo"
-CREATE OR REPLACE PROCEDURE InserirMundoEscolhido(
-    IN mundo_nome VARCHAR
+-- Stored Procedure para permitir que um jogador escolha o mundo
+CREATE OR REPLACE PROCEDURE sp_EscolherMundo(
+    IN jogador_nome VARCHAR(50),
+    IN mundo_nome VARCHAR(50)
 )
-LANGUAGE plpgsql
 AS $$
 BEGIN
-    -- Insere dados do mundo na tabela "Mundo"
-    INSERT INTO Mundo (nome) VALUES (mundo_nome);
+    INSERT INTO Jogador (nome, mundo, saude, energia, dia, hora, qtdd_ouro)
+    VALUES (jogador_nome, mundo_nome, 100, 100, 1, 12, 0);
 END;
-$$;
+$$ LANGUAGE plpgsql;
 
--- View que fornece uma visão simplificada dos jogadores com o mundo escolhido
-CREATE OR REPLACE VIEW JogadoresComMundo AS
+
+-- View para obter informações sobre os jogadores e seus mundos
+CREATE OR REPLACE VIEW vw_JogadorMundo AS
 SELECT
-    Jogador.*,
-    Mundo.nome AS mundo_escolhido
-FROM
-    Jogador
-JOIN
-    Mundo ON Jogador.id_mundo = Mundo.id_mundo;
+    J.id_jogador,
+    J.nome AS nome_jogador,
+    J.mundo,
+    M.descricao AS descricao_mundo
+FROM Jogador J
+JOIN Mundo M ON J.mundo = M.nome;
+
 
 
 -- =======================================================================================
@@ -678,13 +637,13 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Adiciona a Trigger à tabela Jogador
-CREATE TRIGGER escolher_regiao_trigger
+CREATE TRIGGER tr_EscolherRegiao
 AFTER UPDATE ON Jogador
 FOR EACH ROW
 EXECUTE FUNCTION EscolherRegiaoExplorarTrigger();
 
 -- Stored Procedure para Escolher uma Região para Explorar
-CREATE OR REPLACE PROCEDURE EscolherRegiaoExplorar(
+CREATE OR REPLACE PROCEDURE sp_EscolherRegiaoExplorar(
     jogador_id INT,
     mundo_nome VARCHAR(255),
     regiao_nome VARCHAR(255)
@@ -703,7 +662,7 @@ END;
 $$;
 
 -- View para fornecer informações simplificadas sobre a região escolhida
-CREATE OR REPLACE VIEW InformacoesRegiaoEscolhida AS
+CREATE OR REPLACE VIEW vw_InformacoesRegiaoEscolhida AS
 SELECT J.nome AS nome_jogador, R.nome AS nome_regiao, M.nome AS nome_mundo
 FROM Jogador J
 JOIN Regiao R ON J.id_regiao = R.id_regiao
@@ -717,9 +676,8 @@ JOIN Mundo M ON R.mundo = M.id_mundo;
 -- Autor: Marcus Martins
 -- =======================================================================================
 
-
 -- Função para inserir dados na tabela Regiao_Mundo após a inserção de uma nova região
-CREATE OR REPLACE FUNCTION inserir_regiao_mundo()
+CREATE OR REPLACE FUNCTION InserirRegiaoMundo()
 RETURNS TRIGGER AS $$
 BEGIN
    -- Inserindo na tabela Regiao_Mundo os dados da nova região e seu respectivo mundo
@@ -732,13 +690,13 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Trigger que chama a função inserir_regiao_mundo após a inserção de uma nova região
-CREATE TRIGGER tr_inserir_regiao_mundo
+CREATE TRIGGER tr_InserirRegiaoMundo
 AFTER INSERT ON Regiao
 FOR EACH ROW
-EXECUTE FUNCTION inserir_regiao_mundo();
+EXECUTE FUNCTION InserirRegiaoMundo();
 
 -- Procedure para escolher uma região, inserindo dados diretamente na tabela Regiao
-CREATE OR REPLACE PROCEDURE escolher_regiao(in_nome_regiao VARCHAR, in_nome_mundo VARCHAR)
+CREATE OR REPLACE PROCEDURE sp_EscolherRegiao(in_nome_regiao VARCHAR, in_nome_mundo VARCHAR)
 AS $$
 BEGIN
    -- Inserindo na tabela Regiao os dados da nova região e seu respectivo mundo
@@ -748,7 +706,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- View para visualizar dados da tabela Regiao_Mundo combinando informações das tabelas Regiao e Mundo
-CREATE OR REPLACE VIEW vw_regiao_mundo AS
+CREATE OR REPLACE VIEW vw_RegiaoMundo AS
 SELECT R.nome AS nome_regiao, M.nome AS nome_mundo
 FROM Regiao_Mundo RM
 JOIN Regiao R ON RM.id_regiao = R.id_regiao
@@ -1011,10 +969,42 @@ JOIN Habilidade h ON j.id_jogador = h.id_jogador;
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Trigger que é acionada sempre que o jogador entra em uma nova região
+CREATE OR REPLACE FUNCTION AtualizarInfoRegiao()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Atualiza as informações da região e locais fechados para o jogador atual
+    UPDATE Jogador J
+    SET id_regiao = NEW.id_regiao
+    WHERE J.id_jogador = NEW.id_jogador;
 
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- A trigger é acionada ao entrar em uma nova região
+CREATE TRIGGER tg_AtualizarInfoRegiao
+AFTER UPDATE OF id_regiao ON Jogador
+FOR EACH ROW
+EXECUTE FUNCTION AtualizarInfoRegiao();
+
+-- View que retorna informações sobre a região atual e seus locais fechados
+CREATE VIEW vw_InfoRegiaoLocal AS
+SELECT 
+    R.id_regiao,
+    R.nome AS nome_regiao,
+    R.mundo,
+    LF.id_local_fechado,
+    LF.nome_tipo_local_fechado,
+    LF.descricao AS descricao_local
+FROM
+    Regiao R
+JOIN
+    Local_Fechado LF ON R.id_regiao = LF.id_regiao;
 
 -- =======================================================================================
--- 32 - Eu como Jogador gostaria de Realizar coleta para Coletar itens na região 
+-- 32 - Eu como Jogador gostaria de Realizar coleta para Coletar itens espalhados pela
+-- região em que estou
 -- Observações: 
 -- Autor: Marcus Martins
 -- =======================================================================================
