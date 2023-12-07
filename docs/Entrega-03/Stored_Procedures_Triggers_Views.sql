@@ -1018,6 +1018,68 @@ JOIN
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Função para verificar e atualizar o inventário do jogador
+CREATE OR REPLACE FUNCTION VerificarAtualizarInventario(
+    jogador_id INT,
+    item_id INT,
+    quantidade INT
+)
+RETURNS VOID AS $$
+BEGIN
+    -- Verifica se o item já existe no inventário do jogador
+    IF EXISTS (SELECT 1 FROM Item_Inventario WHERE id_jogador = jogador_id AND id_item = item_id) THEN
+        -- Se o item existir, incrementa a quantidade
+        UPDATE Item_Inventario
+        SET qtdd = qtdd + quantidade
+        WHERE id_jogador = jogador_id AND id_item = item_id;
+    ELSE
+        -- Se o item não existir, insere um novo registro
+        INSERT INTO Item_Inventario (id_jogador, id_item, qtdd)
+        VALUES (jogador_id, item_id, quantidade);
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger para registrar coleta na tabela "Item-Inventário"
+CREATE OR REPLACE FUNCTION tr_RegistrarColeta()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM VerificarAtualizarInventario(NEW.id_jogador, NEW.id_item, NEW.qtdd);
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Associa a Trigger à tabela "Item-Inventário"
+CREATE TRIGGER tr_Coleta
+AFTER INSERT ON Item_Receita
+FOR EACH ROW
+EXECUTE FUNCTION tr_RegistrarColeta();
+
+-- Stored Procedure para registrar coleta manualmente
+CREATE OR REPLACE PROCEDURE sp_RegistrarColetaManual(
+    jogador_id INT,
+    item_id INT,
+    quantidade INT
+)
+AS $$
+BEGIN
+    PERFORM VerificarAtualizarInventario(jogador_id, item_id, quantidade);
+END;
+$$ LANGUAGE plpgsql;
+
+-- View para exibir o inventário consolidado do jogador
+CREATE OR REPLACE VIEW vw_InventarioJogador AS
+SELECT
+    J.id_jogador,
+    J.nome AS nome_jogador,
+    II.id_item,
+    I.nome AS nome_item,
+    I.descricao AS descricao_item,
+    II.qtdd
+FROM
+    Jogador J
+    JOIN Item_Inventario II ON J.id_jogador = II.id_jogador
+    JOIN Item I ON II.id_item = I.id_item;
 
 
 -- =======================================================================================
@@ -1026,6 +1088,68 @@ JOIN
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Stored procedure para realizar o plantio
+CREATE OR REPLACE PROCEDURE sp_PlantarSemente(
+    jogador_id INT,
+    semente_nome VARCHAR
+)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    semente_id INT;
+    qtdd_semente INT;
+BEGIN
+    -- Obter o ID da semente e a quantidade no inventário do jogador
+    SELECT id_semente, qtdd INTO semente_id, qtdd_semente
+    FROM Item_Inventario
+    WHERE id_jogador = jogador_id
+        AND id_item = (
+            SELECT id_info_semente
+            FROM Informacao_Semente
+            WHERE nome = semente_nome
+        );
+
+    -- Verificar se o jogador possui a semente no inventário
+    IF semente_id IS NOT NULL THEN
+        -- Verificar se a estação atual é adequada para plantar
+        IF EXISTS (
+            SELECT 1
+            FROM Jogador
+            WHERE id_jogador = jogador_id
+                AND id_estacao = (
+                    SELECT id_estacao
+                    FROM Informacao_Semente
+                    WHERE nome = semente_nome
+                )
+        ) THEN
+            -- Remover a semente do inventário do jogador
+            IF qtdd_semente > 1 THEN
+                -- Se houver mais de uma unidade, reduzir a quantidade
+                UPDATE Item_Inventario
+                SET qtdd = qtdd - 1
+                WHERE id_jogador = jogador_id
+                    AND id_item = semente_id
+                RETURNING NEW.qtdd INTO qtdd_semente;
+            ELSE
+                -- Se houver apenas uma unidade, remover a linha
+                DELETE FROM Item_Inventario
+                WHERE id_jogador = jogador_id
+                    AND id_item = semente_id;
+            END IF;
+
+            -- Inserir o plantio na tabela correspondente (supondo que você tenha uma tabela para isso)
+            INSERT INTO Plantio (id_jogador, id_semente, data_plantio)
+            VALUES (jogador_id, semente_id, CURRENT_DATE);
+
+            RAISE NOTICE 'Semente plantada com sucesso!';
+        ELSE
+            RAISE EXCEPTION 'Estação inadequada para plantar esta semente!';
+        END IF;
+    ELSE
+        RAISE EXCEPTION 'Jogador não possui a semente no inventário!';
+    END IF;
+END;
+$$;
 
 
 -- =======================================================================================
@@ -1035,6 +1159,48 @@ JOIN
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Trigger para registrar plantação quando uma semente é plantada
+CREATE OR REPLACE FUNCTION RegistrarPlantacao()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO Plantacao (id_jogador, id_semente, quantidade, data_plantio)
+  VALUES (NEW.id_jogador, NEW.id_semente, NEW.qtdd, CURRENT_DATE);
+  
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Ativando a trigger quando uma semente é plantada
+CREATE TRIGGER tg_TriggerPlantacao
+AFTER INSERT ON Item_Inventario
+FOR EACH ROW
+WHEN (NEW.id_semente IS NOT NULL)
+EXECUTE FUNCTION registrar_plantacao();
+
+-- Stored Procedure para registrar plantação
+CREATE OR REPLACE FUNCTION sp_PlantarSemente(
+  jogador_id INT,
+  semente_id INT,
+  quantidade INT
+)
+RETURNS VOID AS $$
+BEGIN
+  INSERT INTO Plantacao (id_jogador, id_semente, quantidade, data_plantio)
+  VALUES (jogador_id, semente_id, quantidade, CURRENT_DATE);
+END;
+$$ LANGUAGE plpgsql;e
+
+-- View para visualizar informações de plantação do jogador
+CREATE OR REPLACE VIEW vw_PlantacaoJogador AS
+SELECT
+  p.id_plantacao,
+  j.nome AS jogador,
+  s.nome AS semente,
+  p.quantidade,
+  p.data_plantio
+FROM Plantacao p
+JOIN Jogador j ON p.id_jogador = j.id_jogador
+JOIN Semente s ON p.id_semente = s.id_semente;
 
 
 -- =======================================================================================
@@ -1403,7 +1569,6 @@ $$
 LANGUAGE plpgsql;
 
 
-
 -- =======================================================================================
 -- 52 - Eu como Banco de Dados gostaria de Verificar se jogador possui ouro suficiente 
 -- para compra para Garantir que o jogador tem recursos necessários 
@@ -1411,6 +1576,59 @@ LANGUAGE plpgsql;
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Stored Procedure para Verificar Ouro Suficiente
+CREATE OR REPLACE PROCEDURE VerificarOuroSuficiente(
+    p_id_jogador INT,
+    p_id_item INT,
+    p_quantidade INT
+)
+LANGUAGE plpgsql AS $$
+DECLARE
+    v_preco_item INT;
+    v_ouro_jogador INT;
+BEGIN
+    -- Obter o preço do item da tabela Item-Estoque-Loja
+    SELECT preco INTO v_preco_item
+    FROM Item_Estoque_Loja
+    WHERE id_item = p_id_item;
+
+    -- Obter a quantidade de ouro do jogador
+    SELECT qtdd_ouro INTO v_ouro_jogador
+    FROM Jogador
+    WHERE id_jogador = p_id_jogador;
+
+    -- Verificar se o jogador tem ouro suficiente para a compra
+    IF v_ouro_jogador >= v_preco_item * p_quantidade THEN
+        -- Atualizar a quantidade de ouro do jogador após a compra
+        UPDATE Jogador
+        SET qtdd_ouro = v_ouro_jogador - v_preco_item * p_quantidade
+        WHERE id_jogador = p_id_jogador;
+
+        RAISE NOTICE 'Compra realizada com sucesso!';
+    ELSE
+        RAISE EXCEPTION 'O jogador não possui ouro suficiente para realizar a compra.';
+    END IF;
+END;
+$$;
+
+-- Trigger para Chamar a Stored Procedure antes da Compra
+CREATE OR REPLACE FUNCTION CompraItem()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Chamar a stored procedure VerificarOuroSuficiente antes de permitir a compra
+    PERFORM VerificarOuroSuficiente(NEW.id_jogador, NEW.id_item, NEW.qtdd);
+
+    -- Se a compra for bem-sucedida, permitir a inserção na tabela Item_Inventario
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger associada à tabela Item_Inventario para verificar ouro antes da compra
+CREATE TRIGGER VerificarOuroAntesDaCompra
+BEFORE INSERT
+ON Item_Inventario
+FOR EACH ROW
+EXECUTE FUNCTION CompraItem();
 
 
 -- =======================================================================================
