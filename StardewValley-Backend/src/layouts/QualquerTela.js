@@ -1,4 +1,4 @@
-export default QualquerTela = () => {
+const QualquerTela = (estacaoAtual, diaAtual, regiaoAtual, horaAtual, nomeJogador, energiaJogador) => {
     console.log(
         `           Stardew Valley - MUD
         Estação: ${estacaoAtual}        Dia: ${diaAtual} 
@@ -9,3 +9,5 @@ export default QualquerTela = () => {
     
     `)
 }
+
+export default QualquerTela;
