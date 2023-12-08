@@ -12,7 +12,7 @@
     "pulldb": "psql -U postgres -h localhost -a -f src/database/auxs/003-create-infos.sql",
     "droptb": "psql -U postgres -h localhost -a -f src/database/auxs/333-destroy-tables.sql",
     "dropdb": "psql -U postgres -h localhost -a -f src/database/auxs/666-destroydb.sql",
-    "game": "npm-run-all --parallel createdb createtb pulldb start"
+    "game": "npm-run-all --sequential createdb createtb pulldb start"
   },
   "keywords": [],
   "author": "",

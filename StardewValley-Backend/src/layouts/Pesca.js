@@ -15,7 +15,7 @@ function waitForEnter(callback) {
         callback(false);
     }, 2000);
 
-    rl.question('Pressione Enter em até 2 segundos: ', () => {
+    rl.question('Você sente uma mordida! Rápido, pressione [ENTER] para fisgar o peixe!', () => {
         clearTimeout(timer);
         rl.close();
         callback(true);
@@ -39,7 +39,7 @@ export default Pesquisa = () => {
 
         setTimeout(seg);
 
-        console.log("Você sente uma mordida! Rápido, pressione [ENTER] para fisgar o peixe.")
+        waitForEnter();
     }
 
     console.log(`Parabéns! Você pescou um ${PeixePescado}!\n`)
