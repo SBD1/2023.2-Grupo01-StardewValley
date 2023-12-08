@@ -1,0 +1,28 @@
+\c stardew_valley;
+
+DROP TABLE Cabana_Jogador;
+DROP TABLE Dialogo;
+DROP TABLE Habilidade;
+DROP TABLE Instancia_Monstro;
+DROP TABLE Item_Estoque_Loja;
+DROP TABLE Item_Inventario;
+DROP TABLE Item_Receita;
+DROP TABLE Jogador;
+DROP TABLE Loja;
+DROP TABLE Cabana_NPC;
+DROP TABLE Caverna;
+DROP TABLE NPC;
+DROP TABLE Regiao;
+DROP TABLE Missao;
+DROP TABLE Semente;
+DROP TABLE Monstro;
+DROP TABLE Vestimenta;
+DROP TABLE Ferramenta;
+DROP TABLE Efeito;
+DROP TABLE Consumivel;
+DROP TABLE Artesanato;
+DROP TABLE Arma;
+DROP TABLE Mundo;
+DROP TABLE Local_Fechado;
+DROP TABLE Item;
+DROP TABLE Estacao;
