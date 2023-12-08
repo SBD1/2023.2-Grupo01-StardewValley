@@ -11,7 +11,7 @@
 | [Edilberto Cantuaria](https://github.com/edilbertocantuaria)       | 222014984 |
 | [Marcus Vinícius Paiva Martins](https://github.com/marcusmartinss) | 211043683 |
 | [Matheus Phillipo Silverio Silva](https://github.com/MattSilverio) | 150154348 |
-| [Zenilda Vieira](https://github.com/zenildavieira)         | 212002907 |
+| [Zenilda Vieira](https://github.com/zenildavieira)                 | 212002907 |
 
 ## Jogo
 
@@ -35,16 +35,58 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 <a href="https://www.youtube.com/watch?v=FjJx6u_5RdU"><img src="https://i.ytimg.com/vi/FjJx6u_5RdU/maxresdefault.jpg" width="50%"></a>
 </div>
 
+### Como jogar?
+
+1. Abra o terminal no seu sistema operacional.
+
+2. Navegue até a pasta "StardewValley-Backend" usando o comando `cd` (change directory):
+
+   ```bash
+   cd StardewValley-Backend
+   ```
+
+   Certifique-se de que você está no diretório correto antes de prosseguir.
+
+3. Instale as dependências necessárias para o jogo utilizando o comando `npm install`:
+
+   ```bash
+   npm install
+   ```
+
+   Isso garantirá que todas as bibliotecas e pacotes necessários estejam instalados para executar o jogo.
+
+4. Após a conclusão da instalação, você estará pronto para rodar o jogo. Use o comando `npm run game` para iniciar o jogo:
+   ```bash
+   npm run game
+   ```
+
+Este comando executará o jogo, permitindo que você entre no mundo de Stardew Valley. 🏡🌾🐔
+
+## Como jogar?
+
+Para rodar o jogo é necessário estar dentro da pasta "StardewValley-Backend", portando faça:
+
+    cd StardewValley-Backend
+
+Após isso, instale as dependências com:
+
+    npm install
+
+E para rodar o jogo:
+
+    npm run game
+
 ## Apresentações
 
-| Módulo | Link da gravação          | Data       |
-| ------ | ------------------------- | ---------- |
+| Módulo | Link da gravação                                                 | Data       |
+| ------ | ---------------------------------------------------------------- | ---------- |
 | 1      | [Apresentação Módulo 1](docs/apresentacoes/apresentacao_m01.mp4) | 30/09/2023 |
 | 2      | [Apresentação Módulo 2](docs/apresentacoes/apresentacao_m02.mp4) | 30/10/2023 |
 
 ## Entregas
 
 - Módulo 1
+
   - [Diagrama Entidade-Relacionamento](./docs/Entrega-01/DER_StardewValley_v1.0.md)
   - [Dicionário de Dados](./docs/Entrega-01/DD_StardewValley_v1.0.md)
   - [Modelo Entidade-Relacionamento](./docs/Entrega-01/MER_StardewValley_v1.0.md)
@@ -59,8 +101,8 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 
 ### Histórico de versões
 
-| Versão |    Data    | Descrição                                      | Autor                                               | Revisão                                             |
-| :----: | :--------: | ---------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `1.0`  | 24/09/2023 | Inclusão das considerações feitas na modelagem | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Marcus Martins](https://github.com/marcusmartinss) |
-| `1.1`  | 28/09/2023 | Estruturação do README do projeto              | [Marcus Martins](https://github.com/marcusmartinss) | |
+| Versão |    Data    | Descrição                                      | Autor                                               | Revisão                                                      |
+| :----: | :--------: | ---------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
+| `1.0`  | 24/09/2023 | Inclusão das considerações feitas na modelagem | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Marcus Martins](https://github.com/marcusmartinss)          |
+| `1.1`  | 28/09/2023 | Estruturação do README do projeto              | [Marcus Martins](https://github.com/marcusmartinss) |                                                              |
 | `1.2`  | 30/10/2023 | Links da entrega 02                            | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria) |

@@ -68,21 +68,21 @@
 1. Coletar
     * Mostra itens que podem ser coletados nessa região, como madeira, feno, pedra, frutos, sementes (tabela **Consumivel** filtrado por local_fechado=NULL) e pede pra escolher e dispara "dinâmica de coleta."
     * Dinâmica de coleta:
-      * Para simplificar, escolhe automaticamente a ferramenta: machado, foice, picareta, de acordo com o item escolhido e informa ao jogador que ele vai usar essa ferramenta (para simplificar na tabela **Item-Ferramenta** vai dizer para qual item ela é usada). Para frutos e sementes não precisa de ferramentas (NULL).
-      * Coletar: incrementa no inventário o item colhido e incrementa +1 em habilidade de coleta.
+      * Para simplificar, escolhe automaticamente a ferramenta: machado, foice, picareta, de acordo com o item escolhido e informa ao jogador que ele vai usar essa ferramenta (para simplificar na tabela **Consumivel** vai dizer para qual item ela é usada). Para frutos e sementes não precisa de ferramentas (NULL).
+      * Coletar: incrementa no inventário o item colhido, incrementa +1 em habilidade de coleta e decrementa energia em 5%.
       * Volta para o menu inicial
 
 2. Plantar
     * Mostra sementes disponíveis no inventário e pede pra ele escolher e dispara "dinâmica de plantação".
     * Dinâmica de plantação:
-      * Para simplificar já escolhe automaticamente a ferramenta enxada (tabela **Item-Ferramenta** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realizar a plantação.
+      * Para simplificar já escolhe automaticamente a ferramenta enxada (tabela **Consumivel** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realizar a plantação.
       * Após plantar, insere na tabela **Plantacao** o dia que ela vai ser colhida (soma o dia de hoje com o dias-para-crescer da tabela **Informacao_Semente**), incrementa +1 em habilidade de cultivo e decrementa energia em 5%.
       * Volta para o menu inicial
 
 3. Pescar (só se tiver no local_fechado “praia”)
     * Mostra os itens que podem ser pescados e pede pra escolher (tabela **Consumivel** filtrado por local_fechado="praia").
-    * Para simplificar já escolhe automaticamente a ferramenta vara de pescar (tabela **Item-Ferramenta** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realiza a pesca.
-    * Após pescar, insere na tabela **Item_Inventario** o item pescado, incrementa +1 em habilidade de pesca  e decrementa energia em 5%..
+    * Para simplificar já escolhe automaticamente a ferramenta vara de pescar (tabela **Consumivel** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realiza a pesca.
+    * Após pescar, insere na tabela **Item_Inventario** o item pescado, incrementa +1 em habilidade de pesca e decrementa energia em 5%.
       * Volta para o menu inicial
   
 4. Craftar
@@ -140,7 +140,7 @@
     * Vai para segunda tela com a nova região escolhida
   * Se quer minerar:
     * Mostra itens que podem ser minerados: pedra, minério de cobre (tabela **Consumivel** filtrado por local_fechado="caverna").
-    * Para simplificar já escolhe automaticamente a ferramenta picareta (tabela **Item-Ferramenta** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realiza a mineração.
+    * Para simplificar já escolhe automaticamente a ferramenta picareta (tabela **Consumivel** vai dizer para qual item ela é usada) e informa ao jogador que ele vai usar essa ferramenta e realiza a mineração.
     * Após minerar, insere na tabela **Item_Inventario** o item minerado, incrementa +1 em habilidade de mineração e decrementa energia em 5%..
     * Reinicializa tela atual
   * Se quer combater:
