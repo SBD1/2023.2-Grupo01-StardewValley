@@ -1,45 +1,19 @@
-async function explorarCaverna(jogador) {
-    try {
-      // Mostra as opções disponíveis na caverna
-      console.log('Opções disponíveis na caverna:');
-      console.log('1. Minerar');
-      console.log('2. Combater');
-      console.log('3. Sair da caverna');
-  
-      // Pede para o jogador escolher uma opção
-      const escolha = readlineSync.questionInt('Escolha o número da opção desejada: ');
-  
-      switch (escolha) {
-        case 1:
-          // Dinâmica de mineração
-          await dinamicaMineracao(jogador);
-          break;
-        case 2:
-          // Dinâmica de combate
-          await dinamicaCombate(jogador);
-          break;
-        case 3:
-          // Sair da caverna
-          console.log('Você saiu da caverna.');
-          break;
-        default:
-          console.log('Opção inválida. Tente novamente.');
-      }
-    } catch (error) {
-      console.error('Erro durante a exploração da caverna:', error.message || error);
-    }
-  }
-  
-  async function dinamicaMineracao(jogador) {
+async function minerarNaCaverna(jogador) {
+    console.log("Você está minerando na caverna...");
+
     try {
       // Mostra os itens que podem ser minerados
-      const itensMineraveis = await db.any('SELECT * FROM Consumivel WHERE local_fechado = $1', ['caverna']);
+      const itensMineraveis = await db.any('SELECT * FROM Consumivel WHERE local_fechado = $1', [jogador.id_local_fechado]);
   
       console.log('Itens que podem ser minerados:');
       itensMineraveis.forEach((item, index) => {
         console.log(`${index + 1}. ${item.nome}`);
       });
   
+      // Escolher automaticamente a ferramenta (picareta) para simplificar
+      const ferramentaEscolhida = 'picareta';
+      console.log(`Usando ${ferramentaEscolhida} para minerar...`);
+
       // Pede para o jogador escolher um item para minerar
       const escolha = readlineSync.questionInt('Escolha o número do item que deseja minerar: ');
   
@@ -54,13 +28,16 @@ async function explorarCaverna(jogador) {
       // Atualiza o inventário do jogador com o item minerado
       await db.none('INSERT INTO Item_Inventario(id_jogador, id_item) VALUES ($1, $2)', [jogador.id_jogador, itemMinerado.id_item]);
   
+      console.log("Mineração concluída!");
       console.log(`Você minerou ${itemMinerado.nome} e adicionou ao seu inventário.`);
     } catch (error) {
       console.error('Erro durante a dinâmica de mineração:', error.message || error);
     }
   }
   
-  async function dinamicaCombate(jogador) {
+async function combaterNaCaverna(jogador) {
+    console.log("Você está combatendo na caverna...");
+
     try {
       // Mostra instâncias de monstros disponíveis na caverna
       const monstros = await db.any('SELECT * FROM Instancia_Monstro WHERE id_caverna = $1', [jogador.id_local_fechado]);
@@ -70,6 +47,10 @@ async function explorarCaverna(jogador) {
         console.log(`${index + 1}. ${monstro.nome} - Dano: ${monstro.dano} | Energia: ${monstro.energia}`);
       });
   
+      // Escolher automaticamente a arma (espada) para simplificar
+      const armaEscolhida = 'espada';
+      console.log(`Usando ${armaEscolhida} para combater...`);
+
       // Pede para o jogador escolher um monstro para combater
       const escolha = readlineSync.questionInt('Escolha o número do monstro que deseja combater: ');
   
@@ -78,7 +59,9 @@ async function explorarCaverna(jogador) {
         console.log('Escolha inválida. Tente novamente.');
         return;
       }
-  
+      
+      console.log(`Combatendo ${monstro.nome}...`);
+
       const monstroEscolhido = monstros[escolha - 1];
   
       // Dinâmica de combate
@@ -161,5 +144,6 @@ async function explorarCaverna(jogador) {
     id_local_fechado: 1 // Substitua pelo ID da caverna atual
   };
   
-  await explorarCaverna(jogadorExemplo);
+  await minerarNaCaverna(jogadorExemplo);
+  await combaterNaCaverna(jogadorExemplo);
   

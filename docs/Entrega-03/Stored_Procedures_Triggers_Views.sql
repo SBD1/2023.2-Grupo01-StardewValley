@@ -338,13 +338,39 @@ WHERE
 
 -- =======================================================================================
 
+-- =======================================================================================
 -- 08 - Eu como Banco de Dados gostaria de Atualizar inventário após colher plantações 
 -- para Registrar itens obtidos com a colheita de plantações 
 -- Observações: 
 -- Autor: Matheus Silverio
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
 
+-- Criar a stored procedure
+CREATE OR REPLACE FUNCTION atualizar_inventario_apos_colher()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Atualizar o inventário com os itens obtidos da colheita
+    INSERT INTO Item_Inventario (id_jogador, id_item)
+    SELECT NEW.id_jogador, I.id_item
+    FROM Plantacao AS P
+    JOIN Item AS I ON P.id_semente = I.id_item
+    WHERE P.dia_colheita = CURRENT_DATE; -- ou qualquer outra condição para identificar plantações colhidas
 
+    -- Limpar as plantações colhidas da tabela Plantacao
+    DELETE FROM Plantacao
+    WHERE dia_colheita = CURRENT_DATE; -- ou qualquer outra condição para identificar plantações colhidas
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Criar a trigger associada à stored procedure
+CREATE TRIGGER after_colheita_trigger
+AFTER DELETE ON Plantacao
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_inventario_apos_colher();
 
 -- =======================================================================================
 -- 09 - Eu como Banco de Dados gostaria de Seta energia para 100% novamente após colher 
@@ -352,7 +378,25 @@ WHERE
 -- Observações: 
 -- Autor: Matheus Silverio
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
 
+-- Criar a stored procedure
+CREATE OR REPLACE FUNCTION restaurar_energia_apos_colheita(id_jogador_param INT)
+RETURNS VOID AS $$
+BEGIN
+    -- Atualizar a energia do jogador para 100%
+    UPDATE Jogador
+    SET energia = 100
+    WHERE id_jogador = id_jogador_param;
+
+    -- Realizar outras ações se necessário
+
+END;
+$$ LANGUAGE plpgsql;
+
+-- Chamar a stored procedure para restaurar energia após colher plantações para o jogador com ID 1
+-- SELECT restaurar_energia_apos_colheita(1);
 
 
 -- =======================================================================================
@@ -361,6 +405,36 @@ WHERE
 -- Observações: 
 -- Autor: Matheus Silverio
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
+
+-- Criar a tabela Tempo_Jogado se ainda não existir
+CREATE TABLE IF NOT EXISTS Tempo_Jogado (
+    id_jogador INT PRIMARY KEY,
+    tempo_jogado INTERVAL
+);
+
+-- Criar a função que será chamada pela trigger
+CREATE OR REPLACE FUNCTION atualizar_horario()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Atualizar o horário com base no tempo jogado
+    UPDATE Tempo_Jogado
+    SET tempo_jogado = tempo_jogado + NEW.tempo_jogado
+    WHERE id_jogador = NEW.id_jogador;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Criar a trigger que acionará a função após a atualização do tempo jogado
+CREATE TRIGGER trigger_atualizar_horario
+AFTER UPDATE
+ON Jogador
+FOR EACH ROW
+WHEN (NEW.tempo_jogado IS DISTINCT FROM OLD.tempo_jogado)
+EXECUTE FUNCTION atualizar_horario();
+
 
 
 
@@ -1208,7 +1282,59 @@ JOIN Semente s ON p.id_semente = s.id_semente;
 -- Observações: 
 -- Autor: Matheus Silverio
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
 
+-- Tela de Pesca
+-- Mostra itens que podem ser pescados na região
+SELECT
+    c.id_consumivel,
+    c.nome AS nome_item_pescado,
+    c.descricao,
+    c.id_ferramenta,
+    f.nome AS nome_ferramenta
+FROM
+    Consumivel c
+JOIN
+    Ferramenta f ON c.id_ferramenta = f.id_ferramenta
+WHERE
+    c.id_local_fechado = (SELECT id_local_fechado FROM Jogador WHERE id_jogador = [ID_DO_JOGADOR]); -- Substituir [ID_DO_JOGADOR] pelo ID real do jogador
+
+-- Dinâmica de Pesca
+-- Substituir [ID_DO_JOGADOR] pelo ID real do jogador
+DECLARE @id_jogador INT = [ID_DO_JOGADOR];
+
+-- Verifica se o jogador tem a ferramenta necessária para a pesca
+DECLARE @id_ferramenta_jogador INT;
+SELECT @id_ferramenta_jogador = id_ferramenta FROM Jogador WHERE id_jogador = @id_jogador;
+
+-- Substituir [ID_DA_FERRAMENTA] pelo ID real da ferramenta de pesca escolhida
+DECLARE @id_ferramenta_pescaria INT = [ID_DA_FERRAMENTA];
+
+IF @id_ferramenta_jogador = @id_ferramenta_pescaria
+BEGIN
+    -- Realiza a pesca
+    -- Substituir [ID_DA_LOCALIZACAO] pelo ID real da localização do jogador
+    INSERT INTO Item_Inventario (id_jogador, id_item)
+    SELECT
+        @id_jogador,
+        c.id_consumivel
+    FROM
+        Consumivel c
+    WHERE
+        c.id_local_fechado = (SELECT id_local_fechado FROM Jogador WHERE id_jogador = @id_jogador);
+
+    -- Incrementa habilidade de pesca do jogador
+    UPDATE Habilidade SET nivel_pesca = nivel_pesca + 1 WHERE id_jogador = @id_jogador;
+
+    -- Decrementa energia do jogador em 5%
+    UPDATE Jogador SET energia = energia - 5 WHERE id_jogador = @id_jogador;
+END
+ELSE
+BEGIN
+    -- Informa que o jogador não tem a ferramenta necessária
+    SELECT 'Ferramenta necessária indisponível' AS mensagem;
+END;
 
 
 -- =======================================================================================
@@ -1217,7 +1343,10 @@ JOIN Semente s ON p.id_semente = s.id_semente;
 -- Observações: 
 -- Autor: Matheus Silverio
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
 
+-- ja foi contemplado acima
 
 
 -- =======================================================================================
@@ -1226,7 +1355,56 @@ JOIN Semente s ON p.id_semente = s.id_semente;
 -- Observações: 
 -- Autor: Matheus Silverio
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
 
+-- Stored Procedure para Craftar Itens
+CREATE OR REPLACE FUNCTION CraftarItem(
+    p_id_jogador INT,
+    p_id_receita INT,
+    p_quantidade INT
+)
+RETURNS TABLE (
+    mensagem VARCHAR(200)
+)
+AS $$
+DECLARE
+    v_qtdd_item_inventario INT;
+BEGIN
+    -- Verifica se o jogador tem os itens necessários na quantidade suficiente para a receita
+    SELECT COUNT(*) INTO v_qtdd_item_inventario
+    FROM Item_Inventario ii
+    JOIN Item_Receita ir ON ii.id_item = ir.id_item
+    WHERE ii.id_jogador = p_id_jogador
+      AND ir.id_receita = p_id_receita
+      AND ii.quantidade >= (ir.quantidade * p_quantidade);
+
+    -- Se o jogador tem os itens necessários
+    IF v_qtdd_item_inventario > 0 THEN
+        -- Decrementa os itens necessários do inventário
+        DELETE FROM Item_Inventario
+        WHERE id_jogador = p_id_jogador
+          AND id_item IN (SELECT id_item FROM Item_Receita WHERE id_receita = p_id_receita)
+          AND quantidade >= (SELECT ir.quantidade * p_quantidade FROM Item_Receita ir WHERE ir.id_receita = p_id_receita);
+
+        -- Incrementa os itens craftados no inventário
+        INSERT INTO Item_Inventario (id_jogador, id_item, quantidade)
+        SELECT
+            p_id_jogador,
+            ir.id_item_craftado,
+            ir.quantidade_craftada * p_quantidade
+        FROM Item_Receita ir
+        WHERE ir.id_receita = p_id_receita;
+
+        -- Retorna mensagem de sucesso
+        RETURN QUERY SELECT 'Crafting realizado com sucesso!'::VARCHAR;
+
+    ELSE
+        -- Retorna mensagem de erro
+        RETURN QUERY SELECT 'Itens necessários para crafting indisponíveis'::VARCHAR;
+    END IF;
+END;
+$$ LANGUAGE PLPGSQL;
 
 
 -- =======================================================================================
@@ -1235,7 +1413,10 @@ JOIN Semente s ON p.id_semente = s.id_semente;
 -- Observações: 
 -- Autor: Matheus Silverio
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
 
+-- ja foi contemplado acima
 
 
 -- =======================================================================================
@@ -1243,6 +1424,21 @@ JOIN Semente s ON p.id_semente = s.id_semente;
 -- Observações: 
 -- Autor: Matheus Silverio
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
+
+-- Consulta para Conversar com NPC
+SELECT
+    npc.id_npc,
+    npc.nome AS nome_npc,
+    npc.descricao AS descricao_npc,
+    dialogo.texto AS texto_dialogo
+FROM
+    NPC npc
+JOIN
+    Dialogo dialogo ON npc.id_dialogo = dialogo.id_dialogo
+WHERE
+    npc.id_regiao = :id_regiao; -- Substitua :id_regiao pelo ID da região atual do jogador
 
 
 
@@ -1638,6 +1834,7 @@ EXECUTE FUNCTION CompraItem();
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Já contemplado em 51
 
 
 -- =======================================================================================
@@ -1647,6 +1844,7 @@ EXECUTE FUNCTION CompraItem();
 -- Autor: Marcus Martins
 -- =======================================================================================
 
+-- Já contemplado em 51
 
 
 -- =======================================================================================
@@ -1655,6 +1853,51 @@ EXECUTE FUNCTION CompraItem();
 -- Observações: 
 -- Autor: Marcus Martins
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
+
+-- Stored Procedure para Escolher Ação na Caverna
+CREATE OR REPLACE FUNCTION escolher_acao_na_caverna(
+    jogador_id INT,
+    escolha VARCHAR(10) -- Opções: 'minerar', 'combater', 'sair'
+) RETURNS VOID AS
+$$
+DECLARE
+    energia_jogador INT;
+BEGIN
+    -- Obter energia do jogador
+    SELECT energia
+    INTO energia_jogador
+    FROM Jogador
+    WHERE id_jogador = jogador_id;
+
+    -- Verificar a escolha do jogador
+    CASE escolha
+        WHEN 'minerar' THEN
+            -- Realizar ação de mineração
+            -- (lógica de mineração aqui)
+
+        WHEN 'combater' THEN
+            -- Realizar ação de combate
+            -- (lógica de combate aqui)
+
+        WHEN 'sair' THEN
+            -- Sair da caverna
+            -- (lógica de sair aqui)
+
+        ELSE
+            RAISE EXCEPTION 'Escolha inválida. Opções: ''minerar'', ''combater'', ''sair''.';
+    END CASE;
+
+    -- Atualizar energia do jogador após a ação
+    UPDATE Jogador
+    SET energia = energia_jogador - 5 -- Exemplo: decrementa 5% da energia
+    WHERE id_jogador = jogador_id;
+
+    RAISE NOTICE 'Ação realizada com sucesso na caverna: %', escolha;
+END;
+$$
+LANGUAGE plpgsql;
 
 
 
@@ -1664,6 +1907,22 @@ EXECUTE FUNCTION CompraItem();
 -- Observações: 
 -- Autor: Marcus Martins
 -- =======================================================================================
+-- Autor: Zenilda Vieira
+-- =======================================================================================
+
+-- Consulta para Visualizar Itens Disponíveis para Mineração na Caverna
+SELECT
+    c.id_consumivel,
+    c.nome AS nome_consumivel,
+    c.descricao,
+    c.id_ferramenta,
+    f.nome AS nome_ferramenta
+FROM
+    Consumivel c
+JOIN
+    Ferramenta f ON c.id_ferramenta = f.id_ferramenta
+WHERE
+    c.id_local_fechado = (SELECT id_local_fechado FROM Local_Fechado WHERE nome = 'caverna');
 
 
 
@@ -1674,7 +1933,7 @@ EXECUTE FUNCTION CompraItem();
 -- Autor: Marcus Martins
 -- =======================================================================================
 
-
+-- REPETIDA - 41.1
 
 -- =======================================================================================
 -- 58 - Eu como Banco de Dados gostaria de Atualizar inventário após mineração para 
@@ -1727,32 +1986,50 @@ $$ LANGUAGE plpgsql;
 -- =======================================================================================
 
 
+-- REPETIDA - 51
 
 -- =======================================================================================
 -- 61 - Eu como Jogador gostaria de Na caverna, visualizar monstros disponíveis para 
 -- combate para Conferir instâncias de monstros na caverna 
 -- Observações: 
--- Autor: Matheus Silverio
+-- Autor: Zenilda Vieira
 -- =======================================================================================
 
+-- Consulta para visualizar monstros disponíveis na caverna
+SELECT
+    im.id_caverna,
+    im.id_monstro,
+    m.nome AS nome_monstro,
+    m.descricao,
+    m.dano,
+    m.defesa,
+    m.energia_maxima,
+    im.energia
+FROM
+    Instancia_Monstro im
+    JOIN Monstro m ON im.id_monstro = m.id_monstro
+WHERE
+    im.id_caverna = [ID_DA_CAVERNA_ATUAL];
 
 
 -- =======================================================================================
 -- 62 - Eu como Jogador gostaria de Na caverna, participar do combate para Enfrentar 
--- monstros e obter recompensas 
+-- monstros e obter recompensas Atualizando inventário após combate para 
+-- Registrar itens obtidos no inventário após o combate 
 -- Observações: 
--- Autor: Matheus Silverio
+-- Autor: Zenilda Vieira
 -- =======================================================================================
 
-
+-- REPETIDA - 41
 
 -- =======================================================================================
 -- 63 - Eu como Banco de Dados gostaria de Atualizar inventário após combate para 
 -- Registrar itens obtidos no inventário após o combate 
 -- Observações: 
--- Autor: Matheus Silverio
+-- Autor: Zenilda Vieira
 -- =======================================================================================
 
+-- Já contemplada em 41
 
 
 -- =======================================================================================
