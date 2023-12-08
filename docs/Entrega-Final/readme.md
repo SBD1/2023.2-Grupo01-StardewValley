@@ -1,4 +1,8 @@
-# Divisao
+# Divisao de Tarefas para a Entrega Final
+
+PRAZO: DOMINGO - 10/12/2023
+GRAVAÇÃO: SEGUNDA - 11/12/2023
+ENTREGA: SEGUNDA - 11/12/2023 até 22h
 
 ## Telas
 
