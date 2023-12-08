@@ -2,26 +2,30 @@
 
 ## Telas
 
-Primeira Tela - Zenilda
-Qualquer Tela - Marcus 
-Segunda Tela - Edilberto
-Tela Local Fechado - Matheus
+- Primeira Tela - Zenilda
+- Qualquer Tela - Marcus 
+- Segunda Tela - Edilberto
+- Tela Local Fechado - Matheus
 
 ## Funcoes
 
-funcao_acaoCasaJogador.cjs -
-funcao_avancarTempo.cjs -
-funcao_coletarItens.cjs -
-funcao_ConversarComNPC.cjs - 
-funcao_craftarItem.cjs -
-funcao_dinamicaComerItem.cjs -
-funcao_dinamicaDormir.cjs -
-funcao_dinamicaMineracao_dinamicaCombate.cjs -
-funcao_explorarCaverna.cjs -
-funcao_IrAumLocalFechado.cjs -
-funcao_minerarOuCombater.cjs -
-funcao_mudarDeRegiao.cjs -
-funcao_pescarItens.cjs -
-funcao_plantarSemente.cjs -
-funcao_realizarCompra.cjs -
-funcao_visualizarInventario.cjs -
+### Primeira Tela - Zenilda
+
+1. verificar se jogador já existe. Se não criar nova linha na tabela Jogador
+2. criar nova linha na tabela habilidade
+6. descobrir quais itens são iniciais para o inventário - _*obterItensInicioJogo*_
+3. colocar itens na tabela item_inventario - _*criarItensInventario*_
+4. exibir status do jogador - _*exibirStatusEInventario*_
+5. atualizar informacoes de escolha de mundo e regiao na tabela do jogador
+7. criar rotina que chama a segunda tela ou a tela de local fechado
+
+### Qualquer Tela - Marcus 
+
+
+
+### Segunda Tela - Edilberto
+
+
+### Tela Local Fechado - Matheus
+
+
