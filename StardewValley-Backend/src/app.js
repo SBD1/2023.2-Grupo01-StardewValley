@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import chalk from 'chalk';
-import QualquerTela from "./layouts/QualquerTela.js";
+import PrimeiraTela from "./layouts/primeira_tela.cjs";
 import readline from "readline";
 
 dotenv.config();
@@ -12,6 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
+
+app.get("/", (req, res) => { res.send("Hello World!"); });
+
 app.listen(PORT);
 // app.listen(PORT, () => console.log(chalk.green(`Rodando em http://localhost:${PORT}`)));
 
