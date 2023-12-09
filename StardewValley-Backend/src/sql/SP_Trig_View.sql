@@ -1,5 +1,7 @@
 BEGIN TRANSACTION;
 
+\c stardew_valley
+
 -- =======================================================================================
 -- 01 - Eu como Banco de Dados gostaria de Atualizar os dados do novo jogador na tabela 
 -- "Jogador" para Para iniciar o jogo 

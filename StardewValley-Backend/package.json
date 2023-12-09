@@ -6,13 +6,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js",
-    "createdb": "psql -U postgres -h localhost -a -f src/database/auxs/001-create-db.sql",
-    "createtb": "psql -U postgres -h localhost -f src/database/auxs/002-create-tables.sql",
-    "pulldb": "psql -U postgres -h localhost -a -f src/database/auxs/003-create-infos.sql",
-    "droptb": "psql -U postgres -h localhost -a -f src/database/auxs/333-destroy-tables.sql",
-    "dropdb": "psql -U postgres -h localhost -a -f src/database/auxs/666-destroydb.sql",
-    "game": "npm-run-all --sequential createdb createtb pulldb start"
+    "dev": "node ./src/app.js",
+    "createdb": "psql -U postgres -h localhost -a -f src/sql/createdb.sql",
+    "createtb": "psql -U postgres -h localhost -a -f src/sql/DDL.sql",
+    "insertdata": "psql -U postgres -h localhost -f src/sql/DML.sql",
+    "createproc": "psql -U postgres -h localhost -a -f src/sql/SP_Trig_View.sql",
+    "droptb": "psql -U postgres -h localhost -a -f src/DROP.sql",
+    "game": "npm-run-all --sequential createdb createtb insertdata createproc start"
   },
   "keywords": [],
   "author": "",
