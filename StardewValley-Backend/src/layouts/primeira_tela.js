@@ -24,6 +24,7 @@ async function consultarTiposNoInventario(idJogador) {
       error.message || error
     );
   }
+  await client.end();
 }
 
 // Função para obter IDs de itens que começam com o jogo
@@ -44,12 +45,14 @@ async function obterItensInicioJogo() {
     );
     const idsArmas = armas.rows.map((arma) => arma.id_arma);
 
+    await client.end();
     return [...idsFerramentas, ...idsArmas];
   } catch (error) {
     console.error(
       "Erro ao obter IDs de itens de início de jogo:",
       error.message || error
     );
+    await client.end();
     return [];
   }
 }
@@ -78,6 +81,7 @@ async function criarItensInventario(idJogador, idItens) {
   } catch (error) {
     console.error("Erro ao criar itens no inventário:", error.message || error);
   }
+  await client.end();
 }
 
 // Função para exibir status do jogador e inventário
@@ -231,7 +235,7 @@ async function primeiraTela() {
   } finally {
     // Fecha a conexão com o banco de dados
     console.log("Operações no banco de dados para fechar a conexão...");
-    client.end();
+    await client.end();
   }
 }
 
