@@ -1,8 +1,3 @@
-CREATE DATABASE stardew_valley
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    IS_TEMPLATE = False;
 
 BEGIN TRANSACTION;
 

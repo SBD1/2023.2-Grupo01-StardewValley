@@ -1,5 +1,5 @@
 BEGIN TRANSACTION;
-
+\c stardew_valley
 -- Inserção de dados para a entidade Tipo_Item
 INSERT INTO Tipo_Item (id_tipo_item, nome_tipo_item)
 VALUES
