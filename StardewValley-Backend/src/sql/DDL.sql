@@ -1,7 +1,12 @@
-
+CREATE DATABASE stardew_valley
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    IS_TEMPLATE = False;
 
 BEGIN TRANSACTION;
 
+\c stardew_valley;
 
 CREATE TABLE Tipo_Item (
     id_tipo_item INT PRIMARY KEY,
