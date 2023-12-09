@@ -1,0 +1,33 @@
+BEGIN TRANSACTION;
+
+DROP TABLE Vestimenta;
+DROP TABLE Semente;
+DROP TABLE Plantacao;
+DROP TABLE Item_Receita;
+DROP TABLE Item_Inventario;
+DROP TABLE Item_Estoque_Loja;
+DROP TABLE Loja;
+DROP TABLE Instancia_Monstro;
+DROP TABLE Monstro;
+DROP TABLE Habilidade;
+DROP TABLE Efeito;
+DROP TABLE Dialogo;
+DROP TABLE Consumivel;
+DROP TABLE Ferramenta;
+DROP TABLE Caverna;
+DROP TABLE Cabana_NPC;
+DROP TABLE Cabana_Jogador;
+DROP TABLE Artesanato;
+DROP TABLE Arma;
+DROP TABLE NPC;
+DROP TABLE Jogador;
+DROP TABLE Local_Fechado;
+DROP TABLE Tipo_Local_Fechado;
+DROP TABLE Missao;
+DROP TABLE Estacao;
+DROP TABLE Regiao;
+DROP TABLE Mundo;
+DROP TABLE Item;
+DROP TABLE Tipo_Item;
+
+COMMIT;
