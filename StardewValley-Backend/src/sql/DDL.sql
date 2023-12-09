@@ -1,7 +1,7 @@
 
-
 BEGIN TRANSACTION;
 
+\c stardew_valley;
 
 CREATE TABLE Tipo_Item (
     id_tipo_item INT PRIMARY KEY,
