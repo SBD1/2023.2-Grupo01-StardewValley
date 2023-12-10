@@ -1,16 +1,16 @@
-import { avancarTempo } from "../codigos_funcoes/funcao_avancarTempo.cjs"
+import { avancarTempo } from "../services/avancarTempo.js"
+
+// Exemplo de chamada das funções
+const jogadorExemplo = {
+  id_jogador: 1,               // Substitua pelo ID do jogador
+  dia: 1,                      // Substitua pelo dia atual do jogador
+  hora: 12,                    // Substitua pela hora atual do jogador
+  id_estacao: 1,               // Substitua pela ID da estação atual do jogador
+  energia: 70,                 // Substitua pela energia atual do jogador
+};
 
 // Função para avançar o tempo em qualquer tela
-async function avancarTempo(jogador, horasParaAvancar = 1) {
-  try {
-    // Lógica para avançar o tempo, atualizar hora, dia, estação, etc.
-    // ...
-
-    console.log(`Tempo avançado. Novo dia: ${jogador.dia}, Nova hora: ${jogador.hora}`);
-  } catch (error) {
-    console.error('Erro durante o avanço do tempo:', error.message || error);
-  }
-}
+avancarTempo(jogadorExemplo, 1);
 
 // Função para simular a dinâmica de dormir
 async function dinamicaDormir(jogador) {
@@ -38,17 +38,8 @@ async function dinamicaComerItemComEfeito(jogador) {
   }
 }
 
-// Exemplo de chamada das funções
-const jogadorExemplo = {
-  id_jogador: 1,               // Substitua pelo ID do jogador
-  dia: 1,                      // Substitua pelo dia atual do jogador
-  hora: 12,                    // Substitua pela hora atual do jogador
-  id_estacao: 1,               // Substitua pela ID da estação atual do jogador
-  energia: 70,                 // Substitua pela energia atual do jogador
-};
-
 // Exemplo de avanço do tempo e dinâmica de dormir
-avancarTempo(jogadorExemplo, 2); // Avança 2 horas
+avancarTempo(jogadorExemplo,); // Avança 2 horas
 dinamicaDormir(jogadorExemplo);  // Simula a dinâmica de dormir
 
 // Exemplo de dinâmica de comer item com efeito
