@@ -70,7 +70,7 @@ CREATE TABLE Local_Fechado (
 
 CREATE TABLE Jogador (
     id_jogador INT PRIMARY KEY,
-    id_local_fechado INT DEFAULT NULL,
+    id_local_fechado INT,
     id_regiao INT NOT NULL DEFAULT 1,
     id_estacao INT DEFAULT 1,
     id_missao INT DEFAULT 1,
