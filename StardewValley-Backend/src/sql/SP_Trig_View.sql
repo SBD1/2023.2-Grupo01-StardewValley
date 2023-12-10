@@ -14,8 +14,8 @@ DECLARE
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM Jogador WHERE nome = novo_nome_jogador) THEN
         id_novo = (SELECT MAX(id_jogador) FROM Jogador) + 1;
-        INSERT INTO Jogador (id_jogador, nome, energia, qtdd_ouro, dia, hora, id_estacao, id_missao, id_regiao, id_local_fechado)
-        VALUES (id_novo, novo_nome_jogador, 100, 500, 1, 360, 1, 1, 1, NULL);
+        INSERT INTO Jogador (id_jogador, nome, id_regiao)
+        VALUES (id_novo, novo_nome_jogador, 1);
         jogo_iniciado := TRUE;
     ELSE
         jogo_iniciado := FALSE;
