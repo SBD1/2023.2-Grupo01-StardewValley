@@ -13,10 +13,10 @@ export async function statusJogo(idJogador) {
 
   client.end();
   // retorna objeto de status do jogo
-  console.log({
+  return {
     regiao: result.rows[0].nome,
     estacao: result.rows[0].estacao,
     dia: result.rows[0].dia,
     hora: horaFormatada,
-  });
+  };
 }
