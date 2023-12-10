@@ -11,7 +11,7 @@ async function connect() {
     connectionString: process.env.CONNECTION_STRING,
   });
 
-  //apenas testando a conexão
+
   const client = await pool.connect();
   console.log("Criou pool de conexões no PostgreSQL!");
 
