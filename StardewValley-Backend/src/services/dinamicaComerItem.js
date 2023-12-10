@@ -35,20 +35,20 @@ async function comerItem(jogador) {
     const escolhaItem = readlineSync.questionInt("Escolha o ID do item que deseja consumir: ");
 
     // Verifica se o ID do item escolhido é válido
-    const chosenItem = result.rows.find((item) => item.id_item_inventario === escolhaItem);
+    const itemEscolhido = result.rows.find((item) => item.id_item_inventario === escolhaItem);
 
-    if (!chosenItem) {
+    if (!itemEscolhido) {
       console.log("Escolha inválida. Tente novamente.");
       return;
     }
 
     // Aplica o efeito na energia do jogador
-    jogador.energia += chosenItem.valor;
+    jogador.energia += itemEscolhido.valor;
 
     // Remove uma unidade do item ou remove o item se for o único
-    if (chosenItem.qtdd > 1) {
+    if (itemEscolhido.qtdd > 1) {
       await client.query("UPDATE Item_Inventario SET qtdd = $1 WHERE id_item_inventario = $2", [
-        chosenItem.qtdd - 1,
+        itemEscolhido.qtdd - 1,
         escolhaItem,
       ]);
     } else {
@@ -61,7 +61,7 @@ async function comerItem(jogador) {
       [jogador.energia, jogador.id_jogador]
     );
 
-    console.log(`Você consumiu ${chosenItem.nome} e sua energia foi ajustada para ${jogador.energia}.`);
+    console.log(`Você consumiu ${itemEscolhido.nome} e sua energia foi ajustada para ${jogador.energia}.`);
   } catch (error) {
     console.error("Erro ao consumir item:", error.message || error);
   } finally {
