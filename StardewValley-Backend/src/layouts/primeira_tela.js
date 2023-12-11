@@ -2,7 +2,8 @@ import { connect } from "../db.js";
 import { obterStatusJogador, exibirStatusJogador } from "../services/status_jogador.js";
 import { obterInventarioJogador, exibirInventarioJogador } from "../services/inventario_jogador.js";
 import { obterStatusJogo, exibirStatusJogo } from "../services/statusJogo.js";
-//import { segundaTela } from "./layouts/segunda_tela.js";
+import { segunda_tela } from "./segunda_tela.js";
+
 import readlineSync from "readline-sync";
 
 // Função principal para a primeira tela
@@ -158,7 +159,7 @@ try {
         if (confirmacao1) {
             // Redireciona para a segunda tela (simulaçao)
             console.log(`\nIndo para a regiao ${regiaoAtual.rows[0].nome}...`);
-            //segunda_tela(regiaoEscolhida.rows[0].id_regiao);
+            segunda_tela(regiaoAtual.rows[0], dadosJogadorAtual.rows[0].id_jogador);
         } else {
             // Encerra o jogo ou exibe mensagem de despedida (simulaçao)
             console.log("\nJogo encerrado.");
@@ -175,4 +176,5 @@ try {
         console.log("Banco desconectado com sucesso!");
         console.log("----------------------------------------------------------------------\n");
     }
+
 }
