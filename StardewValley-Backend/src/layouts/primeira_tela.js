@@ -1,5 +1,5 @@
 import { connect } from "../db.js";
-//import { segundaTela } from "./layouts/segunda_tela.js";
+import { segunda_tela } from "./segunda_tela.js";
 import readlineSync from "readline-sync";
 
 async function consultarTiposNoInventario(idJogador) {
@@ -226,7 +226,7 @@ async function primeiraTela() {
     if (confirmacao1) {
         // Redireciona para a segunda tela (simulaçao)
         console.log(`\nIndo para a regiao ${regiaoAtual.rows[0].nome}...`);
-        //segunda_tela(regiaoEscolhida.rows[0].id_regiao);
+        segunda_tela(nomeJogador, regiaoAtual.rows[0].nome);
       } else {
         // Encerra o jogo ou exibe mensagem de despedida (simulaçao)
         console.log("\nJogo encerrado.");
