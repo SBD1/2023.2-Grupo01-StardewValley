@@ -56,12 +56,39 @@ CREATE TABLE Artesanato (
     FOREIGN KEY (id_item) REFERENCES Item (id_item)
 );
 
+
 CREATE TABLE Consumivel (
     id_consumivel SERIAL PRIMARY KEY,
     id_item int NOT NULL,
     nome char(50) NOT NULL,
     descricao char(800),
     FOREIGN KEY (id_item) REFERENCES Item (id_item)
+);
+
+CREATE TABLE Jogador (
+    id_jogador INT PRIMARY KEY,
+    id_local_fechado INT,
+    id_regiao INT NOT NULL DEFAULT 1,
+    id_estacao INT DEFAULT 1,
+    id_missao INT DEFAULT 1,
+    nome CHAR(50) NOT NULL,
+    energia INT DEFAULT 100,
+    dia INT DEFAULT 1,
+    hora INT DEFAULT 360,
+    qtdd_ouro INT DEFAULT 500,
+    FOREIGN KEY (id_local_fechado) REFERENCES Local_Fechado(id_local_fechado),
+    FOREIGN KEY (id_regiao) REFERENCES Regiao(id_regiao),
+    FOREIGN KEY (id_estacao) REFERENCES Estacao(id_estacao),
+    FOREIGN KEY (id_missao) REFERENCES Missao(id_missao),
+    CHECK (id_jogador BETWEEN 1 AND 5000),
+    CHECK (id_local_fechado BETWEEN 1 AND 5000),
+    CHECK (id_regiao BETWEEN 1 AND 5000),
+    CHECK (id_estacao BETWEEN 1 AND 4),
+    CHECK (id_missao BETWEEN 1 AND 5000),
+    CHECK (energia BETWEEN 0 AND 100),
+    CHECK (dia BETWEEN 1 AND 28),
+    CHECK (hora BETWEEN 0 AND 1440),
+    CHECK (qtdd_ouro >= 0)
 );
 
 CREATE TABLE Efeito (
