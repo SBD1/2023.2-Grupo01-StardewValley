@@ -1,5 +1,6 @@
 import { connect } from "../db.js";
 import readlineSync from "readline-sync";
+import { coletarItens } from "../services/funcao_coletarItens.js";
 
 async function segunda_tela(nomeJogador, regiao) {
 
@@ -44,7 +45,7 @@ async function segunda_tela(nomeJogador, regiao) {
     
     let infoLocaisFechados = await client.query(`SELECT * FROM regiao r WHERE r.id_regiao = $1;`, [infoRegiao.id_regiao])
     infoLocaisFechados = infoLocaisFechados.rows[0]
-    console.log(infoLocaisFechados)
+    //console.log(infoLocaisFechados)
 
     console.log(`\n\nDescrição da Região: ${infoLocaisFechados.descricao}`);
     
@@ -70,7 +71,7 @@ async function segunda_tela(nomeJogador, regiao) {
     // Executa a ação correspondente à escolha do regiao
     switch (escolha) {
       case 0: // Coletar
-        await coletarItens(regiao);
+        await coletarItens(infoRegiao);
         break;
       case 1: // Plantar
         await plantarSemente(regiao);
