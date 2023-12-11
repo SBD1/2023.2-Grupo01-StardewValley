@@ -185,7 +185,7 @@ VALUES
     (8, 'Tecido', 'Um rolo de tecido artesanal'),
     (9, 'Óleo Essencial', 'Um frasco de óleo essencial aromático'),
     (10, 'Bolo', 'Um delicioso bolo caseiro'),
-    (11 'Sapato', 'Um par de sapatos feitos sob medida'),
+    (11, 'Sapato', 'Um par de sapatos feitos sob medida'),
     (12, 'Vinho', 'Uma garrafa de vinho envelhecido'),
     (13, 'Sorvete', 'Um pote de sorvete artesanal');
 
@@ -237,16 +237,16 @@ VALUES
 -- Inserção de dados para a entidade Consumivel
 INSERT INTO Consumivel (id_consumivel, id_regiao, id_local_fechado, id_ferramenta, nome, descricao)
 VALUES
-    (20, 1, 1, 1, 'Poção de Energia', 'Restaura 30 pontos de energia do jogador'),
-    (21, 2, 2, 2, 'Elixir de Força', 'Aumenta temporariamente a força do jogador em 20%'),
-    (22, 3, NULL, 4, 'Isca de Pesca', 'Aumenta as chances de pegar peixes ao pescar'),
-    (23, 1, 4, 1, 'Semente Mágica', 'Uma semente que cresce em uma planta mágica'),
-    (24, 2, 5, 1, 'Fruta Silvestre', 'Uma fruta deliciosa encontrada nas florestas'),
-    (25, 3, NULL, 1, 'Bebida Energética', 'Aumenta temporariamente a energia do jogador em 10%'),
-    (26, 1, 7, 2, 'Minério Encantado', 'Minério especial com propriedades mágicas'),
-    (27, 2, 8, 1, 'Cogumelo Venenoso', 'Um cogumelo que pode ser usado em poções venenosas'),
-    (28, 3, NULL, 1, 'Mel do Vale', 'Um mel doce e valioso produzido nas colmeias'),
-    (29, 1, 10, 1, 'Pó de Fada', 'Um pó mágico usado em rituais de encantamento');
+    (20, 1, 1, 14, 'Poção de Energia', 'Restaura 30 pontos de energia do jogador'),
+    (21, 2, 2, 15, 'Elixir de Força', 'Aumenta temporariamente a força do jogador em 20%'),
+    (22, 3, NULL, 17, 'Isca de Pesca', 'Aumenta as chances de pegar peixes ao pescar'),
+    (23, 1, 4, 14, 'Semente Mágica', 'Uma semente que cresce em uma planta mágica'),
+    (24, 2, 5, 14, 'Fruta Silvestre', 'Uma fruta deliciosa encontrada nas florestas'),
+    (25, 3, NULL, 14, 'Bebida Energética', 'Aumenta temporariamente a energia do jogador em 10%'),
+    (26, 1, 7, 15, 'Minério Encantado', 'Minério especial com propriedades mágicas'),
+    (27, 2, 8, 14, 'Cogumelo Venenoso', 'Um cogumelo que pode ser usado em poções venenosas'),
+    (28, 3, NULL, 14, 'Mel do Vale', 'Um mel doce e valioso produzido nas colmeias'),
+    (29, 1, 10, 14, 'Pó de Fada', 'Um pó mágico usado em rituais de encantamento');
 
 
 -- Inserção de dados para a entidade Dialogo
@@ -301,16 +301,16 @@ VALUES
 -- Inserção de dados para a entidade Instancia_Monstro
 INSERT INTO Instancia_Monstro (id_caverna, id_monstro, energia)
 VALUES
-    (1, 101, 80),
-    (1, 102, 65),
-    (2, 103, 90),
-    (3, 104, 75),
-    (3, 105, 60),
-    (4, 106, 85),
-    (5, 107, 70),
-    (5, 108, 50),
-    (5, 109, 95),
-    (5, 110, 40);
+    (14, 101, 80),
+    (14, 102, 65),
+    (15, 103, 90),
+    (16, 104, 75),
+    (16, 105, 60),
+    (17, 106, 85),
+    (18, 107, 70),
+    (18, 108, 50),
+    (18, 109, 95),
+    (18, 110, 40);
 
 -- Inserção de dados para a entidade Loja
 INSERT INTO Loja (id_loja, id_npc_prop, id_regiao, nome, descricao)
@@ -329,16 +329,16 @@ VALUES
 -- Inserção de dados para a entidade Item_Estoque_Loja
 INSERT INTO Item_Estoque_Loja (id_item, id_loja, preco)
 VALUES
-    (1, 1, 100),
-    (2, 1, 150),
-    (3, 2, 200),
-    (4, 2, 120),
-    (5, 3, 80),
-    (6, 3, 130),
-    (7, 4, 300),
-    (8, 4, 250),
-    (9, 5, 180),
-    (10, 5, 220);
+    (1, 24, 100),
+    (2, 24, 150),
+    (3, 25, 200),
+    (4, 25, 120),
+    (5, 26, 80),
+    (6, 26, 130),
+    (7, 27, 300),
+    (8, 27, 250),
+    (9, 28, 180),
+    (10, 28, 220);
 
 -- Inserção de dados para a entidade Item_Inventario
 INSERT INTO Item_Inventario (id_jogador, id_item, qtdd)
@@ -353,16 +353,16 @@ VALUES
 -- Inserção de dados para a entidade Item_Receita
 INSERT INTO Item_Receita (id_artesanato, id_item, qtdd)
 VALUES
-    (1, 3, 2),
-    (1, 5, 1),
-    (2, 8, 3),
-    (2, 10, 2),
-    (3, 1, 1),
-    (3, 6, 2),
-    (4, 4, 4),
-    (4, 7, 1),
-    (5, 9, 3),
-    (5, 10, 2);
+    (4, 3, 2),
+    (4, 5, 1),
+    (5, 8, 3),
+    (5, 10, 2),
+    (6, 1, 1),
+    (6, 6, 2),
+    (7, 4, 4),
+    (7, 7, 1),
+    (7, 9, 3),
+    (7, 10, 2);
 
 -- Inserção de dados para a entidade Plantacao
 INSERT INTO Plantacao (id_semente, dia_colheita)

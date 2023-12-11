@@ -1,8 +1,7 @@
 import { connect } from "../db.js";
-import { obterStatusJogador } from "../services/status_jogador.js";
-import { exibirStatusJogador } from "../services/status_jogador.js";
-import { obterStatusJogo } from "../services/statusJogo.js";
-import { exibirStatusJogo } from "../services/statusJogo.js";
+import { obterStatusJogador, exibirStatusJogador } from "../services/status_jogador.js";
+import { obterInventarioJogador, exibirInventarioJogador } from "../services/inventario_jogador.js";
+import { obterStatusJogo, exibirStatusJogo } from "../services/statusJogo.js";
 //import { segundaTela } from "./layouts/segunda_tela.js";
 import readlineSync from "readline-sync";
 
@@ -140,6 +139,9 @@ try {
 
         const statusJogo = await obterStatusJogo(dadosJogadorAtual.rows[0].id_jogador);
         await exibirStatusJogo(statusJogo);
+
+        const inventarioJogador = await obterInventarioJogador(dadosJogadorAtual.rows[0].id_jogador);
+        await exibirInventarioJogador(inventarioJogador);
 
         const regiaoAtual = await client.query(
             "SELECT nome FROM Regiao WHERE id_regiao = $1", [dadosJogadorAtual.rows[0].id_regiao]
