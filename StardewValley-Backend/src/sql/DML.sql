@@ -1,5 +1,9 @@
 BEGIN TRANSACTION;
+
 \c stardew_valley
+
+SET client_encoding = 'UTF8';
+
 -- Inserção de dados para a entidade Tipo_Item
 INSERT INTO Tipo_Item (id_tipo_item, nome_tipo_item)
 VALUES
@@ -14,15 +18,44 @@ VALUES
 INSERT INTO Item (id_item, id_tipo_item)
 VALUES
     (1, 1),
-    (2, 2),
-    (3, 3),
-    (4, 4),
+    (2, 1),
+    (3, 1),
+    (4, 5),
     (5, 5),
-    (6, 6),
-    (7, 1),
-    (8, 2),
-    (9, 3),
-    (10, 4);
+    (6, 5),
+    (7, 5),
+    (8, 5),
+    (9, 5),
+    (10, 5),
+    (11, 5),
+    (12, 5),
+    (13, 5),
+    (14, 2),
+    (15, 2),
+    (16, 2),
+    (17, 2),
+    (18, 2),
+    (19, 2),
+    (20, 3),
+    (21, 3),
+    (22, 3),
+    (23, 3),
+    (24, 3),
+    (25, 3),
+    (26, 3),
+    (27, 3),
+    (28, 3),
+    (29, 3),
+    (30, 4),
+    (31, 4),
+    (32, 4),
+    (33, 4),
+    (34, 4),
+    (35, 4),
+    (36, 4),
+    (37, 4),
+    (38, 4),
+    (39, 4);
 
 -- Inserção de dados para a entidade Mundo
 INSERT INTO Mundo (id_mundo, nome, descricao)
@@ -81,15 +114,38 @@ VALUES
 INSERT INTO Local_Fechado (id_local_fechado, id_tipo_local_fechado)
 VALUES
     (1, 1),
-    (2, 3),
-    (3, 2),
-    (4, 4),
-    (5, 1),
+    (2, 1),
+    (3, 1),
+    (4, 2),
+    (5, 2),
     (6, 2),
-    (7, 4),
-    (8, 3),
-    (9, 1),
-    (10, 4);
+    (7, 2),
+    (8, 2),
+    (9, 2),
+    (10, 2),
+    (11, 2),
+    (12, 2),
+    (13, 2),
+    (14, 3),
+    (15, 3),
+    (16, 3),
+    (17, 3),
+    (18, 3),
+    (19, 3),
+    (20, 3),
+    (21, 3),
+    (22, 3),
+    (23, 3),
+    (24, 4),
+    (25, 4),
+    (26, 4),
+    (27, 4),
+    (28, 4),
+    (29, 4),
+    (30, 4),
+    (31, 4),
+    (32, 4),
+    (33, 4);
 
 -- Inserção de dados para a entidade Jogador
 INSERT INTO Jogador (id_jogador, id_local_fechado, id_regiao, id_estacao, id_missao, nome, energia, dia, hora, qtdd_ouro)
@@ -116,22 +172,22 @@ VALUES
 INSERT INTO Arma (id_arma, nome, descricao, dano, finalidade, comeca_jogo_com)
 VALUES
     (1, 'Espada de aço', 'Uma espada afiada para combate', 5, 'Combate', TRUE),
-    (2, 'Adaga de cristal', 'A lâmina é feita de quartzo purificado.', 4, 'Combate', TRUE),
-    (3, 'Clava', 'A companhia de um bruto.', 3, 'Combate', TRUE);
+    (2, 'Adaga de cristal', 'A lâmina é feita de quartzo purificado.', 4, 'Combate', FALSE),
+    (3, 'Clava', 'A companhia de um bruto.', 3, 'Combate', FALSE);
 
 -- Inserção de dados para a entidade Artesanato
 INSERT INTO Artesanato (id_artesanato, nome, descricao)
 VALUES
-    (1, 'Queijo', 'Um pedaço saboroso de queijo artesanal'),
-    (2, 'Mel', 'Um pote de mel fresco e doce'),
-    (3, 'Cerveja', 'Uma garrafa de cerveja caseira'),
-    (4, 'Joia', 'Uma joia valiosa feita à mão'),
-    (5, 'Tecido', 'Um rolo de tecido artesanal'),
-    (6, 'Óleo Essencial', 'Um frasco de óleo essencial aromático'),
-    (7, 'Bolo', 'Um delicioso bolo caseiro'),
-    (8, 'Sapato', 'Um par de sapatos feitos sob medida'),
-    (9, 'Vinho', 'Uma garrafa de vinho envelhecido'),
-    (10, 'Sorvete', 'Um pote de sorvete artesanal');
+    (4, 'Queijo', 'Um pedaço saboroso de queijo artesanal'),
+    (5, 'Mel', 'Um pote de mel fresco e doce'),
+    (6, 'Cerveja', 'Uma garrafa de cerveja caseira'),
+    (7, 'Joia', 'Uma joia valiosa feita à mão'),
+    (8, 'Tecido', 'Um rolo de tecido artesanal'),
+    (9, 'Óleo Essencial', 'Um frasco de óleo essencial aromático'),
+    (10, 'Bolo', 'Um delicioso bolo caseiro'),
+    (11, 'Sapato', 'Um par de sapatos feitos sob medida'),
+    (12, 'Vinho', 'Uma garrafa de vinho envelhecido'),
+    (13, 'Sorvete', 'Um pote de sorvete artesanal');
 
 -- Inserção de dados para a entidade Cabana_Jogador
 INSERT INTO Cabana_Jogador (id_cabana_jog, id_prop_cab_jog, id_regiao, nome, descricao)
@@ -143,54 +199,54 @@ VALUES
 -- Inserção de dados para a entidade Cabana_NPC
 INSERT INTO Cabana_NPC (id_cabana_NPC, id_prop_cab_NPC, id_regiao, nome, descricao)
 VALUES
-    (1, 1, 1, 'Cabana do Robin', 'Oficina da Robin, onde ela trabalha com carpintaria'),
-    (2, 2, 2, 'Cabana do Shane', 'O trailer modesto de Shane, repleto de caixas de frango'),
-    (3, 3, 1, 'Cabana do Lewis', 'A casa elegante de Lewis, cercada por jardins bem cuidados'),
-    (4, 4, 3, 'Cabana da Abigail', 'O quarto cheio de cores de Abigail, com instrumentos musicais espalhados'),
-    (5, 5, 2, 'Cabana da Emily', 'A casa artística de Emily, com pincéis e tintas por toda parte'),
-    (6, 6, 1, 'Cabana do Gus', 'O trailer de Gus, onde ele prepara suas deliciosas refeições'),
-    (7, 7, 3, 'Cabana do Pierre', 'A loja de Pierre, com prateleiras cheias de produtos'),
-    (8, 8, 2, 'Cabana do Willy', 'A cabana beira-mar de Willy, cheia de equipamentos de pesca'),
-    (9, 9, 1, 'Cabana da Haley', 'A casa elegante de Haley, com um estúdio de fotografia improvisado'),
-    (10, 10, 3, 'Cabana do Harvey', 'A clínica de Harvey, com equipamentos médicos e um ambiente acolhedor');
+    (4, 1, 1, 'Cabana do Robin', 'Oficina da Robin, onde ela trabalha com carpintaria'),
+    (5, 2, 2, 'Cabana do Shane', 'O trailer modesto de Shane, repleto de caixas de frango'),
+    (6, 3, 1, 'Cabana do Lewis', 'A casa elegante de Lewis, cercada por jardins bem cuidados'),
+    (7, 4, 3, 'Cabana da Abigail', 'O quarto cheio de cores de Abigail, com instrumentos musicais espalhados'),
+    (8, 5, 2, 'Cabana da Emily', 'A casa artística de Emily, com pincéis e tintas por toda parte'),
+    (9, 6, 1, 'Cabana do Gus', 'O trailer de Gus, onde ele prepara suas deliciosas refeições'),
+    (10, 7, 3, 'Cabana do Pierre', 'A loja de Pierre, com prateleiras cheias de produtos'),
+    (11, 8, 2, 'Cabana do Willy', 'A cabana beira-mar de Willy, cheia de equipamentos de pesca'),
+    (12, 9, 1, 'Cabana da Haley', 'A casa elegante de Haley, com um estúdio de fotografia improvisado'),
+    (13, 10, 3, 'Cabana do Harvey', 'A clínica de Harvey, com equipamentos médicos e um ambiente acolhedor');
 
 -- Inserção de dados para a entidade Caverna
 INSERT INTO Caverna (id_caverna, id_regiao, nome, descricao)
 VALUES
-    (1, 1, 'Caverna das Minas', 'Uma caverna misteriosa cheia de minerais e monstros'),
-    (2, 2, 'Caverna do Deserto', 'Uma caverna nas areias do deserto, com segredos enterrados'),
-    (3, 3, 'Caverna da Floresta', 'Uma caverna escondida entre as árvores, cheia de criaturas mágicas'),
-    (4, 1, 'Caverna da Mina de Carvão', 'Uma caverna escura e profunda, cheia de depósitos de carvão'),
-    (5, 2, 'Caverna do Oásis', 'Uma caverna luxuosa no oásis, com tesouros exóticos'),
-    (6, 3, 'Caverna das Fadas', 'Uma caverna encantada onde as fadas residem'),
-    (7, 1, 'Caverna do Ferro', 'Uma caverna rica em minério de ferro e desafios'),
-    (8, 2, 'Caverna do Mar Profundo', 'Uma caverna submarina com criaturas marinhas e tesouros submersos'),
-    (9, 3, 'Caverna da Lua Crescente', 'Uma caverna iluminada pela luz da lua crescente'),
-    (10, 1, 'Caverna da Geleira', 'Uma caverna gelada com depósitos de minerais congelados');
+    (14, 1, 'Caverna das Minas', 'Uma caverna misteriosa cheia de minerais e monstros'),
+    (15, 2, 'Caverna do Deserto', 'Uma caverna nas areias do deserto, com segredos enterrados'),
+    (16, 3, 'Caverna da Floresta', 'Uma caverna escondida entre as árvores, cheia de criaturas mágicas'),
+    (17, 1, 'Caverna da Mina de Carvão', 'Uma caverna escura e profunda, cheia de depósitos de carvão'),
+    (18, 2, 'Caverna do Oásis', 'Uma caverna luxuosa no oásis, com tesouros exóticos'),
+    (19, 3, 'Caverna das Fadas', 'Uma caverna encantada onde as fadas residem'),
+    (20, 1, 'Caverna do Ferro', 'Uma caverna rica em minério de ferro e desafios'),
+    (21, 2, 'Caverna do Mar Profundo', 'Uma caverna submarina com criaturas marinhas e tesouros submersos'),
+    (22, 3, 'Caverna da Lua Crescente', 'Uma caverna iluminada pela luz da lua crescente'),
+    (23, 1, 'Caverna da Geleira', 'Uma caverna gelada com depósitos de minerais congelados');
 
 -- Inserção de dados para a entidade Ferramenta
 INSERT INTO Ferramenta (id_ferramenta, nome, descricao, finalidade, comeca_jogo_com)
 VALUES
-    (1, 'Enxada', 'Usada para cavar e plantar sementes.', 'Agricultura', true),
-    (2, 'Picareta', 'Usada para minerar pedras e minérios.', 'Mineração', true),
-    (3, 'Machado', 'Usado para cortar árvores.', 'Lenhador', true),
-    (4, 'Vara de Pesca', 'Usada para pescar peixes.', 'Pesca', true),
-    (5, 'Foice', 'Usada para colher plantas.', 'Colheita', true),
-    (6, 'Regador', 'Usado para irrigar as plantações.', 'Agricultura', true);
+    (14, 'Enxada', 'Usada para cavar e plantar sementes.', 'Agricultura', true),
+    (15, 'Picareta', 'Usada para minerar pedras e minérios.', 'Mineração', true),
+    (16, 'Machado', 'Usado para cortar árvores.', 'Lenhador', true),
+    (17, 'Vara de Pesca', 'Usada para pescar peixes.', 'Pesca', true),
+    (18, 'Foice', 'Usada para colher plantas.', 'Colheita', true),
+    (19, 'Regador', 'Usado para irrigar as plantações.', 'Agricultura', true);
 
 -- Inserção de dados para a entidade Consumivel
 INSERT INTO Consumivel (id_consumivel, id_regiao, id_local_fechado, id_ferramenta, nome, descricao)
 VALUES
-    (1, 1, 1, 1, 'Poção de Energia', 'Restaura 30 pontos de energia do jogador'),
-    (2, 2, 2, 2, 'Elixir de Força', 'Aumenta temporariamente a força do jogador em 20%'),
-    (3, 3, NULL, 4, 'Isca de Pesca', 'Aumenta as chances de pegar peixes ao pescar'),
-    (4, 1, 4, 1, 'Semente Mágica', 'Uma semente que cresce em uma planta mágica'),
-    (5, 2, 5, 1, 'Fruta Silvestre', 'Uma fruta deliciosa encontrada nas florestas'),
-    (6, 3, NULL, 1, 'Bebida Energética', 'Aumenta temporariamente a energia do jogador em 10%'),
-    (7, 1, 7, 2, 'Minério Encantado', 'Minério especial com propriedades mágicas'),
-    (8, 2, 8, 1, 'Cogumelo Venenoso', 'Um cogumelo que pode ser usado em poções venenosas'),
-    (9, 3, NULL, 1, 'Mel do Vale', 'Um mel doce e valioso produzido nas colmeias'),
-    (10, 1, 10, 1, 'Pó de Fada', 'Um pó mágico usado em rituais de encantamento');
+    (20, 1, 1, 14, 'Poção de Energia', 'Restaura 30 pontos de energia do jogador'),
+    (21, 2, 2, 15, 'Elixir de Força', 'Aumenta temporariamente a força do jogador em 20%'),
+    (22, 3, NULL, 17, 'Isca de Pesca', 'Aumenta as chances de pegar peixes ao pescar'),
+    (23, 1, 4, 14, 'Semente Mágica', 'Uma semente que cresce em uma planta mágica'),
+    (24, 2, 5, 14, 'Fruta Silvestre', 'Uma fruta deliciosa encontrada nas florestas'),
+    (25, 3, NULL, 14, 'Bebida Energética', 'Aumenta temporariamente a energia do jogador em 10%'),
+    (26, 1, 7, 15, 'Minério Encantado', 'Minério especial com propriedades mágicas'),
+    (27, 2, 8, 14, 'Cogumelo Venenoso', 'Um cogumelo que pode ser usado em poções venenosas'),
+    (28, 3, NULL, 14, 'Mel do Vale', 'Um mel doce e valioso produzido nas colmeias'),
+    (29, 1, 10, 14, 'Pó de Fada', 'Um pó mágico usado em rituais de encantamento');
 
 
 -- Inserção de dados para a entidade Dialogo
@@ -210,16 +266,16 @@ VALUES
 -- Inserção de dados para a entidade Efeito
 INSERT INTO Efeito (id_efeito, id_item, valor, tipo)
 VALUES
-    (1, 1, 10, 'ganha_energia'),
-    (2, 2, -5, 'perde_energia'),
-    (3, 3, 20, 'ganha_energia'),
-    (4, 4, -10, 'perde_energia'),
-    (5, 5, 15, 'ganha_energia'),
-    (6, 6, -8, 'perde_energia'),
-    (7, 7, 25, 'ganha_energia'),
-    (8, 8, -12, 'perde_energia'),
-    (9, 9, 30, 'ganha_energia'),
-    (10, 10, -15, 'perde_energia');
+    (20, 1, 10, 'ganha_energia'),
+    (21, 2, -5, 'perde_energia'),
+    (22, 3, 20, 'ganha_energia'),
+    (23, 4, -10, 'perde_energia'),
+    (24, 5, 15, 'ganha_energia'),
+    (25, 6, -8, 'perde_energia'),
+    (26, 7, 25, 'ganha_energia'),
+    (27, 8, -12, 'perde_energia'),
+    (28, 9, 30, 'ganha_energia'),
+    (29, 10, -15, 'perde_energia');
 
 -- Inserção de dados para a entidade Habilidade
 INSERT INTO Habilidade (id_jogador, nivel_coleta, nivel_cultivo, nivel_mineracao, nivel_pesca, nivel_combate)
@@ -245,44 +301,44 @@ VALUES
 -- Inserção de dados para a entidade Instancia_Monstro
 INSERT INTO Instancia_Monstro (id_caverna, id_monstro, energia)
 VALUES
-    (1, 101, 80),
-    (1, 102, 65),
-    (2, 103, 90),
-    (3, 104, 75),
-    (3, 105, 60),
-    (4, 106, 85),
-    (5, 107, 70),
-    (5, 108, 50),
-    (5, 109, 95),
-    (5, 110, 40);
+    (14, 101, 80),
+    (14, 102, 65),
+    (15, 103, 90),
+    (16, 104, 75),
+    (16, 105, 60),
+    (17, 106, 85),
+    (18, 107, 70),
+    (18, 108, 50),
+    (18, 109, 95),
+    (18, 110, 40);
 
 -- Inserção de dados para a entidade Loja
 INSERT INTO Loja (id_loja, id_npc_prop, id_regiao, nome, descricao)
 VALUES
-    (1, 1, 1, 'Mercado do Pierre', 'Loja de sementes e suprimentos agrícolas.'),
-    (2, 2, 2, 'Ranchinho da Emily', 'Loja de roupas e acessórios feitos à mão.'),
-    (3, 3, 3, 'Blacksmith de Clint', 'Loja de ferramentas e melhorias para equipamentos.'),
-    (4, 4, 1, 'Saloon do Gus', 'Bar e restaurante com diversas comidas e bebidas.'),
-    (5, 5, 2, 'Carpintaria do Robin', 'Loja de móveis e construção.'),
-    (6, 6, 3, 'Carpintaria do Maru', 'Invenções tecnológicas e gadgets para fazendeiros.'),
-    (7, 7, 1, 'Hospital da Harvey', 'Cuidados médicos e tratamentos para os moradores de Pelican Town.'),
-    (8, 8, 2, 'Guilda dos Aventureiros', 'Contratação de aventureiros para explorar cavernas e derrotar monstros.'),
-    (9, 9, 3, 'JojaMart', 'Supermercado com uma variedade de produtos para todas as suas necessidades.'),
-    (10, 10, 1, 'Casa da Evelyn e George', 'Pequena loja com antiguidades e bugigangas.');
+    (24, 1, 1, 'Mercado do Pierre', 'Loja de sementes e suprimentos agrícolas.'),
+    (25, 2, 2, 'Ranchinho da Emily', 'Loja de roupas e acessórios feitos à mão.'),
+    (26, 3, 3, 'Blacksmith de Clint', 'Loja de ferramentas e melhorias para equipamentos.'),
+    (27, 4, 1, 'Saloon do Gus', 'Bar e restaurante com diversas comidas e bebidas.'),
+    (28, 5, 2, 'Carpintaria do Robin', 'Loja de móveis e construção.'),
+    (29, 6, 3, 'Carpintaria do Maru', 'Invenções tecnológicas e gadgets para fazendeiros.'),
+    (30, 7, 1, 'Hospital da Harvey', 'Cuidados médicos e tratamentos para os moradores de Pelican Town.'),
+    (31, 8, 2, 'Guilda dos Aventureiros', 'Contratação de aventureiros para explorar cavernas e derrotar monstros.'),
+    (32, 9, 3, 'JojaMart', 'Supermercado com uma variedade de produtos para todas as suas necessidades.'),
+    (33, 10, 1, 'Casa da Evelyn e George', 'Pequena loja com antiguidades e bugigangas.');
 
 -- Inserção de dados para a entidade Item_Estoque_Loja
 INSERT INTO Item_Estoque_Loja (id_item, id_loja, preco)
 VALUES
-    (1, 1, 100),
-    (2, 1, 150),
-    (3, 2, 200),
-    (4, 2, 120),
-    (5, 3, 80),
-    (6, 3, 130),
-    (7, 4, 300),
-    (8, 4, 250),
-    (9, 5, 180),
-    (10, 5, 220);
+    (1, 24, 100),
+    (2, 24, 150),
+    (3, 25, 200),
+    (4, 25, 120),
+    (5, 26, 80),
+    (6, 26, 130),
+    (7, 27, 300),
+    (8, 27, 250),
+    (9, 28, 180),
+    (10, 28, 220);
 
 -- Inserção de dados para a entidade Item_Inventario
 INSERT INTO Item_Inventario (id_jogador, id_item, qtdd)
@@ -297,16 +353,16 @@ VALUES
 -- Inserção de dados para a entidade Item_Receita
 INSERT INTO Item_Receita (id_artesanato, id_item, qtdd)
 VALUES
-    (1, 3, 2),
-    (1, 5, 1),
-    (2, 8, 3),
-    (2, 10, 2),
-    (3, 1, 1),
-    (3, 6, 2),
-    (4, 4, 4),
-    (4, 7, 1),
-    (5, 9, 3),
-    (5, 10, 2);
+    (4, 3, 2),
+    (4, 5, 1),
+    (5, 8, 3),
+    (5, 10, 2),
+    (6, 1, 1),
+    (6, 6, 2),
+    (7, 4, 4),
+    (7, 7, 1),
+    (7, 9, 3),
+    (7, 10, 2);
 
 -- Inserção de dados para a entidade Plantacao
 INSERT INTO Plantacao (id_semente, dia_colheita)
@@ -339,16 +395,16 @@ VALUES
 -- Inserção de dados para a entidade Vestimenta
 INSERT INTO Vestimenta (id_vestimenta, nome, descricao)
 VALUES
-    (1, 'Camisa Azul', 'Uma camisa de cor azul vibrante.'),
-    (2, 'Vestido Floral', 'Um vestido com estampa floral.'),
-    (3, 'Chapéu de Palha', 'Um chapéu leve e confortável.'),
-    (4, 'Calças Jeans', 'Calças de denim azul clássicas.'),
-    (5, 'Luvas de Couro', 'Luvas feitas de couro durável.'),
-    (6, 'Tênis Esportivo', 'Tênis confortável para atividades físicas.'),
-    (7, 'Véu Elegante', 'Um véu elegante para ocasiões especiais.'),
-    (8, 'Casaco de Inverno', 'Um casaco quente para os dias frios.'),
-    (9, 'Bota de Trabalho', 'Botas resistentes para trabalhos rurais.'),
-    (10, 'Boné de Beisebol', 'Um boné casual para dias ensolarados.');
+    (30, 'Camisa Azul', 'Uma camisa de cor azul vibrante.'),
+    (31, 'Vestido Floral', 'Um vestido com estampa floral.'),
+    (32, 'Chapéu de Palha', 'Um chapéu leve e confortável.'),
+    (33, 'Calças Jeans', 'Calças de denim azul clássicas.'),
+    (34, 'Luvas de Couro', 'Luvas feitas de couro durável.'),
+    (35, 'Tênis Esportivo', 'Tênis confortável para atividades físicas.'),
+    (36, 'Véu Elegante', 'Um véu elegante para ocasiões especiais.'),
+    (37, 'Casaco de Inverno', 'Um casaco quente para os dias frios.'),
+    (38, 'Bota de Trabalho', 'Botas resistentes para trabalhos rurais.'),
+    (39, 'Boné de Beisebol', 'Um boné casual para dias ensolarados.');
 
 
 COMMIT;
