@@ -56,5 +56,56 @@ END;
 $$ LANGUAGE plpgsql;
 -- =======================================================================================
 
+-- =======================================================================================
+-- 25 - Eu como Jogador gostaria de Listar itens do inventário para Visualizar os itens 
+-- que o jogador possui 
+-- =======================================================================================
+
+-- View para listar itens do inventário do jogador
+CREATE OR REPLACE VIEW vw_item_inventario AS
+SELECT
+    ii.id_jogador as id,
+    ii.id_item,
+    ii.qtdd,
+    ti.nome_tipo_item,
+    CASE
+        WHEN ti.nome_tipo_item = 'arma' THEN a.nome
+        WHEN ti.nome_tipo_item = 'artesanato' THEN art.nome
+        WHEN ti.nome_tipo_item = 'consumivel' THEN c.nome
+        WHEN ti.nome_tipo_item = 'ferramenta' THEN f.nome
+        WHEN ti.nome_tipo_item = 'vestimenta' THEN v.nome
+    END AS nome,
+    CASE
+        WHEN ti.nome_tipo_item = 'arma' THEN a.descricao
+        WHEN ti.nome_tipo_item = 'artesanato' THEN art.descricao
+        WHEN ti.nome_tipo_item = 'consumivel' THEN c.descricao
+        WHEN ti.nome_tipo_item = 'ferramenta' THEN f.descricao
+        WHEN ti.nome_tipo_item = 'vestimenta' THEN v.descricao
+    END AS descricao
+FROM Item_Inventario ii
+JOIN Item i ON ii.id_item = i.id_item
+JOIN Tipo_Item ti ON i.id_tipo_item = ti.id_tipo_item
+LEFT JOIN Arma a ON ti.nome_tipo_item = 'arma' AND i.id_item = a.id_arma
+LEFT JOIN Artesanato art ON ti.nome_tipo_item = 'artesanato' AND i.id_item = art.id_artesanato
+LEFT JOIN Consumivel c ON ti.nome_tipo_item = 'consumivel' AND i.id_item = c.id_consumivel
+LEFT JOIN Ferramenta f ON ti.nome_tipo_item = 'ferramenta' AND i.id_item = f.id_ferramenta
+LEFT JOIN Vestimenta v ON ti.nome_tipo_item = 'vestimenta' AND i.id_item = v.id_vestimenta;
+
+-- SP
+CREATE OR REPLACE FUNCTION sp_obter_inventario_jogador(sp_id_jogador INT)
+RETURNS TABLE (
+    id_jogador INT,
+    id_item INT,
+    qtdd INT,
+    nome_tipo_item VARCHAR(20),
+    nome VARCHAR(50),
+    descricao VARCHAR(800)
+) AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM vw_item_inventario WHERE id_jogador = $1;
+END;
+$$ LANGUAGE plpgsql;
+
+
 
 COMMIT;
