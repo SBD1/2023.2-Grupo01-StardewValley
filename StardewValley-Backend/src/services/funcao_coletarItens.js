@@ -12,7 +12,7 @@ async function coletarItens(infoRegiao, infoJogador) {
   where id_local_fechado is null and id_regiao=$1;`, [infoRegiao.id_regiao])
 
   if (coletar.rows.length === 0) {
-    console.log("Pooooxa =( Nao ha itens para coletar nesta regiao!!")
+    console.log("\n\n\n\nPooooxa =( Nao ha itens para coletar nesta regiao!!\n\n\n\n")
     return false;
   }
 
@@ -21,9 +21,7 @@ async function coletarItens(infoRegiao, infoJogador) {
 
   const itensColeta = []
   coletar.map(c => itensColeta.push(c.nome))
-  console.log(itensColeta)
-
-  const escolhaColeta = readlineSync.keyInSelect(itensColeta, "O que você quer coletar?");
+  const escolhaColeta = readlineSync.keyInSelect(itensColeta, "O que você quer coletar?", { cancel: false });
 
   dinamicaColeta(infoJogador)
 

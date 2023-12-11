@@ -1,7 +1,9 @@
 import { connect } from "../db.js";
-import { segunda_tela } from "./segunda_tela.js";
 import { obterStatusJogador, exibirStatusJogador } from "../services/status_jogador.js";
+import { obterInventarioJogador, exibirInventarioJogador } from "../services/inventario_jogador.js";
 import { obterStatusJogo, exibirStatusJogo } from "../services/statusJogo.js";
+import { segunda_tela } from "./segunda_tela.js";
+
 import readlineSync from "readline-sync";
 
 // Função principal para a primeira tela
@@ -138,6 +140,9 @@ try {
 
         const statusJogo = await obterStatusJogo(dadosJogadorAtual.rows[0].id_jogador);
         await exibirStatusJogo(statusJogo);
+
+        const inventarioJogador = await obterInventarioJogador(dadosJogadorAtual.rows[0].id_jogador);
+        await exibirInventarioJogador(inventarioJogador);
 
         const regiaoAtual = await client.query(
             "SELECT nome FROM Regiao WHERE id_regiao = $1", [dadosJogadorAtual.rows[0].id_regiao]
