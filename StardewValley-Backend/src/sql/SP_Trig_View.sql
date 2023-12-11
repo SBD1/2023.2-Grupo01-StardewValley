@@ -34,10 +34,16 @@ BEGIN
                     VALUES (id_novo_jogador, novo_nome_jogador, id_nova_regiao, id_novo_local_fechado);
 
         INSERT INTO Cabana_Jogador (id_cabana_jog, id_prop_cab_jog, id_regiao, nome, descricao) 
-           VALUES (id_novo_local_fechado, id_novo_jogador, id_nova_regiao, 'Cabana ' || nome_cabana, 
+                    VALUES (id_novo_local_fechado, id_novo_jogador, id_nova_regiao, 'Cabana ' || nome_cabana, 
                    'Cabana do jogador ' || novo_nome_jogador);
 
         INSERT INTO habilidade (id_jogador) VALUES (id_novo_jogador);
+
+        INSERT INTO Item_Inventario (id_jogador, id_item, qtdd) 
+                    SELECT id_novo_jogador, id_arma, 1 FROM Arma WHERE comeca_jogo_com = TRUE;
+
+        INSERT INTO Item_Inventario (id_jogador, id_item, qtdd) 
+                    SELECT id_novo_jogador, id_ferramenta, 1 FROM Ferramenta WHERE comeca_jogo_com = TRUE;
 
         jogo_iniciado := TRUE;
 

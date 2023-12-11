@@ -1,17 +1,19 @@
 import { connect } from "../db.js";
-import readlineSync from "readline-sync";
+import { obterStatusJogador, exibirStatusJogador } from "../services/status_jogador.js";
+import { obterStatusJogo, exibirStatusJogo } from "../services/statusJogo.js";
 import { coletarItens } from "../services/funcao_coletarItens.js";
+import readlineSync from "readline-sync";
 
-async function segunda_tela(nomeJogador, regiao) {
+async function segunda_tela(regiao, dadosJogador) {
 
   const client = await connect();
   console.log("\nSegunda Tela - Tela de Região");
 
 
-  let infoRegiao = await client.query(`SELECT * from regiao where nome=$1;`, [regiao])
+  let infoRegiao = await client.query(`SELECT * from regiao where nome=$1;`, [regiao.nome])
   infoRegiao = infoRegiao.rows[0];
 
-  let infoJogador = await client.query(`SELECT * from jogador where nome=$1;`, [nomeJogador])
+  let infoJogador = await client.query(`SELECT * from jogador where id_jogador=$1;`, [dadosJogador])
   infoJogador = infoJogador.rows[0]
 
   let infoEstacao = await client.query(`SELECT * from estacao where id_estacao=$1;`, [infoJogador.id_estacao])
@@ -19,37 +21,24 @@ async function segunda_tela(nomeJogador, regiao) {
 
   // console.log(infoRegiao);
   // console.log(infoJogador);
+  // console.log(infoEstacao)
 
   try {
-    // Exibe status do jogo: região, estação, dia e hora
-    console.log(`Região: ${infoJogador.nome}`);
-    console.log(`Estação: ${infoEstacao.nome}`);
-    console.log(`Dia: ${infoJogador.dia}`);
-    console.log(`Hora: ${infoJogador.hora}`);
+    console.clear();
 
-    let habilidades = await client.query('SELECT * FROM Habilidade WHERE id_jogador = $1', [infoJogador.id_jogador]);
-    habilidades = habilidades.rows[0];
-    // console.log(habilidades)
+    const statusJogador = await obterStatusJogador(infoJogador.id_jogador);
+    await exibirStatusJogador(statusJogador);
 
+    const statusJogo = await obterStatusJogo(infoJogador.id_jogador);
+    await exibirStatusJogo(statusJogo);
 
-    console.log(`Energia: ${infoJogador.energia}/${infoJogador.energia}`); //???????????????????????????????
-    console.log(`Ouro: ${infoJogador.qtdd_ouro}`);
-    console.log("\n\nNíveis de Habilidade:");
-    console.log(`Coleta: ${habilidades.nivel_coleta}`);
-    console.log(`Cultivo: ${habilidades.nivel_cultivo}`);
-    console.log(`Mineração: ${habilidades.nivel_mineracao}`);
-    console.log(`Pesca: ${habilidades.nivel_pesca}`);
-    console.log(`Combate: ${habilidades.nivel_combate}`);
-
-    // Exibe a descrição da região atual e os locais fechados que ela tem
-    
     let infoLocaisFechados = await client.query(`SELECT * FROM regiao r WHERE r.id_regiao = $1;`, [infoRegiao.id_regiao])
     infoLocaisFechados = infoLocaisFechados.rows[0]
     //console.log(infoLocaisFechados)
 
     console.log(`\n\nDescrição da Região: ${infoLocaisFechados.descricao}`);
-    
-    
+
+
     //TODO
     // console.log(`Locais Fechados: ${result.local_fechado}`);
 
@@ -71,7 +60,7 @@ async function segunda_tela(nomeJogador, regiao) {
     // Executa a ação correspondente à escolha do regiao
     switch (escolha) {
       case 0: // Coletar
-        await coletarItens(infoRegiao);
+        await coletarItens(infoRegiao, infoJogador);
         break;
       case 1: // Plantar
         await plantarSemente(regiao);
