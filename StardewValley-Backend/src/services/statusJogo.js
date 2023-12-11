@@ -24,15 +24,15 @@ export async function obterStatusJogo(idJogador) {
 }
 
 export async function exibirStatusJogo(dadosJogador) {
-    console.log(" \n________________________________________________");
-    console.log(`|           Stardew Valley - MUD                   `);
-    console.log(`|           ====================                   `);
+    console.log(" \n____________________________________________________________");
+    console.log(`|           Status Jogo - Satrdew Valley           `);
+    console.log(`|           ============================           `);
     console.log(`| Nome: ${dadosJogador.nome}                       `);
     console.log(`| Região: ${dadosJogador.regiao}                   `);
     //console.log(`| Local: ${dadosJogador.localFechado !== null ? dadosJogador.localFechado : 'local aberto'} `);
     console.log(`| Estação: ${dadosJogador.estacao}                 `);
     console.log(`| Dia: ${dadosJogador.dia}                         `);
     console.log(`| Hora: ${dadosJogador.hora}                       `);
-    console.log("|________________________________________________\n");
+    console.log("|____________________________________________________________\n");
   }
   
