@@ -13,7 +13,7 @@ async function coletarItens(infoRegiao, infoJogador) {
 
   if (coletar.rows.length === 0) {
     console.log("Pooooxa =( Nao ha itens para coletar nesta regiao!!")
-    return client.end();
+    return false;
   }
 
   coletar = coletar.rows;

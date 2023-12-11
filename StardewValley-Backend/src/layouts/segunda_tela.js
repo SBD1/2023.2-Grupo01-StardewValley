@@ -43,61 +43,76 @@ async function segunda_tela(regiao, dadosJogador) {
     // console.log(`Locais Fechados: ${result.local_fechado}`);
 
     // Pergunta ao regiao o que ele quer fazer
-    const opcoes = [
-      "Coletar",
-      "Plantar",
-      "Pescar",
-      "Craftar",
-      "Conversar com NPC",
-      "Minerar ou Combater",
-      "Ir a um Local Fechado",
-      "Mudar de Região",
-      "Ver Itens do Inventário"
-    ];
 
-    const escolha = readlineSync.keyInSelect(opcoes, "O que você quer fazer?");
+    let resultadoColeta = false; 
+    do{
+    const opcaoEscolhida = await escolhaAtividade()
+    resultadoColeta = await executarAtividade(opcaoEscolhida,infoRegiao, infoJogador)
+    }while (!resultadoColeta)
 
-    // Executa a ação correspondente à escolha do regiao
-    switch (escolha) {
-      case 0: // Coletar
-        await coletarItens(infoRegiao, infoJogador);
-        break;
-      case 1: // Plantar
-        await plantarSemente(regiao);
-        break;
-      case 2: // Pescar
-        if (regiao.id_local_fechado === "praia") {
-          await pescarItens(regiao);
-        } else {
-          console.log("Você só pode pescar se estiver na praia.");
-        }
-        break;
-      case 3: // Craftar
-        await craftarItem(regiao);
-        break;
-      case 4: // Conversar com NPC
-        await ConversaComNPC(regiao);
-        break;
-      case 5: // Minerar ou Combater
-        await mineracaoOuCombate(regiao);
-        break;
-      case 6: // Ir a um Local Fechado
-        await irAumLocalFechado(regiao);
-        break;
-      case 7: // Mudar de Região
-        await mudarDeRegiao(regiao);
-        break;
-      case 8: // Ver Itens do Inventário
-        await visualizarInventario(regiao);
-        break;
-      default:
-        console.log("Escolha inválida.");
-    }
+
   } catch (error) {
     console.error('Erro durante a execução da segunda tela:', error.message || error);
     client.end()
   }
 }
 
+async function escolhaAtividade() {
+  const opcoes = [
+    "Coletar",
+    "Plantar",
+    "Pescar",
+    "Craftar",
+    "Conversar com NPC",
+    "Minerar ou Combater",
+    "Ir a um Local Fechado",
+    "Mudar de Região",
+    "Ver Itens do Inventário"
+  ];
+  const opcaoEscolhida = readlineSync.keyInSelect(opcoes, "O que você quer fazer?", { cancel: false });
+  return opcaoEscolhida;
+}
+
+async function executarAtividade(opcaoEscolhida,infoRegiao, infoJogador) {
+  switch (opcaoEscolhida) {
+    case 0: // Coletar
+      let resultadoColeta = await coletarItens(infoRegiao, infoJogador);
+      if (!resultadoColeta){
+        return resultadoColeta
+      } 
+
+      break;
+    case 1: // Plantar
+      await plantarSemente(regiao);
+      break;
+    case 2: // Pescar
+      if (regiao.id_local_fechado === "praia") {
+        await pescarItens(regiao);
+      } else {
+        console.log("Você só pode pescar se estiver na praia.");
+      }
+      break;
+    case 3: // Craftar
+      await craftarItem(regiao);
+      break;
+    case 4: // Conversar com NPC
+      await ConversaComNPC(regiao);
+      break;
+    case 5: // Minerar ou Combater
+      await mineracaoOuCombate(regiao);
+      break;
+    case 6: // Ir a um Local Fechado
+      await irAumLocalFechado(regiao);
+      break;
+    case 7: // Mudar de Região
+      await mudarDeRegiao(regiao);
+      break;
+    case 8: // Ver Itens do Inventário
+      await visualizarInventario(regiao);
+      break;
+    default:
+      console.log("Escolha inválida.");
+  }
+}
 
 export { segunda_tela }
