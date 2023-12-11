@@ -3,7 +3,7 @@ import segundosParaHHMM from "../utils/segundosParaHHMM.js";
 
 export async function statusJogo(idJogador) {
   const client = await connect();
-  const query = `SELECT r.nome ,  e.nome as estacao ,	j.dia, j.hora FROM Jogador j
+  const query = `SELECT r.id_regiao, r.nome ,  e.nome as estacao ,	j.dia, j.hora FROM Jogador j
     JOIN Estacao e ON j.id_estacao = e.id_estacao 
     JOIN Regiao r ON j.id_regiao = r.id_regiao
     WHERE j.id_jogador = $1`;
@@ -14,6 +14,7 @@ export async function statusJogo(idJogador) {
   client.end();
   // retorna objeto de status do jogo
   return {
+    id_regiao: result.rows[0].id_regiao,
     regiao: result.rows[0].nome,
     estacao: result.rows[0].estacao,
     dia: result.rows[0].dia,
