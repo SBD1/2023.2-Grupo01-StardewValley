@@ -180,4 +180,4 @@ export async function primeiraTela() {
 
 }
 
-export { dadosJogadorAtual }
+// export { dadosJogadorAtual }

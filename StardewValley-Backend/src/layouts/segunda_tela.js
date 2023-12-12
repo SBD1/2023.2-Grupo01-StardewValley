@@ -2,6 +2,7 @@ import { connect } from "../db.js";
 import { obterStatusJogador, exibirStatusJogador } from "../services/status_jogador.js";
 import { obterStatusJogo, exibirStatusJogo } from "../services/statusJogo.js";
 import { coletarItens } from "../services/funcao_coletarItens.js";
+import { plantarSementes } from "../services/funcao_plantarSemente.js";
 import { avancarTempo } from "../services/avancarTempo.js";
 import readlineSync from "readline-sync";
 
@@ -84,7 +85,10 @@ async function executarAtividade(opcaoEscolhida, infoRegiao, infoJogador) {
 
       break;
     case 1: // Plantar
-      await plantarSemente(regiao);
+    let resultadoPlantacao = await plantarSementes(infoRegiao, infoJogador);
+    if (!resultadoPlantacao) {
+      return resultadoPlantacao
+    }
       break;
     case 2: // Pescar
       if (regiao.id_local_fechado === "praia") {
