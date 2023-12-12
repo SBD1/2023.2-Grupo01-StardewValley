@@ -179,5 +179,3 @@ export async function primeiraTela() {
     }
 
 }
-
-export { dadosJogadorAtual }
