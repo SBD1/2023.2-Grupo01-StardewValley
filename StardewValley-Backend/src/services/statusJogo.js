@@ -34,5 +34,4 @@ export async function exibirStatusJogo(dadosJogador) {
     console.log(`| Dia: ${dadosJogador.dia}                         `);
     console.log(`| Hora: ${dadosJogador.hora}                       `);
     console.log("|____________________________________________________________\n");
-  }
-  
+}

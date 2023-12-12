@@ -30,5 +30,4 @@ export async function exibirStatusJogador(jogadorHabilidade) {
     console.log(`|   Pesca: ${jogadorHabilidade.nivel_pesca}         `);
     console.log(`|   Combate: ${jogadorHabilidade.nivel_combate}     `);
     console.log("|____________________________________________________________\n");
-  }
-  
+}

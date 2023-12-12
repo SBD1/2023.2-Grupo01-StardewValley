@@ -1,80 +1,74 @@
-const readlineSync = require('readline-sync');
-const pgp = require('pg-promise')();
+import { connect } from "../db.js";
+import { mostrarStatusJogo } from "../utils/mostrarStatusJogo.js";
+import { mostrarStatusJogador } from "../utils/mostrarStatusJogador.js";
+import { statusJogo } from "../services/statusJogo.js";
+import readlineSync from "readline-sync";
+import { cavernasDisponiveis } from "../services/cavernasDisponiveis.js";
+import { dinamicaCasa } from "../services/dinamicaCasa.js";
 
-// ... (código de configuração do banco de dados)
+export async function localFechado() {
+  const client = await connect();
 
-// Inicializa o objeto de conexão
-const db = pgp(dbConfig);
+  // mock idJogador
 
-// ... (código das funções de compra, mineração, combate, etc.)
+  const idJogador = 1;
 
-// Função principal para a tela de local fechado
-async function localFechado(jogador) {
-  console.log("\nTela de um Local Fechado");
+  // mostra na tela status do jogo
+  mostrarStatusJogo(idJogador);
+  // mostra na tela status do jogador
+  mostrarStatusJogador(idJogador);
 
-  try {
-    // Exibe status do jogo: região, estação, dia e hora
-    console.log(`Região: ${jogador.id_regiao}`);
-    console.log(`Estação: ${jogador.id_estacao}`);
-    console.log(`Dia: ${jogador.dia}`);
-    console.log(`Hora: ${jogador.hora}`);
+  iniciarAvancoTempo(dadosJogador);
+  // Exibe status do jogo: região, estação, dia e hora
+  console.log(`Região: ${jogador.id_regiao}`);
+  console.log(`Estação: ${jogador.id_estacao}`);
+  console.log(`Dia: ${jogador.dia}`);
+  console.log(`Hora: ${jogador.hora}`);
 
-    // Exibe status do Jogador: energia, qtdd-ouro, níveis de habilidade
-    const habilidade = await db.one('SELECT * FROM Habilidade WHERE id_jogador = $1', [jogador.id_jogador]);
-    console.log(`Energia: ${jogador.energia}/${habilidade.nivel_energia}`);
-    console.log(`Ouro: ${jogador.qtdd_ouro}`);
-    console.log("Níveis de Habilidade:");
-    console.log(`Coleta: ${habilidade.nivel_coleta}`);
-    console.log(`Cultivo: ${habilidade.nivel_cultivo}`);
-    console.log(`Mineração: ${habilidade.nivel_mineracao}`);
-    console.log(`Pesca: ${habilidade.nivel_pesca}`);
-    console.log(`Combate: ${habilidade.nivel_combate}`);
+  const { id_local_fechado } = resultadoLocalFechadoInicial.rows[0];
 
-    // Exibe a descrição da região atual e do local fechado que o jogador está
-    const query = `
-      SELECT r.descricao AS regiao_descricao, lf.descricao AS local_fechado_descricao
-      FROM Regiao r
-      JOIN Local_Fechado lf ON r.id_regiao = lf.id_regiao
-      JOIN Jogador j ON j.id_regiao = r.id_regiao
-      WHERE r.id_regiao = $1 AND lf.id_local_fechado = $2;
-    `;
-    const result = await db.one(query, [jogador.id_regiao, jogador.id_local_fechado]);
-    console.log(`Descrição da Região: ${result.regiao_descricao}`);
-    console.log(`Descrição do Local Fechado: ${result.local_fechado_descricao}`);
+  console.log(
+    `
+    Você está andando pelo(a) ${regiao}. Deseja ir para algum lugar?
+    `
+  );
 
-    // Pergunta ao jogador o que ele quer fazer de acordo com o tipo de local fechado
-    switch (jogador.id_local_fechado) {
-      case 'loja':
-        await realizarCompra(jogador);
-        break;
-      case 'caverna':
-        await explorarCaverna(jogador);
-        break;
-      case 'casa_npc':
-        await conversarComNPC(jogador);
-        break;
-      case 'casa_jogador':
-        await acaoCasaJogador(jogador);
-        break;
-      // ... (adicionar outros casos conforme necessário)
-      default:
-        console.log("Local fechado não reconhecido.");
-    }
-  } catch (error) {
-    console.error('Erro durante a execução da tela de local fechado:', error.message || error);
+  // logicas para aplicar em cada local fechado
+  // Cabana Jogador
+  if (id_local_fechado === 1) {
+    await dinamicaCasa(idJogador);
   }
+  // Cabana_NPC
+  else if (id_local_fechado === 2) {
+  }
+  // Caverna
+  else if (id_local_fechado === 3) {
+  }
+  // Loja
+  else if (id_local_fechado === 4) {
+  }
+
+  client.end();
 }
 
 // Exemplo de chamada da função principal para iniciar a tela de local fechado
 const jogadorExemplo = {
-  id_jogador: 1,               // Substitua pelo ID do jogador
-  id_regiao: 1,                // Substitua pelo ID da região
-  id_estacao: 1,               // Substitua pelo ID da estação
-  dia: 1,                      // Substitua pelo dia atual
-  hora: 360,                   // Substitua pela hora atual
-  energia: 100,                // Substitua pela energia atual
-  qtdd_ouro: 500,              // Substitua pela quantidade de ouro atual
-  id_local_fechado: 'loja'     // Substitua pelo ID do local fechado atual
+  id_jogador: 1, // Substitua pelo ID do jogador
+  id_regiao: 1, // Substitua pelo ID da região
+  id_estacao: 1, // Substitua pelo ID da estação
+  dia: 1, // Substitua pelo dia atual
+  hora: 360, // Substitua pela hora atual
+  energia: 100, // Substitua pela energia atual
+  qtdd_ouro: 500, // Substitua pela quantidade de ouro atual
+  id_local_fechado: "loja", // Substitua pelo ID do local fechado atual
 };
+
+// Função para iniciar o avanço de tempo em intervalos regulares
+function iniciarAvancoTempo(dadosJogador) {
+  const intervalo = 10 * 1000;
+  setInterval(() => {
+    avancarTempo(dadosJogador);
+  }, intervalo);
+}
 
 localFechado(jogadorExemplo);
