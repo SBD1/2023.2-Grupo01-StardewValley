@@ -18,11 +18,12 @@ export async function localFechado() {
   // mostra na tela status do jogador
   mostrarStatusJogador(idJogador);
 
-  const { regiao } = await statusJogo(idJogador);
-  const resultadoLocalFechadoInicial = await client.query(
-    `SELECT id_local_fechado FROM jogador WHERE id_jogador = $1`,
-    [idJogador]
-  );
+  iniciarAvancoTempo(dadosJogador);
+  // Exibe status do jogo: região, estação, dia e hora
+  console.log(`Região: ${jogador.id_regiao}`);
+  console.log(`Estação: ${jogador.id_estacao}`);
+  console.log(`Dia: ${jogador.dia}`);
+  console.log(`Hora: ${jogador.hora}`);
 
   const { id_local_fechado } = resultadoLocalFechadoInicial.rows[0];
 
@@ -49,3 +50,25 @@ export async function localFechado() {
 
   client.end();
 }
+
+// Exemplo de chamada da função principal para iniciar a tela de local fechado
+const jogadorExemplo = {
+  id_jogador: 1, // Substitua pelo ID do jogador
+  id_regiao: 1, // Substitua pelo ID da região
+  id_estacao: 1, // Substitua pelo ID da estação
+  dia: 1, // Substitua pelo dia atual
+  hora: 360, // Substitua pela hora atual
+  energia: 100, // Substitua pela energia atual
+  qtdd_ouro: 500, // Substitua pela quantidade de ouro atual
+  id_local_fechado: "loja", // Substitua pelo ID do local fechado atual
+};
+
+// Função para iniciar o avanço de tempo em intervalos regulares
+function iniciarAvancoTempo(dadosJogador) {
+  const intervalo = 10 * 1000;
+  setInterval(() => {
+    avancarTempo(dadosJogador);
+  }, intervalo);
+}
+
+localFechado(jogadorExemplo);

@@ -22,13 +22,13 @@ export async function primeiraTela() {
 
     do {
         nomeJogador = readlineSync.question("Digite seu nome: ");
-    
+
         if (!nomeJogador.trim()) {
             console.log("Por favor, insira um nome válido.");
         }
     } while (!nomeJogador.trim());
-    
-try {
+
+    try {
         // Obtem informações do jogador
         const dadosJogador = await client.query("SELECT * FROM Jogador WHERE nome = $1", [nomeJogador]);
 
@@ -41,12 +41,12 @@ try {
 
             do {
                 nomeCabana = readlineSync.question("\nDê um nome para sua cabana: ");
-            
+
                 if (!nomeCabana.trim()) {
                     console.log("Por favor, insira um nome válido.");
                 }
             } while (!nomeCabana.trim());
-        
+
             // Mostra mundos disponiveis
             const mundos = await client.query("SELECT * FROM Mundo");
             console.log("\nMundos disponíveis:");
@@ -67,18 +67,18 @@ try {
             do {
                 const escolhaStr1 = readlineSync.question("\nEscolha um mundo (Digite o número): ");
                 escolhaMundo = parseInt(escolhaStr1, 10);
-            
+
                 if (isNaN(escolhaMundo) || escolhaMundo < 1 || escolhaMundo > mundos.rows.length) {
                     console.log("Por favor, insira um número válido.");
                 }
             } while (isNaN(escolhaMundo) || escolhaMundo < 1 || escolhaMundo > mundos.rows.length);
-            
-            const escolhaMundoOriginal = mundos.rows[escolhaMundo-1].id_mundo;
+
+            const escolhaMundoOriginal = mundos.rows[escolhaMundo - 1].id_mundo;
 
             // Obtém informações do mundo escolhido
             const mundoEscolhido = await client.query("SELECT * FROM Mundo WHERE id_mundo = $1", [escolhaMundoOriginal]);
-            console.log("\nMundo escolhido:", mundoEscolhido.rows[0].nome); 
-            
+            console.log("\nMundo escolhido:", mundoEscolhido.rows[0].nome);
+
             // Obtém regiões existentes no mundo escolhido
             const regioesMundoEscolhido = await client.query("SELECT * FROM Regiao WHERE id_mundo = $1", [escolhaMundoOriginal]);
             console.log("\nRegiões disponíveis no mundo escolhido:");
@@ -89,7 +89,7 @@ try {
             //const opcoesRegiao = regioesMundoEscolhido.rows.map(regiao => regiao.id_regiao);
 
             let j = 0;
-            for (const  regiao of regioesMundoEscolhido.rows) {
+            for (const regiao of regioesMundoEscolhido.rows) {
                 console.log(`${j + 1}. ${regiao.nome.trim()} - ${regiao.descricao.trim()}`);
                 j = j + 1;
             }
@@ -101,13 +101,13 @@ try {
             do {
                 const escolhaStr2 = readlineSync.question("\nEscolha uma regiao (Digite o número): ");
                 escolhaRegiao = parseInt(escolhaStr2, 10);
-            
+
                 if (isNaN(escolhaRegiao) || escolhaRegiao < 1 || escolhaRegiao > regioesMundoEscolhido.rows.length) {
                     console.log("Por favor, insira um número válido.");
                 }
             } while (isNaN(escolhaRegiao) || escolhaRegiao < 1 || escolhaRegiao > regioesMundoEscolhido.rows.length);
 
-            const escolhaRegiaoOriginal = regioesMundoEscolhido.rows[escolhaRegiao-1].id_regiao;
+            const escolhaRegiaoOriginal = regioesMundoEscolhido.rows[escolhaRegiao - 1].id_regiao;
 
             // Obtém informações da região escolhida
             const regiaoEscolhida = await client.query("SELECT * FROM Regiao WHERE id_regiao = $1", [escolhaRegiaoOriginal]);
@@ -116,14 +116,14 @@ try {
             // Chama a stored procedure para iniciar o jogo
             const result = await client.query("SELECT iniciar_jogo($1, $2, $3) AS jogo_iniciado", [nomeJogador, escolhaRegiaoOriginal, nomeCabana]);
             //console.log("Resultado da stored procedure:", result);
-        
+
             // Verifica se o jogo foi iniciado com sucesso
             //const jogoIniciado = result.rows[0].iniciar_jogo;
 
             //console.log(jogoIniciado);
 
             //if (jogoIniciado) {
-                console.log("\nJogo iniciado para o(a) jogador(a)", nomeJogador);
+            console.log("\nJogo iniciado para o(a) jogador(a)", nomeJogador);
             //} 
 
         }
@@ -147,7 +147,7 @@ try {
         const regiaoAtual = await client.query(
             "SELECT nome FROM Regiao WHERE id_regiao = $1", [dadosJogadorAtual.rows[0].id_regiao]
         );
-        
+
         const nomeCabanaJogador = await client.query(
             "SELECT nome FROM Cabana_Jogador WHERE id_prop_cab_jog = $1", [dadosJogadorAtual.rows[0].id_jogador]
         );
@@ -165,6 +165,7 @@ try {
             console.log("\nJogo encerrado.");
         }
 
+
     } catch (error) {
         console.error("\nErro ao executar a primeira tela:", error.message || error);
         console.log("----------------------------------------------------------------------\n");
@@ -178,3 +179,5 @@ try {
     }
 
 }
+
+export { dadosJogadorAtual }

@@ -2,13 +2,13 @@ import { connect } from "../db.js";
 import { obterStatusJogador, exibirStatusJogador } from "../services/status_jogador.js";
 import { obterStatusJogo, exibirStatusJogo } from "../services/statusJogo.js";
 import { coletarItens } from "../services/funcao_coletarItens.js";
+import { avancarTempo } from "../services/avancarTempo.js";
 import readlineSync from "readline-sync";
 
 async function segunda_tela(regiao, dadosJogador) {
 
   const client = await connect();
   console.log("\nSegunda Tela - Tela de Região");
-
 
   let infoRegiao = await client.query(`SELECT * from regiao where nome=$1;`, [regiao.nome])
   infoRegiao = infoRegiao.rows[0];
@@ -25,6 +25,7 @@ async function segunda_tela(regiao, dadosJogador) {
 
   try {
     console.clear();
+    iniciarAvancoTempo(dadosJogador);
 
     const statusJogador = await obterStatusJogador(infoJogador.id_jogador);
     await exibirStatusJogador(statusJogador);
@@ -44,11 +45,11 @@ async function segunda_tela(regiao, dadosJogador) {
 
     // Pergunta ao regiao o que ele quer fazer
 
-    let resultadoColeta = false; 
-    do{
-    const opcaoEscolhida = await escolhaAtividade()
-    resultadoColeta = await executarAtividade(opcaoEscolhida,infoRegiao, infoJogador)
-    }while (!resultadoColeta)
+    let resultadoColeta = false;
+    do {
+      const opcaoEscolhida = await escolhaAtividade()
+      resultadoColeta = await executarAtividade(opcaoEscolhida, infoRegiao, infoJogador)
+    } while (!resultadoColeta)
 
 
   } catch (error) {
@@ -73,13 +74,13 @@ async function escolhaAtividade() {
   return opcaoEscolhida;
 }
 
-async function executarAtividade(opcaoEscolhida,infoRegiao, infoJogador) {
+async function executarAtividade(opcaoEscolhida, infoRegiao, infoJogador) {
   switch (opcaoEscolhida) {
     case 0: // Coletar
       let resultadoColeta = await coletarItens(infoRegiao, infoJogador);
-      if (!resultadoColeta){
+      if (!resultadoColeta) {
         return resultadoColeta
-      } 
+      }
 
       break;
     case 1: // Plantar
@@ -114,5 +115,14 @@ async function executarAtividade(opcaoEscolhida,infoRegiao, infoJogador) {
       console.log("Escolha inválida.");
   }
 }
+
+// Função para iniciar o avanço de tempo em intervalos regulares
+function iniciarAvancoTempo(dadosJogador) {
+  const intervalo = 10 * 1000;
+  setInterval(() => {
+    avancarTempo(dadosJogador);
+  }, intervalo);
+}
+
 
 export { segunda_tela }
