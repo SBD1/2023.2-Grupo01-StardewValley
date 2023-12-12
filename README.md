@@ -84,6 +84,7 @@ Se você já tiver executado o comando `npm run game` pelo menos uma vez, para r
 | 1      | [Apresentação Módulo 1](./docs/apresentacoes/apresentacao_m01.mp4) | 30/09/2023 |
 | 2      | [Apresentação Módulo 2](./docs/apresentacoes/apresentacao_m02.mp4) | 30/10/2023 |
 | 3      | [Apresentação Módulo 3](./docs/apresentacoes/apresentacao_m03%20-%20Edilberto%20e%20Zenilda.mp4) | 04/12/2023 |
+| Final  | [Apresentação Final](./docs/apresentacoes/apresentacao_final.mp4) | 11/12/2023 |
 
 ## Entregas
 
@@ -105,6 +106,11 @@ Se você já tiver executado o comando `npm run game` pelo menos uma vez, para r
   - [Dinâmica do Jogo](./docs/Entrega-03/Definicoes_Dinamica_Jogo.md)
   - [Histórias de usuários adaptado](./docs/Entrega-03/Historias_de_Usuario_adaptado.md)
   - [Stored Procedures, Triggers e Views](./docs/Entrega-03/Stored_Procedures_Triggers_Views.sql)
+
+- Módulo Final
+  - Jogo MUD
+
+
   
 ### Histórico de versões
 
