@@ -13,17 +13,17 @@ export async function obterInventarioJogador(idJogador) {
 }
 
 export async function exibirInventarioJogador(jogadorInventario) {
-    console.log(" \n________________________________________________");
-    console.log(`|           Stardew Valley - MUD                   `);
-    console.log(`|           ====================                   `);
-    console.log(`| Inventário:                                      `);
+    console.log(" \n____________________________________________________________");
+    console.log(`|               Inventário - Stardew Valley               `);
+    console.log(`|               ===========================               `);
+    console.log(`| Itens:                                                  `);
     let j = 0;
     //console.log(jogadorInventario);
     for (const  item of jogadorInventario.rows) {
         console.log(`| ${j + 1}. ${item.nome.trim()} - ${item.descricao.trim()} - ${item.qtdd}`);
         j = j + 1;
     }
-    console.log("|________________________________________________\n");
+    console.log("|____________________________________________________________\n");
   }
   
 

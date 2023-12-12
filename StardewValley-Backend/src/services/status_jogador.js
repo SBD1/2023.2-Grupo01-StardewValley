@@ -17,17 +17,17 @@ export async function obterStatusJogador(idJogador) {
 }
 
 export async function exibirStatusJogador(jogadorHabilidade) {
-  console.log(" \n________________________________________________");
-  console.log(`|           Stardew Valley - MUD                   `);
-  console.log(`|           ====================                   `);
-  console.log(`| Nome: ${jogadorHabilidade.nome}                  `);
-  console.log(`| Energia: ${jogadorHabilidade.energia}            `);
-  console.log(`| Ouro: ${jogadorHabilidade.qtdd_ouro}             `);
-  console.log(`| Níveis de Habilidade:                            `);
-  console.log(`|   Coleta: ${jogadorHabilidade.nivel_coleta}      `);
-  console.log(`|   Cultivo: ${jogadorHabilidade.nivel_cultivo}    `);
-  console.log(`|   Mineração: ${jogadorHabilidade.nivel_mineracao}`);
-  console.log(`|   Pesca: ${jogadorHabilidade.nivel_pesca}        `);
-  console.log(`|   Combate: ${jogadorHabilidade.nivel_combate}    `);
-  console.log("|________________________________________________\n");
+    console.log(" \n____________________________________________________________");
+    console.log(`|          Status Jogador - Stardew Valley          `);
+    console.log(`|          ===============================          `);
+    console.log(`| Nome: ${jogadorHabilidade.nome}                   `);
+    console.log(`| Energia: ${jogadorHabilidade.energia}             `);
+    console.log(`| Ouro: ${jogadorHabilidade.qtdd_ouro}              `);
+    console.log(`| Níveis de Habilidade:                             `);
+    console.log(`|   Coleta: ${jogadorHabilidade.nivel_coleta}       `);
+    console.log(`|   Cultivo: ${jogadorHabilidade.nivel_cultivo}     `);
+    console.log(`|   Mineração: ${jogadorHabilidade.nivel_mineracao} `);
+    console.log(`|   Pesca: ${jogadorHabilidade.nivel_pesca}         `);
+    console.log(`|   Combate: ${jogadorHabilidade.nivel_combate}     `);
+    console.log("|____________________________________________________________\n");
 }

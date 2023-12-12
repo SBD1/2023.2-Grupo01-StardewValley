@@ -94,7 +94,7 @@ LEFT JOIN Vestimenta v ON ti.nome_tipo_item = 'vestimenta' AND i.id_item = v.id_
 -- SP
 CREATE OR REPLACE FUNCTION sp_obter_inventario_jogador(sp_id_jogador INT)
 RETURNS TABLE (
-    id_jogador INT,
+    id INT,
     id_item INT,
     qtdd INT,
     nome_tipo_item VARCHAR(20),
@@ -102,10 +102,9 @@ RETURNS TABLE (
     descricao VARCHAR(800)
 ) AS $$
 BEGIN
-    RETURN QUERY SELECT * FROM vw_item_inventario WHERE id_jogador = $1;
+    RETURN QUERY SELECT * FROM vw_item_inventario WHERE vw_item_inventario.id = sp_id_jogador;
 END;
 $$ LANGUAGE plpgsql;
-
 
 
 COMMIT;
