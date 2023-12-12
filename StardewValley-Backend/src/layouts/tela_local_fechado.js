@@ -78,4 +78,12 @@ const jogadorExemplo = {
   id_local_fechado: 'loja'     // Substitua pelo ID do local fechado atual
 };
 
+// Função para iniciar o avanço de tempo em intervalos regulares
+function iniciarAvancoTempo(dadosJogador) {
+  const intervalo = 10 * 1000;
+  setInterval(() => {
+    avancarTempo(dadosJogador);
+  }, intervalo);
+}
+
 localFechado(jogadorExemplo);

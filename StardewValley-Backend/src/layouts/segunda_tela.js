@@ -124,7 +124,5 @@ function iniciarAvancoTempo(dadosJogador) {
   }, intervalo);
 }
 
-// Inicia o processo
-iniciarAvancoTempo();
 
 export { segunda_tela }
