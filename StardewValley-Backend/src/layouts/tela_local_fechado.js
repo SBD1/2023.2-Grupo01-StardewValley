@@ -13,6 +13,7 @@ async function localFechado(jogador) {
   console.log("\nTela de um Local Fechado");
 
   try {
+    iniciarAvancoTempo(dadosJogador);
     // Exibe status do jogo: região, estação, dia e hora
     console.log(`Região: ${jogador.id_regiao}`);
     console.log(`Estação: ${jogador.id_estacao}`);
@@ -76,5 +77,13 @@ const jogadorExemplo = {
   qtdd_ouro: 500,              // Substitua pela quantidade de ouro atual
   id_local_fechado: 'loja'     // Substitua pelo ID do local fechado atual
 };
+
+// Função para iniciar o avanço de tempo em intervalos regulares
+function iniciarAvancoTempo(dadosJogador) {
+  const intervalo = 10 * 1000;
+  setInterval(() => {
+    avancarTempo(dadosJogador);
+  }, intervalo);
+}
 
 localFechado(jogadorExemplo);
