@@ -1,10 +1,11 @@
 import { connect } from "../db.js";
 
-async function dormir(jogador) {
+async function dormir(dadosJogador) {
   const client = await connect();
 
   try {
     console.log("Indo dormir...");
+    let jogador = await client.query(`SELECT * from jogador where id_jogador=$1;`, [dadosJogador])
 
     // Verifica se o jogador está na sua cabana
     const jogadorNaCabana = await estaNaCabana(client, jogador);

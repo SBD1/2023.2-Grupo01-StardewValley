@@ -13,6 +13,7 @@ async function localFechado(jogador) {
   console.log("\nTela de um Local Fechado");
 
   try {
+    iniciarAvancoTempo(dadosJogador);
     // Exibe status do jogo: região, estação, dia e hora
     console.log(`Região: ${jogador.id_regiao}`);
     console.log(`Estação: ${jogador.id_estacao}`);

@@ -1,10 +1,12 @@
 import { connect } from "../db.js";
 import readlineSync from "readline-sync";
 
-async function comerItem(jogador) {
+async function comerItem(dadosJogador) {
   const client = await connect();
 
   try {
+    let jogador = await client.query(`SELECT * from jogador where id_jogador=$1;`, [dadosJogador])
+
     // Consulta para obter os itens consumíveis com seus efeitos
     const query = `
       SELECT ci.id_item_inventario, i.id_item, i.nome_tipo_item, iqtdd.qtdd, c.nome, e.valor, e.tipo

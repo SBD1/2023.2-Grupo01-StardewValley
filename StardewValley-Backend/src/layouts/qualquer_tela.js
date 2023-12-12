@@ -2,8 +2,9 @@ import { avancarTempo } from "../services/avancarTempo.js"
 import { dormir } from "../services/dormir.js";
 import { comerItem } from "../services/dinamicaComerItem.js";
 
+
 // Função para avançar o tempo em qualquer tela
-avancarTempo(jogador);
+avancarTempo(dadosJogador);
 // Tentar implementar forma de rodar essa função a cada 10 segundos
 
 // Função para simular a dinâmica de dormir

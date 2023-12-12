@@ -1,9 +1,11 @@
 import { connect } from "../db.js";
 
-async function avancarTempo(jogador, minutosParaAvancar = 10) {
+async function avancarTempo(dadosJogador, minutosParaAvancar = 10) {
   const client = await connect();
 
   try {
+    let jogador = await client.query(`SELECT * from jogador where id_jogador=$1;`, [dadosJogador])
+
     const minutosPorDia = 1440; // Total de minutos em um dia
 
     // Incrementa o tempo
