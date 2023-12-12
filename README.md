@@ -37,7 +37,7 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 
 ### Como jogar?
 
-1. Abra o terminal no seu sistema operacional.
+1. Após clonar o repositório, abra o terminal no seu sistema operacional.
 
 2. Navegue até a pasta "StardewValley-Backend" usando o comando `cd` (change directory):
 
@@ -47,7 +47,13 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 
    Certifique-se de que você está no diretório correto antes de prosseguir.
 
-3. Instale as dependências necessárias para o jogo utilizando o comando `npm install`:
+3. Crie um arquivo `.env` na pasta com a seguinte linha de comando, substituindo os parâmetros pelos dados do seu banco postgres.
+
+   ```bash
+   CONNECTION_STRING=postgres://postgres:senha@localhost:5432/stardewvalley?charset=utf8
+   ```
+
+5. Instale as dependências necessárias para o jogo utilizando o comando `npm install`:
 
    ```bash
    npm install
@@ -55,8 +61,9 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 
    Isso garantirá que todas as bibliotecas e pacotes necessários estejam instalados para executar o jogo.
 
-4. Após a conclusão da instalação, você estará pronto para rodar o jogo. Use o comando `npm run game` para iniciar o jogo:
-   ```bash
+6. Após a conclusão da instalação, você estará pronto para rodar o jogo. Use o comando `npm run game` para criar o banco de dados e as tabelas necessárias e iniciar o jogo:
+
+    ```bash
    npm run game
    ```
 
@@ -64,24 +71,19 @@ Este comando executará o jogo, permitindo que você entre no mundo de Stardew V
 
 ## Como jogar?
 
-Para rodar o jogo é necessário estar dentro da pasta "StardewValley-Backend", portando faça:
-
-    cd StardewValley-Backend
-
-Após isso, instale as dependências com:
-
-    npm install
-
-E para rodar o jogo:
-
-    npm run game
+Se você já tiver executado o comando `npm run game` pelo menos uma vez, para rodar o jogo novamente basta executar o comando abaixo dentro da pasta "StardewValley-Backend":
+   
+   ```bash
+    npm run start
+   ```
 
 ## Apresentações
 
 | Módulo | Link da gravação                                                 | Data       |
 | ------ | ---------------------------------------------------------------- | ---------- |
-| 1      | [Apresentação Módulo 1](docs/apresentacoes/apresentacao_m01.mp4) | 30/09/2023 |
-| 2      | [Apresentação Módulo 2](docs/apresentacoes/apresentacao_m02.mp4) | 30/10/2023 |
+| 1      | [Apresentação Módulo 1](./docs/apresentacoes/apresentacao_m01.mp4) | 30/09/2023 |
+| 2      | [Apresentação Módulo 2](./docs/apresentacoes/apresentacao_m02.mp4) | 30/10/2023 |
+| 3      | [Apresentação Módulo 3](./docs/apresentacoes/apresentacao_m03%20-%20Edilberto%20e%20Zenilda.mp4) | 04/12/2023 |
 
 ## Entregas
 
@@ -99,6 +101,11 @@ E para rodar o jogo:
   - [DQL](./docs/Entrega-02/DQL.sql)
   - [Álgebra Relacional](./docs/Entrega-02/algebra_relacional.pdf)
 
+- Módulo 3
+  - [Dinâmica do Jogo](./docs/Entrega-03/Definicoes_Dinamica_Jogo.md)
+  - [Histórias de usuários adaptado](./docs/Entrega-03/Historias_de_Usuario_adaptado.md)
+  - [Stored Procedures, Triggers e Views](./docs/Entrega-03/Stored_Procedures_Triggers_Views.sql)
+  
 ### Histórico de versões
 
 | Versão |    Data    | Descrição                                      | Autor                                               | Revisão                                                      |
@@ -106,3 +113,5 @@ E para rodar o jogo:
 | `1.0`  | 24/09/2023 | Inclusão das considerações feitas na modelagem | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Marcus Martins](https://github.com/marcusmartinss)          |
 | `1.1`  | 28/09/2023 | Estruturação do README do projeto              | [Marcus Martins](https://github.com/marcusmartinss) |                                                              |
 | `1.2`  | 30/10/2023 | Links da entrega 02                            | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria) |
+| `1.3`  | 04/12/2023 | Links da entrega 03                            | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria) |
+| `1.4`  | 11/12/2023 | Passo a passo para rodar o jogo - atualização  | [Zenilda Vieira](https://github.com/ZenildaVieira)  | [Edilberto Cantuaria](https://github.com/edilbertocantuaria) |
