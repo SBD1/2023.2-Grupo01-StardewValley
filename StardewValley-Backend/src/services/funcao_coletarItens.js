@@ -8,7 +8,7 @@ async function coletarItens(infoRegiao, infoJogador) {
     where id_local_fechado is null and id_regiao=$1;`, [infoRegiao.id_regiao]);
 
   if (coletar.rows.length === 0) {
-    console.log("\n\n\n\nPooooxa =( Nao ha itens para coletar nesta regiao!!\n\n\n\n");
+    console.log("\n\n\n\nPooooxa =( Nao ha semetes para plantar nesta estação!!\n\n\n\n");
     return false;
   }
 
@@ -21,8 +21,8 @@ async function coletarItens(infoRegiao, infoJogador) {
   const escolhaColeta = readlineSync.keyInSelect(itemColeta, "O que você quer coletar?", { cancel: false });
 
   try {
-    const teste = await dinamicaColeta(client, infoJogador, itemColeta[escolhaColeta], idItemColeta[escolhaColeta]);
-    console.log(teste);
+    const result = await dinamicaColeta(client, infoJogador, itemColeta[escolhaColeta], idItemColeta[escolhaColeta]);
+    console.log(result);
   } catch (error) {
     console.error("Erro durante a coleta:", error);
   }
