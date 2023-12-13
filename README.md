@@ -41,50 +41,51 @@ O jogador pode criar itens manufaturados através de artesanato, utilizando rece
 
 2. Navegue até a pasta "StardewValley-Backend" usando o comando `cd` (change directory):
 
-   ```bash
-   cd StardewValley-Backend
-   ```
+```bash
+cd StardewValley-Backend
+```
 
-   Certifique-se de que você está no diretório correto antes de prosseguir.
+Certifique-se de que você está no diretório correto antes de prosseguir.
 
 3. Crie um arquivo `.env` na pasta com a seguinte linha de comando, substituindo os parâmetros pelos dados do seu banco postgres.
 
-   ```bash
-   CONNECTION_STRING=postgres://postgres:senha@localhost:5432/stardewvalley?charset=utf8
-   ```
+```bash
+CONNECTION_STRING=postgres://postgres:senha@localhost:5432/stardewvalley?charset=utf8
+```
 
-5. Instale as dependências necessárias para o jogo utilizando o comando `npm install`:
+4. Instale as dependências necessárias para o jogo utilizando o comando `npm install`:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-   Isso garantirá que todas as bibliotecas e pacotes necessários estejam instalados para executar o jogo.
+Isso garantirá que todas as bibliotecas e pacotes necessários estejam instalados para executar o jogo.
 
-6. Após a conclusão da instalação, você estará pronto para rodar o jogo. Use o comando `npm run game` para criar o banco de dados e as tabelas necessárias e iniciar o jogo:
+5. Após a conclusão da instalação, você estará pronto para rodar o jogo. Use o comando `npm run game` para criar o banco de dados e as tabelas necessárias e iniciar o jogo:
 
-    ```bash
-   npm run game
-   ```
+```bash
+npm run game
+```
 
 Este comando executará o jogo, permitindo que você entre no mundo de Stardew Valley. 🏡🌾🐔
 
 ## Como jogar?
 
 Se você já tiver executado o comando `npm run game` pelo menos uma vez, para rodar o jogo novamente basta executar o comando abaixo dentro da pasta "StardewValley-Backend":
-   
-   ```bash
-    npm run start
-   ```
+
+```bash
+npm run start
+```
 
 ## Apresentações
 
-| Módulo | Link da gravação                                                 | Data       |
-| ------ | ---------------------------------------------------------------- | ---------- |
-| 1      | [Apresentação Módulo 1](./docs/apresentacoes/apresentacao_m01.mp4) | 30/09/2023 |
-| 2      | [Apresentação Módulo 2](./docs/apresentacoes/apresentacao_m02.mp4) | 30/10/2023 |
-| 3      | [Apresentação Módulo 3](./docs/apresentacoes/apresentacao_m03%20-%20Edilberto%20e%20Zenilda.mp4) | 04/12/2023 |
-| Final  | [Apresentação Final](./docs/apresentacoes/apresentacao_final.mp4) | 11/12/2023 |
+| Módulo | Link da gravação                                                                                    | Data       |
+| ------ | --------------------------------------------------------------------------------------------------- | ---------- |
+| 1      | [Apresentação Módulo 1](./docs/apresentacoes/apresentacao_m01.mp4)                                  | 30/09/2023 |
+| 2      | [Apresentação Módulo 2](./docs/apresentacoes/apresentacao_m02.mp4)                                  | 30/10/2023 |
+| 3      | [Apresentação Módulo 3](./docs/apresentacoes/apresentacao_m03%20-%20Edilberto%20e%20Zenilda.mp4)    | 04/12/2023 |
+| Final  | [Apresentação Final Zenilda e Matheus](./docs/apresentacoes/apresentacao_final_zenilda_matheus.mp4) | 11/12/2023 |
+| Final  | [Apresentação Final Marcus](./docs/apresentacoes/apresentacao_final_marcus.mp4)                     | 11/12/2023 |
 
 ## Entregas
 
@@ -96,6 +97,7 @@ Se você já tiver executado o comando `npm run game` pelo menos uma vez, para r
   - [Modelo Relacional](./docs/Entrega-01/MREL_StardewValley_v1.0.md)
 
 - Módulo 2
+
   - [Normalização](./docs/Entrega-02/modelagem-normalizada)
   - [DDL](./docs/Entrega-02/DDL.sql)
   - [DML](./docs/Entrega-02/DML.sql)
@@ -103,6 +105,7 @@ Se você já tiver executado o comando `npm run game` pelo menos uma vez, para r
   - [Álgebra Relacional](./docs/Entrega-02/algebra_relacional.pdf)
 
 - Módulo 3
+
   - [Dinâmica do Jogo](./docs/Entrega-03/Definicoes_Dinamica_Jogo.md)
   - [Histórias de usuários adaptado](./docs/Entrega-03/Historias_de_Usuario_adaptado.md)
   - [Stored Procedures, Triggers e Views](./docs/Entrega-03/Stored_Procedures_Triggers_Views.sql)
@@ -110,8 +113,6 @@ Se você já tiver executado o comando `npm run game` pelo menos uma vez, para r
 - Módulo Final
   - Jogo MUD
 
-
-  
 ### Histórico de versões
 
 | Versão |    Data    | Descrição                                      | Autor                                               | Revisão                                                      |
