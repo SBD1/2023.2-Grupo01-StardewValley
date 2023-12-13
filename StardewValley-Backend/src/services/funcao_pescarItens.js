@@ -1,43 +1,65 @@
-async function pescarItens(jogador) {
-  try {
-      const localPraia = await db.oneOrNone('SELECT * FROM Local_Fechado WHERE id_local_fechado = $1 AND id_regiao = $2', [1, jogador.id_regiao]);
+import { connect } from "../db.js";
+import readlineSync from "readline-sync";
 
-      if (!localPraia) {
-          console.log("Você não está em uma região com acesso à praia para pescar.");
-          return;
-      }
+export async function pescar(infoRegiao, infoJogador) {
+  const client = await connect();
 
-      const itensPescaveis = await db.any('SELECT * FROM Consumivel WHERE id_item IN (SELECT id_item FROM Item WHERE local_fechado = $1)', ['praia']);
-
-      console.log("Itens Pescáveis na Praia:");
-      for (const itemPescavel of itensPescaveis) {
-          console.log(`${itemPescavel.id_item}. ${itemPescavel.nome}`);
-      }
-
-      const escolhaItemPescavel = readlineSync.questionInt("Escolha um item para pescar: ");
-
-      const itemPescavelEscolhido = await db.one('SELECT * FROM Consumivel WHERE id_item = $1', [escolhaItemPescavel]);
-
-      console.log(`Pescando ${itemPescavelEscolhido.nome}...`);
-
-      await db.none('INSERT INTO Item_Inventario (id_jogador, id_item) VALUES ($1, $2)', [jogador.id_jogador, itemPescavelEscolhido.id_item]);
-
-      await db.none('UPDATE Habilidade SET nivel_pesca = nivel_pesca + 1 WHERE id_jogador = $1', [jogador.id_jogador]);
-
-      const novaEnergia = jogador.energia - 5;
-      await db.none('UPDATE Jogador SET energia = $1 WHERE id_jogador = $2', [novaEnergia, jogador.id_jogador]);
-
-      console.log(`${itemPescavelEscolhido.nome} pescado com sucesso!\n`);
-
-  } catch (error) {
-      console.error('Erro durante a pesca:', error.message || error);
+  let pescar = await client.query(`select * from jogador where id_jogador=$1 and id_regiao=$2;`, [infoJogador.id_jogador, infoRegiao.id_regiao]);
+  if (pescar.rows.length === 0) {
+    console.log("\n\n\n\nPooooxa =( Nao é possível pescar nessa regiao!!\n\n\n\n");
+    return false;
   }
+
+  pescar = pescar.rows;
+
+  // const itemColeta = [];
+  // const idItemColeta = [];
+  // pescar.map((c) => itemColeta.push(c.nome));
+  // pescar.map((c) => idItemColeta.push(c.id_consumivel));
+  // const escolhaColeta = readlineSync.keyInSelect(itemColeta, "O que você quer pescar?", { cancel: false });
+
+  try {
+    const result = await dinamicaPesca(client, infoJogador);
+    console.log(result);
+  } catch (error) {
+    console.error("Erro durante a pesca:", error);
+  }
+
+  client.end();
 }
 
-const jogadorExemplo = {
-  id_jogador: 1,
-  id_regiao: 1,
-  energia: 100
-};
+async function dinamicaPesca(client, infoJogador) {
+  const result = await client.query(`
+  SELECT * FROM consumivel c
+  JOIN ferramenta f ON c.id_consumivel = f.id_ferramenta
+  WHERE c.id_consumivel = $1 AND f.id_ferramenta = $2;
+`, [3, 17]);
 
-pescarItens(jogadorExemplo);
+
+
+  const itemExistente = result.rows;
+  console.log(itemExistente)
+  console.log(`Obaa! Você vai utilizar a ${itemExistente[0].nome} e ${itemExistente[1].nome}!! Boa pesca!!`)
+
+  if (itemExistente.length === 0) {
+    const inseirItem = await client.query(`insert into item_inventario (id_jogador, id_item, qtdd) values ($1, $2, 1) RETURNING *;`, [infoJogador.id_jogador, 17]);
+
+    if (inseirItem.rows.length > 0) {
+      return "\n\n\nItem inserido com sucesso!!\n\n\n";
+    } else {
+      return "\n\n\nNao foi possivel inserir item!!\n\n\n";
+    }
+  } else {
+    const atualizarItem = await client.query(`UPDATE item_inventario SET qtdd = qtdd + 1 WHERE id_jogador = $1 AND id_item = $2 RETURNING *;`, [infoJogador.id_jogador, idItemColeta]);
+    const atualizarHabilidade = await client.query(`UPDATE habilidade SET nivel_pesca = nivel_pesca + 1 WHERE id_jogador = $1;`, [infoJogador.id_jogador]);
+    const atualizarEnergia = await client.query(`UPDATE jogador SET energia = energia - 5 WHERE id_jogador = $1;`, [infoJogador.id_jogador]);
+
+    if (atualizarItem.rows.length > 0 && atualizarHabilidade.rowCount > 0 && atualizarEnergia.rowCount > 0) {
+      return "\n\n\nItem coletado!!\n\n\n";
+    } else {
+      return "\n\n\nNao foi possivel coletar item!!\n\n\n";
+    }
+  }
+
+
+}

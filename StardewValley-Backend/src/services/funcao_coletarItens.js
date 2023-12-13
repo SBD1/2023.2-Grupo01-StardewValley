@@ -1,14 +1,14 @@
 import { connect } from "../db.js";
 import readlineSync from "readline-sync";
 
-async function coletarItens(infoRegiao, infoJogador) {
+export async function coletarItens(infoRegiao, infoJogador) {
   const client = await connect();
 
   let coletar = await client.query(`select * from consumivel 
     where id_local_fechado is null and id_regiao=$1;`, [infoRegiao.id_regiao]);
 
   if (coletar.rows.length === 0) {
-    console.log("\n\n\n\nPooooxa =( Nao ha semetes para plantar nesta estação!!\n\n\n\n");
+    console.log("\n\n\n\nPooooxa =( Nao ha itens para coletar nesta estação!!\n\n\n\n");
     return false;
   }
 
@@ -55,4 +55,3 @@ async function dinamicaColeta(client, infoJogador, itemColeta, idItemColeta) {
   }
 }
 
-export { coletarItens };

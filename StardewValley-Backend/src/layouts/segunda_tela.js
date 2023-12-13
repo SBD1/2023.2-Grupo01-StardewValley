@@ -3,6 +3,7 @@ import { obterStatusJogador, exibirStatusJogador } from "../services/status_joga
 import { obterStatusJogo, exibirStatusJogo } from "../services/statusJogo.js";
 import { coletarItens } from "../services/funcao_coletarItens.js";
 import { plantarSementes } from "../services/funcao_plantarSemente.js";
+import {pescar} from "../services/funcao_pescarItens.js";
 import { avancarTempo } from "../services/avancarTempo.js";
 import readlineSync from "readline-sync";
 
@@ -91,11 +92,10 @@ async function executarAtividade(opcaoEscolhida, infoRegiao, infoJogador) {
     }
       break;
     case 2: // Pescar
-      if (regiao.id_local_fechado === "praia") {
-        await pescarItens(regiao);
-      } else {
-        console.log("Você só pode pescar se estiver na praia.");
-      }
+    let resultadoPesca = await pescar(infoRegiao, infoJogador);
+    if (!resultadoPesca) {
+      return resultadoPesca
+    }
       break;
     case 3: // Craftar
       await craftarItem(regiao);
